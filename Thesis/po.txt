@@ -1,0 +1,46 @@
+User
+u_id	char	8			用户编号
+u_name	varchar	30			姓名
+sex	char	2			性别
+password	varchar	16			密码
+email	varchar	25			邮箱
+phone	varchar	13			用户电话
+teacher	char8	8			老师
+c_id	varchar	20			班级编号
+status	int	1			用户身份
+pspb1	varchar	32			密保问题1
+pspb2	varchar	32			密保问题2
+pspb3	varchar	32			密保问题3
+answer1	varchar	40			答案一
+answer2	varchar	40			答案二
+answer3	varchar	40			答案三
+
+Grade
+c_id	varchar	20			班级编号
+c_name	varchar	20			班级名称
+
+Thesis
+t_id	char	12			论文编号
+t_name	varchar	70			论文名称
+t_front	varchar	150			论文封面
+isdelete	int	1			是否删除
+
+UserThesis
+t_id	char	12			论文编号
+u_id	char	8			用户编号
+verify_status	int	1			送审状态
+verify_count	int	3			送审次数
+trial_status	int	1			初审状态
+reverify_status	int	1			复审状态
+reverify_count	int	3			复审次数
+
+Article
+a_id	int	7			帖子编号
+title	varchar	40			标题
+subject	varchar	70			主题
+content	varchar	255			内容
+image	varchar	150			帖子头像
+
+UserArticle
+a_id	int	7			帖子编号
+u_id	varchar	40			标题
