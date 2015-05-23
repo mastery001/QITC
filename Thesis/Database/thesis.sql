@@ -12,7 +12,7 @@ create table t_user
    phone varchar (13),
    teacher char (8),
    entrance_date char( 4),
-   status int (1),
+   status int (1) default 0,
    pspb1 varchar (32),
    pspb2 varchar (32),
    pspb3 varchar (32),
@@ -44,6 +44,7 @@ create table t_thesis
    t_id char(12) primary key not null,
    t_name varchar(70),
    t_front varchar(150),
+   description varchar(300),
    isdelete int(1)
 );
 
@@ -52,11 +53,11 @@ create table t_userthesis
 (
    t_id char(12),
    u_id char(8),
-   verify_status int(1),
-   verify_count int(3),
-   trial_status int(1),
-   reverify_status int(1),
-   reverify_count int(3),
+   verify_status int(1) default 0,
+   verify_count int(3) default 0,
+   trial_status int(1) default 0,
+   reverify_status int(1) default 0,
+   reverify_count int(3) default 0,
    primary key(t_id,u_id),
    FOREIGN KEY(u_id) REFERENCES t_user(u_id) ON
    DELETE CASCADE ON

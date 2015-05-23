@@ -8,4 +8,11 @@
 	<!-- id即为voName -->
 	<!-- <bean id="user"> <service class="org.web.service.DefaultOperateService"></service> 
 		<dao class="org.web.dao.impl.StudentArticleDaoImpl"></dao> </bean> -->
+
+	<bean id="forum">
+		<property name="dao" class="edu.jxau.dao.ForumDao"></property>
+	</bean>
+	<bean id="UserInfo">
+		<property name="dao" class="edu.jxau.dao.UserInfoDao"></property>
+	</bean>
 </beans>

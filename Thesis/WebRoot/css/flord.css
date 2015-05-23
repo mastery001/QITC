@@ -1,0 +1,21 @@
+
+.fileDiv{float:left;text-align:left;line-height:30px;font-size:12px;margin-right:20px;margin-bottom:20px;} 
+.seled{background-color:#FFCC99;}     
+.fontclass{
+	font-family: "ËÎÌå";
+	font-weight: bold;
+}
+
+
+
+#mask{position: absolute;left: 0;top: 0;z-index: 9000;display: block;}
+
+a{text-decoration: none;color: black;}
+a: hover{color: white;background: black;}
+
+#myMenu {position:absolute;width: 80px; border: 1px solid #aec1df;border-top: 0px ;background-color: #fff;text-align:center; }
+#myMenu li {margin-top:2px;margin-bottom:4px;}
+li{list-style-type:none;}
+
+ul{margin:0px;padding:0px;}
+#myMenu ul{text-align:center;left:50%;top:50%;line-height:30px; font-family:ºÚÌå,Á¥Êé;}

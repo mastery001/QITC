@@ -1,0 +1,187 @@
+<%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%
+	String path = request.getContextPath();
+	String basePath = request.getScheme() + "://"
+			+ request.getServerName() + ":" + request.getServerPort()
+			+ path + "/";
+%>
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<base href="<%=basePath%>">
+<title>江西农业大学论文评审系统</title>
+
+<script type="text/javascript" src="js/jquery-2.1.1.min.js"></script>
+<script type="text/javascript" src="js/wordchek.js"></script>
+<script type="text/javascript" src="js/jquery-1.7.2.min.js"></script>
+<script type="text/javascript" src="js/letguide.js"></script>
+<script type='text/javascript' src='js/dropdown.js'></script>
+<script type="text/javascript" src="js/bbs/GG.js"></script>
+<link rel="stylesheet" type="text/css" href="css/bbs/GgCss.css">
+<link rel="stylesheet" type="text/css" href="css/css.css">
+<link href="css/facecss/smohan.face.css" type="text/css"
+	rel="stylesheet">
+<script src="js/jquery-1.6.2.min.js"></script>
+<link rel="stylesheet" type="text/css" href="css/flord.css">
+<script charset="utf-8" type="text/javascript" src="js/newflord.js"></script>
+<script charset="utf-8" type="text/javascript" src="js/Rightmenu.js"></script>
+<script charset="utf-8" type="text/javascript" src="js/custom/error.js"></script>
+</head>
+<body>
+	<input type="hidden" id="msg" value="${info[0]}" />
+	<div id="header">
+		<div align="center" style="background-color:#F4F4F4">
+			<img src="images/login_log3.png" width="694" height="65"
+				align="absbottom" />
+		</div>
+	</div>
+	<div id="topmenu">
+		<div id="navMenu">
+			<ul>
+				<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li>
+				<li class="line"></li>
+				<li><a href="index.jsp">&nbsp;&nbsp;主页&nbsp;&nbsp;</a>
+				</li>
+				<li class="line"></li>
+				<li><a href="<%=path%>/user_file/Thesises/Thesises.jsp"
+					rel='dropmenu1' target="_parent">&nbsp;&nbsp;论文管理&nbsp;&nbsp;</a>
+				</li>
+				<li class="line"></li>
+				<li><a href="<%=path%>/user_file/Forum/Forum.jsp"
+					rel='dropmenu2' target="_parent">&nbsp;&nbsp;论坛&nbsp;&nbsp;</a>
+				</li>
+				<li class="line"></li>
+				<li><a href="<%=path%>/user_file/UserInfo/UserInfo.jsp"
+					rel='dropmenu3' target="_parent">&nbsp;&nbsp;个人信息&nbsp;&nbsp;</a>
+				</li>
+				<li class="line"></li>
+				<li><a href="<%=path%>/user_file/Chat/GroupMess.jsp"
+					rel='dropmenu4' target="_parent">&nbsp;聊天室&nbsp;</a>
+				</li>
+				<li class="line"></li>
+				<li><a href="<%=path%>/user_file/Recycle/Recycle.jsp"
+					target="_parent">&nbsp;&nbsp;回收站&nbsp;&nbsp;</a>
+				</li>
+				<li class="line"></li>
+				<li class="right"></li>
+			</ul>
+		</div>
+	</div>
+
+	<script type="text/javascript">
+		cssdropdown.startchrome("navMenu")
+	</script>
+
+	<ul id="dropmenu1" class="dropMenu">
+		<li><a href="<%=path%>/user_file/Thesises/Thesises.jsp"
+			target="_parent">论文查看</a>
+		</li>
+		<li><a href="<%=path%>/user_file/Thesises/Thesises_operate.jsp"
+			target="_parent">论文操作</a>
+		</li>
+		<li><a href="<%=path%>/user_file/Thesises/Thesises_add.jsp"
+			target="_parent">论文上传</a>
+		</li>
+		<!--<li><a  href="" target="_parent">论文在线编辑</a></li>-->
+		<li><a href="<%=path%>/user_file/Thesises/Thesises_add.jsp"
+			target="_parent">论文送审</a>
+		</li>
+		<c:if test="${user.status != 0 }">
+			<li><a href="<%=path%>/user_file/Thesises/ThesisesInfo.jsp"
+				target="_parent">论文信息</a>
+			</li>
+		</c:if>
+
+		<%--
+	if the status is teacher,the fade is 
+	<li><a   href="<%=path %>/user_file/Thesis/ThesisMessage.jsp" target="_parent">论文信息</a></li>
+--%>
+	</ul>
+	<ul id="dropmenu2" class="dropMenu">
+		<li><a href="<%=path%>/user_file/Forum/Forum.jsp"
+			target="_parent">查看论帖</a>
+		</li>
+		<li><a href="<%=path%>/user_file/Forum/Forum_add.jsp"
+			target="_parent">发帖</a>
+		</li>
+		<li><a href="<%=path%>/user_file/Forum/Forum_delete.jsp"
+			target="_parent">删帖</a>
+		</li>
+	</ul>
+	<ul id="dropmenu3" class="dropMenu">
+		<li><a href="<%=path%>/user_file/UserInfo/UserInfo.jsp"
+			target="_parent">个人信息维护</a>
+		</li>
+		<li><a href="<%=path%>/user_file/UserInfo/PassProtect.jsp"
+			target="_parent">密保重设</a>
+		</li>
+		<li><a href="<%=path%>/user_file/UserInfo/PassWordInsert.jsp"
+			target="_parent">密码重设</a>
+		</li>
+	</ul>
+	<ul id="dropmenu4" class="dropMenu">
+		<li><a href="<%=path%>/user_file/Chat/GroupMess.jsp"
+			target="_parent">群消息查看</a>
+		</li>
+		<li><a href="<%=path%>/user_file/Chat/PrivateMess.jsp"
+			target="_parent">个人消息</a>
+		</li>
+	</ul>
+
+	<div id="Layer1">
+		<table width="192" height="281" border="1" cellpadding="1"
+			cellspacing="1" bordercolor="#1D67DD"
+			style="background-color:#F4F4F4">
+			<tr>
+				<td width="166"><table width="153" height="284" border="0">
+						<tr>
+							<td width="154" height="41"><span class="STYLE2">欢迎回来，稻草人</span>
+							</td>
+						</tr>
+						<tr>
+							<td height="30"><span class="STYLE2">姓名：${user.u_name
+									}</span>
+							</td>
+						</tr>
+						<tr>
+							<td height="30"><span class="STYLE2">身份：${user.statusName
+									}</span>
+							</td>
+						</tr>
+						<tr>
+							<td height="34"><span class="STYLE2">班级：${user.c_name
+									}</span>
+							</td>
+						</tr>
+						<tr>
+							<td height="32"><span class="STYLE2">指导老师：${user.teacher}</span>
+							</td>
+						</tr>
+						<tr>
+							<td height="56"><div align="right">
+									<input type="text" name="textfield"
+										style="width:150px; height:23px" /> <br /> <br /> <input
+										type="submit" name="Submit"
+										style="width:50px; height:25px; color:#0000FF" value="提交" />
+								</div>
+							</td>
+						</tr>
+					</table>
+				</td>
+			</tr>
+		</table>
+	</div>
+	<div id="leftsead">
+		<ul>
+			<li><a id="top_btn"><img src="images/foot03/ll06.png"
+					width="131" height="49" class="hides" /><img
+					src="images/foot03/l06.png" width="47" height="49" class="shows" />
+			</a>
+			</li>
+		</ul>
+	</div>
+
+</body>
+</html>

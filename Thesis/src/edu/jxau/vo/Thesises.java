@@ -9,6 +9,7 @@ public class Thesises{
 	private String t_id; //论文编号;
 	private String t_name; //论文名称;
 	private String t_front; //论文封面;
+	private String description; // 论文描述
 	private Integer verify_status; //送审状态;
 	private Integer verify_count; //送审次数;
 	private Integer trial_status; //初审状态;
@@ -117,6 +118,25 @@ public class Thesises{
 
 	public void setReverify_count(Integer reverify_count) {
 		this.reverify_count = reverify_count;
+	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
+	@Override
+	public String toString() {
+		return "Thesises [u_id=" + u_id + ", u_name=" + u_name + ", c_id="
+				+ c_id + ", c_name=" + c_name + ", major=" + major + ", t_id="
+				+ t_id + ", t_name=" + t_name + ", t_front=" + t_front
+				+ ", description=" + description + ", verify_status="
+				+ verify_status + ", verify_count=" + verify_count
+				+ ", trial_status=" + trial_status + ", reverify_status="
+				+ reverify_status + ", reverify_count=" + reverify_count + "]";
 	}
 
 }

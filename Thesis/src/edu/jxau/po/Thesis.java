@@ -8,6 +8,7 @@ public class Thesis{
 	private String t_id; //论文编号;
 	private String t_name; //论文名称;
 	private String t_front; //论文封面;
+	private String description; // 论文描述
 	private Integer isdelete; //是否删除;
 
 	@PrimaryKeyAnnotation(id="t_id")
@@ -35,6 +36,14 @@ public class Thesis{
 		this.t_front = t_front;
 	}
 
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
 	public Integer getIsdelete() {
 		 return this.isdelete;
 	}
@@ -46,7 +55,8 @@ public class Thesis{
 	@Override
 	public String toString() {
 		return "Thesis [t_id=" + t_id + ", t_name=" + t_name + ", t_front="
-				+ t_front + ", isdelete=" + isdelete + "]";
+				+ t_front + ", description=" + description + ", isdelete="
+				+ isdelete + "]";
 	}
-
+	
 }

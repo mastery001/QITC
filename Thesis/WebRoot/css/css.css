@@ -1,0 +1,63 @@
+/* CSS Document */
+body{background:url(images/whiteBg.png) repeat;font:normal 14px/14px 'Microsoft JhengHei','Microsoft YaHei', Arial, sans-serif;color:#333333;}
+ul,li{padding:0px;margin:0px;list-style-type: none;}
+
+#header{width:988px;height:70px;margin:0 auto;background:url('../images/header_bg.gif') repeat-y 0 0px;}
+
+/*导航菜单*/
+#topmenu{width:1126px;margin:0 auto;}
+
+#navMenu {width:1126px;height:48px;display:block;overflow:hidden;background:url('../images/nav_bg.gif') 10px 10px repeat-x; background-color:#F4F4F4;}
+#navMenu ul{padding-left:73px;height:48px;background:url('../images/nav_left.gif') no-repeat top left;}
+
+#navMenu li {text-align:center;float: left;	height:48px;}
+
+#navMenu li a {width:108px;color:#fff;display: block;text-decoration:none;padding:22px 10px 16px;}
+#navMenu li a:hover, #navMenu li.hover a {border:none;text-decoration:none;color:#fff;background:url('../images/nav_hover.gif') 10px 10px repeat-x;padding:22px 10px 16px;}
+#navMenu li.right{width:73px;height:48px;background:url('../images/nav_right.gif') no-repeat top right; float:right;}
+#navMenu li.line{width:2px;height:48px;background:url('../images/nav_line.gif') no-repeat 0px 10px ; }
+/*-------- 下拉菜单 --------------*/
+.dropMenu {	position:absolute;top: 0;z-index:100;width: 130px;visibility: hidden; margin: -7px 0 0 -1px;border: 1px solid #aec1df;border-top: 0px ;background-color: #fff;	padding-top:6px;padding-bottom:6px;}
+
+.dropMenu li {margin-top:2px;margin-bottom:4px;padding-left:12px;}
+.dropMenu li a{width: 100px;display: block;background:url('../images/subdot1.gif') no-repeat left 10px;text-align:left;text-decoration:none;color: #333;padding: 4px 0 4px 8px;}
+.dropMenu+li a{border-top:none;}
+* html .dropMenu a {width: 100%;color:#333;}
+.dropMenu a:hover {text-decoration: underline;color:#2d6bac;background:url('../images/subdot.gif') no-repeat left 10px;}
+
+
+#Layer1 {
+	position:absolute;
+	width:188px;
+	height:260px;
+	z-index:101;
+	left: 10px;
+	top: 180px;
+}
+#Layer2 {
+	position:absolute;
+	width:200px;
+	height:115px;
+	z-index:1;
+	left: -103px;
+	top: 286px;
+}
+#Layer3 {
+	position:absolute;
+	width:170px;
+	height:276px;
+	z-index:102;
+	left: 1121px;
+	top: 23px;
+	background-color: #1D67DD;
+}
+
+/* leftsead */
+#leftsead{position:fixed;top:578px;right:1px;}
+*html #leftsead{margin-top:258px;position:absolute;top:expression(eval(document.documentElement.scrollTop));}
+#leftsead li{width:131px;height:60px;}
+#leftsead li img{float:right;}
+#leftsead li a{height:49px;float:right;display:block;min-width:47px;max-width:131px;}
+#leftsead li a .shows{display:block;}
+#leftsead li a .hides{margin-right:-143px;cursor:pointer;cursor:hand;}
+#leftsead li a.youhui .hides{display:none;position:absolute;right:190px;top:2px;}

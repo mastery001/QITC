@@ -1,0 +1,18 @@
+#bannerBox { height:260px; width:540px; overflow:hidden;position:relative; border:#E7E7E7 solid 1px; background:#FFF;}
+#bannerImgesBox { position:relative; height:270px;}
+#bannerImgesBox a {
+	position:absolute;
+	left:-8px;
+	top:-1px;
+	text-decoration: none;
+	display:none;
+	width: 543px;
+	bottom: 5px;
+	height: 259px;
+}
+#bannerImgesBox a img { border:0;}
+#bannerTextBox { height:14px;  position:absolute; z-index:100; bottom:4px; right:4px; width:536px;}
+#bannerTextBox ul { list-style:none;height:16px; float:right;}
+#bannerTextBox ul li { float:left; display:inline; height:16px;  text-align:center; width:16px; overflow:hidden; margin-right:1px;}
+#bannerTextBox ul li  a {  border:#313131 solid 1px; display:block; color:#FFF;text-decoration:none; background:#666666; width:14px; height:14px; line-height:14px; margin:0 auto;}
+#bannerTextBox ul li  a:hover { background: #CA0068;}

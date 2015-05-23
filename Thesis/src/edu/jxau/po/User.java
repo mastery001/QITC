@@ -1,6 +1,5 @@
 package edu.jxau.po;
 
-import org.web.dao.annotation.ForeignKeyAnnotation;
 import org.web.dao.annotation.PrimaryKeyAnnotation;
 import org.web.dao.annotation.TableAnnotation;
 
@@ -13,15 +12,15 @@ public class User{
 	private String email; //邮箱;
 	private String phone; //用户电话;
 	private String teacher; //老师;
-	private String entrance_data; //入学年份
+	private String entrance_date; //入学年份
 	private Integer status; //用户身份;
-	private String pspb; //密保问题;
 	private String pspb1; //密保问题;
 	private String pspb2; //密保问题;
+	private String pspb3; //密保问题;
 	private String answer1; //答案一;
 	private String answer2; //答案二;
 	private String answer3; //答案三;
-
+	
 	@PrimaryKeyAnnotation(id="u_id")
 	public String getU_id() {
 		 return this.u_id;
@@ -71,7 +70,6 @@ public class User{
 		this.phone = phone;
 	}
 
-	@ForeignKeyAnnotation("u_id")
 	public String getTeacher() {
 		 return this.teacher;
 	}
@@ -80,12 +78,12 @@ public class User{
 		this.teacher = teacher;
 	}
 
-	public String getEntrance_data() {
-		return entrance_data;
+	public String getEntrance_date() {
+		return entrance_date;
 	}
 
-	public void setEntrance_data(String entrance_data) {
-		this.entrance_data = entrance_data;
+	public void setEntrance_data(String entrance_date) {
+		this.entrance_date = entrance_date;
 	}
 
 	public Integer getStatus() {
@@ -96,12 +94,12 @@ public class User{
 		this.status = status;
 	}
 
-	public String getPspb() {
-		return pspb;
+	public String getPspb3() {
+		return pspb3;
 	}
 
-	public void setPspb(String pspb) {
-		this.pspb = pspb;
+	public void setPspb3(String pspb3) {
+		this.pspb3 = pspb3;
 	}
 
 	public String getPspb1() {
@@ -143,14 +141,14 @@ public class User{
 	public void setAnswer3(String answer3) {
 		this.answer3 = answer3;
 	}
-
+	
 	@Override
 	public String toString() {
 		return "User [u_id=" + u_id + ", u_name=" + u_name + ", sex=" + sex
 				+ ", password=" + password + ", email=" + email + ", phone="
 				+ phone + ", teacher=" + teacher + ", entrance_data="
-				+ entrance_data  + ", status=" + status
-				+ ", pspb=" + pspb + ", pspb1=" + pspb1 + ", pspb2=" + pspb2
+				+ entrance_date  + ", status=" + status
+				+ ", pspb1=" + pspb1 + ", pspb2=" + pspb2 + ", pspb3=" + pspb3
 				+ ", answer1=" + answer1 + ", answer2=" + answer2
 				+ ", answer3=" + answer3 + "]";
 	}

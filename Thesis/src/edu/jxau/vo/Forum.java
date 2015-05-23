@@ -92,4 +92,12 @@ public class Forum{
 		this.image = image;
 	}
 
+	@Override
+	public String toString() {
+		return "Forum [u_id=" + u_id + ", u_name=" + u_name + ", sex=" + sex
+				+ ", c_id=" + c_id + ", c_name=" + c_name + ", a_id=" + a_id
+				+ ", title=" + title + ", subject=" + subject + ", content="
+				+ content + ", image=" + image + "]";
+	}
+
 }
