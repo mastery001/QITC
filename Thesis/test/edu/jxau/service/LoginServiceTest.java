@@ -1,11 +1,12 @@
 package edu.jxau.service;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.fail;
 
 import org.junit.Test;
 import org.web.exception.ErrorException;
 
 import edu.jxau.po.User;
+import edu.jxau.vo.UserInfo;
 
 public class LoginServiceTest {
 
@@ -14,7 +15,8 @@ public class LoginServiceTest {
 		User user = new User();
 		user.setU_id("20121576");
 		user.setPassword("123");
-		new LoginService(user).login();
+		UserInfo ui = new LoginService(user).login();
+		System.out.println(ui);
 	}
 
 	@Test

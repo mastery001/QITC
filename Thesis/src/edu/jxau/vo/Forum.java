@@ -1,5 +1,7 @@
 package edu.jxau.vo;
 
+import java.util.Date;
+
 public class Forum{
 	private String u_id; //用户编号;
 	private String u_name; //姓名;
@@ -10,8 +12,11 @@ public class Forum{
 	private String title; //标题;
 	private String subject; //主题;
 	private String content; //内容;
+	private Date time;	// 发布时间
 	private String image; //帖子头像;
-
+	private Integer p_id;
+	private Integer isleaf;	// 是否是叶子节点
+	
 	public String getU_id() {
 		 return this.u_id;
 	}
@@ -66,6 +71,7 @@ public class Forum{
 
 	public void setTitle(String title) {
 		this.title = title;
+		this.time = new Date();
 	}
 
 	public String getSubject() {
@@ -92,12 +98,37 @@ public class Forum{
 		this.image = image;
 	}
 
+	public Date getTime() {
+		return time;
+	}
+
+	public void setTime(Date time) {
+		this.time = time;
+	}
+
+	public Integer getP_id() {
+		return p_id;
+	}
+
+	public void setP_id(Integer p_id) {
+		this.p_id = p_id;
+	}
+
+	public Integer getIsleaf() {
+		return isleaf;
+	}
+
+	public void setIsleaf(Integer isleaf) {
+		this.isleaf = isleaf;
+	}
+
 	@Override
 	public String toString() {
 		return "Forum [u_id=" + u_id + ", u_name=" + u_name + ", sex=" + sex
 				+ ", c_id=" + c_id + ", c_name=" + c_name + ", a_id=" + a_id
 				+ ", title=" + title + ", subject=" + subject + ", content="
-				+ content + ", image=" + image + "]";
+				+ content + ", time=" + time + ", image=" + image + ", p_id="
+				+ p_id + ", isleaf=" + isleaf + "]";
 	}
 
 }

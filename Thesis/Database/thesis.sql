@@ -72,7 +72,10 @@ create table t_article
    title varchar(40),
    subject varchar(70),
    content varchar(255),
-   image varchar(150)
+   time date,
+   image varchar(150),
+   isleaf int(1),
+   p_id int(7)
 );
 
 create table t_userarticle

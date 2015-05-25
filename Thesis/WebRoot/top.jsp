@@ -49,11 +49,11 @@
 					rel='dropmenu1' target="_parent">&nbsp;&nbsp;论文管理&nbsp;&nbsp;</a>
 				</li>
 				<li class="line"></li>
-				<li><a href="<%=path%>/user_file/Forum/Forum.jsp"
+				<li><a href="Forum.query.do?isleaf=0"
 					rel='dropmenu2' target="_parent">&nbsp;&nbsp;论坛&nbsp;&nbsp;</a>
 				</li>
 				<li class="line"></li>
-				<li><a href="<%=path%>/user_file/UserInfo/UserInfo.jsp"
+				<li><a href="UserInfo.query.do?u_id=${user.u_id }"
 					rel='dropmenu3' target="_parent">&nbsp;&nbsp;个人信息&nbsp;&nbsp;</a>
 				</li>
 				<li class="line"></li>
@@ -100,7 +100,7 @@
 --%>
 	</ul>
 	<ul id="dropmenu2" class="dropMenu">
-		<li><a href="<%=path%>/user_file/Forum/Forum.jsp"
+		<li><a href="Forum.query.do?isleaf=0"
 			target="_parent">查看论帖</a>
 		</li>
 		<li><a href="<%=path%>/user_file/Forum/Forum_add.jsp"
@@ -111,7 +111,7 @@
 		</li>
 	</ul>
 	<ul id="dropmenu3" class="dropMenu">
-		<li><a href="<%=path%>/user_file/UserInfo/UserInfo.jsp"
+		<li><a href="UserInfo.query.do?u_id=${user.u_id }"
 			target="_parent">个人信息维护</a>
 		</li>
 		<li><a href="<%=path%>/user_file/UserInfo/PassProtect.jsp"
@@ -137,11 +137,11 @@
 			<tr>
 				<td width="166"><table width="153" height="284" border="0">
 						<tr>
-							<td width="154" height="41"><span class="STYLE2">欢迎回来，稻草人</span>
+							<td width="154" height="41"><span class="STYLE2">欢迎回来，${user.u_name }</span>
 							</td>
 						</tr>
 						<tr>
-							<td height="30"><span class="STYLE2">姓名：${user.u_name
+							<td height="30"><span class="STYLE2">学号：${user.u_id
 									}</span>
 							</td>
 						</tr>
@@ -156,17 +156,16 @@
 							</td>
 						</tr>
 						<tr>
-							<td height="32"><span class="STYLE2">指导老师：${user.teacher}</span>
+							<td height="32"><span class="STYLE2">指导老师：${user.teacher_name}</span>
 							</td>
 						</tr>
 						<tr>
 							<td height="56"><div align="right">
-									<input type="text" name="textfield"
-										style="width:150px; height:23px" /> <br /> <br /> <input
-										type="submit" name="Submit"
-										style="width:50px; height:25px; color:#0000FF" value="提交" />
+									<form action="cancel.jsp" method="post">
+										<input type="submit" name="Submit"
+											style="width:50px; height:25px; color:#0000FF" value="注销" />
 								</div>
-							</td>
+								</form></td>
 						</tr>
 					</table>
 				</td>
