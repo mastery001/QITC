@@ -15,6 +15,7 @@ public class Thesises{
 	private Integer trial_status; //初审状态;
 	private Integer reverify_status; //复审状态;
 	private Integer reverify_count; //复审次数;
+	private Integer isdelete; //是否删除;
 
 	public String getU_id() {
 		 return this.u_id;
@@ -128,6 +129,14 @@ public class Thesises{
 		this.description = description;
 	}
 
+	public Integer getIsdelete() {
+		return isdelete;
+	}
+
+	public void setIsdelete(Integer isdelete) {
+		this.isdelete = isdelete;
+	}
+
 	@Override
 	public String toString() {
 		return "Thesises [u_id=" + u_id + ", u_name=" + u_name + ", c_id="
@@ -136,7 +145,8 @@ public class Thesises{
 				+ ", description=" + description + ", verify_status="
 				+ verify_status + ", verify_count=" + verify_count
 				+ ", trial_status=" + trial_status + ", reverify_status="
-				+ reverify_status + ", reverify_count=" + reverify_count + "]";
+				+ reverify_status + ", reverify_count=" + reverify_count
+				+ ", isdelete=" + isdelete + "]";
 	}
 
 }

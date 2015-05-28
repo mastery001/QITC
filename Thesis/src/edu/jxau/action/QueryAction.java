@@ -32,7 +32,7 @@ public class QueryAction extends ActionSupport implements HttpServletRequestAwar
 		} catch (ErrorException e) {
 			this.addMessage(e.getMessage());
 		}
-		if(request.getParameter("show") != null && request.getParameter("show").equals("body")) {
+		if(request.getParameter("x") != null && request.getParameter("x").equals("ot")) {
 			return "body";
 		}
 		return SUCCESS;

@@ -91,11 +91,14 @@
 						<td height="67" colspan="2"><div align="center"
 								class="STYLE2">
 								<a>共有${page.count}条记录</a> <a>当前第${page.page}页</a> <a
-									href="Forum.query.do?p_id=${list[0].p_id }&firstIndex=1">首页</a> <a
-									href="Forum.query.do?p_id=${list[0].p_id }&firstIndex=${page.page-1<=1?1:page.page- 1}">上一页</a>
-								<a
-									href="Forum.query.do?p_id=${list[0].p_id }&firstIndex=${page.page + 1 >=page.lastPage?page.lastPage:page.page + 1}">下一页</a>
-								<a href="Forum.query.do?p_id=${list[0].p_id }&firstIndex=${page.lastPage}">末页</a>
+									href="Forum.query.do?p_id=${list[0].p_id }&x=ot&firstIndex=1"><span
+									class="STYLE2">【首页】</span> </a> <a
+									href="Forum.query.do?p_id=${list[0].p_id }&x=ot&firstIndex=${page.page-1<=1?1:page.page- 1}"><span
+									class="STYLE2">【上一页】</span> </a> <a
+									href="Forum.query.do?p_id=${list[0].p_id }&x=ot&firstIndex=${page.page + 1 >=page.lastPage?page.lastPage:page.page + 1}"><span
+									class="STYLE2">【下一页】 </span> </a> <a
+									href="Forum.query.do?p_id=${list[0].p_id }&x=ot&firstIndex=${page.lastPage}"><span
+									class="STYLE2">【末页】 </span> </a>
 							</div></td>
 					</tr>
 				</table></td>

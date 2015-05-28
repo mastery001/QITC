@@ -82,7 +82,7 @@ public class User{
 		return entrance_date;
 	}
 
-	public void setEntrance_data(String entrance_date) {
+	public void setEntrance_date(String entrance_date) {
 		this.entrance_date = entrance_date;
 	}
 
@@ -141,12 +141,12 @@ public class User{
 	public void setAnswer3(String answer3) {
 		this.answer3 = answer3;
 	}
-	
+
 	@Override
 	public String toString() {
 		return "User [u_id=" + u_id + ", u_name=" + u_name + ", sex=" + sex
 				+ ", password=" + password + ", email=" + email + ", phone="
-				+ phone + ", teacher=" + teacher + ", entrance_data="
+				+ phone + ", teacher=" + teacher + ", entrance_date="
 				+ entrance_date  + ", status=" + status
 				+ ", pspb1=" + pspb1 + ", pspb2=" + pspb2 + ", pspb3=" + pspb3
 				+ ", answer1=" + answer1 + ", answer2=" + answer2

@@ -1,7 +1,7 @@
 package edu.jxau.vo;
 
-import edu.jxau.dao.UserDao;
 import edu.jxau.po.User;
+import edu.jxau.service.UserService;
 
 
 public class UserInfo{
@@ -10,12 +10,14 @@ public class UserInfo{
 	private String teacher; //老师;
 	private String c_id; //班级编号;
 	private Integer status; //用户身份;
+	private String password;// 密码
 	private String c_name; //班级名称;
 	private String statusName;	//身份名称
 	private String teacher_name; // 老师姓名
 	private String entrance_date; //入学年份
 	private String phone; //用户电话;
 	private String sex;	// 用户性别
+	
 
 	public String getU_id() {
 		 return this.u_id;
@@ -39,7 +41,7 @@ public class UserInfo{
 
 	public void setTeacher(String teacher) {
 		this.teacher = teacher;
-		User user = new UserDao().getUser(teacher);
+		User user = new UserService().getUser(teacher);
 		if(user != null) {
 			this.teacher_name = user.getU_name();
 		}
@@ -116,14 +118,22 @@ public class UserInfo{
 		this.sex = sex;
 	}
 
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
 	@Override
 	public String toString() {
 		return "UserInfo [u_id=" + u_id + ", u_name=" + u_name + ", teacher="
 				+ teacher + ", c_id=" + c_id + ", status=" + status
-				+ ", c_name=" + c_name + ", statusName=" + statusName
-				+ ", teacher_name=" + teacher_name + ", entrance_date="
-				+ entrance_date + ", phone=" + phone + ", sex=" + sex + "]";
+				+ ", password=" + password + ", c_name=" + c_name
+				+ ", statusName=" + statusName + ", teacher_name="
+				+ teacher_name + ", entrance_date=" + entrance_date
+				+ ", phone=" + phone + ", sex=" + sex + "]";
 	}
-
 
 }

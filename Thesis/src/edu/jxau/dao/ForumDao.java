@@ -15,7 +15,6 @@ public class ForumDao extends AbstractVoDaoAdvice {
 
 	@Override
 	protected VoResolve buildVoResolve() {
-		// TODO Auto-generated method stub
 		Class<?>[] allPo = new Class<?>[] { User.class, Grade.class,
 				Article.class, UserClass.class, UserArticle.class };
 		Class<?> voClass = Forum.class;

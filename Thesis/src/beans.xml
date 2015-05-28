@@ -12,6 +12,10 @@
 	<bean id="forum">
 		<property name="dao" class="edu.jxau.dao.ForumDao"></property>
 	</bean>
+	<bean id="thesises">
+		<property name="dao" class="edu.jxau.dao.ThesisesDao"></property>
+		<property name="adapter" class="edu.jxau.dao.adapter.ThesisesAdapter"></property>
+	</bean>
 	<bean id="UserInfo">
 		<property name="dao" class="edu.jxau.dao.UserInfoDao"></property>
 	</bean>

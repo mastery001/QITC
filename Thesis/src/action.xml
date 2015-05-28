@@ -10,11 +10,21 @@
 		<result name="add">user_file/{1}/{1}_{2}.jsp</result>
 	</action>
 
+	<!--  用户登录的action配置 -->
 	<action name="login" class="edu.jxau.action.LoginAction">
 		<result type="redirect">index.jsp</result>
 		<result name="error">login.jsp</result>
 	</action>
 	
+	<!-- 用户个人信息维护action配置 -->
+	<action name="u" class="edu.jxau.action.front.UserAction">
+		<result name="up">user_file/UserInfo/UserInfo.jsp</result>
+		<result name="ps">user_file/UserInfo/PassWordInsert.jsp</result>
+		<result name="ps_success">login.jsp</result>
+		<result name="pp">user_file/UserInfo/PassProtect.jsp</result>
+	</action>
+	
+	<!-- 统一查询的action配置 -->
 	<action name="*.query" class="edu.jxau.action.QueryAction"
 		match="{1}">
 		<result name="success">user_file/{1}/{1}.jsp</result>

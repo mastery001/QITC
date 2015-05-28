@@ -45,7 +45,7 @@ create table t_thesis
    t_name varchar(70),
    t_front varchar(150),
    description varchar(300),
-   isdelete int(1)
+   isdelete int(1) default 0
 );
 
 

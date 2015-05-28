@@ -45,7 +45,7 @@
 				<li><a href="index.jsp">&nbsp;&nbsp;主页&nbsp;&nbsp;</a>
 				</li>
 				<li class="line"></li>
-				<li><a href="<%=path%>/user_file/Thesises/Thesises.jsp"
+				<li><a href="Thesises.query.do?u_id=${user.u_id }&isdelete=0"
 					rel='dropmenu1' target="_parent">&nbsp;&nbsp;论文管理&nbsp;&nbsp;</a>
 				</li>
 				<li class="line"></li>
@@ -61,7 +61,7 @@
 					rel='dropmenu4' target="_parent">&nbsp;聊天室&nbsp;</a>
 				</li>
 				<li class="line"></li>
-				<li><a href="<%=path%>/user_file/Recycle/Recycle.jsp"
+				<li><a href="Thesises.query.do?u_id=${user.u_id }&isdelete=1&x=ot"
 					target="_parent">&nbsp;&nbsp;回收站&nbsp;&nbsp;</a>
 				</li>
 				<li class="line"></li>
@@ -75,7 +75,7 @@
 	</script>
 
 	<ul id="dropmenu1" class="dropMenu">
-		<li><a href="<%=path%>/user_file/Thesises/Thesises.jsp"
+		<li><a href="Thesises.query.do?u_id=${user.u_id }&isdelete=0"
 			target="_parent">论文查看</a>
 		</li>
 		<li><a href="<%=path%>/user_file/Thesises/Thesises_operate.jsp"
@@ -85,7 +85,7 @@
 			target="_parent">论文上传</a>
 		</li>
 		<!--<li><a  href="" target="_parent">论文在线编辑</a></li>-->
-		<li><a href="<%=path%>/user_file/Thesises/Thesises_add.jsp"
+		<li><a href="<%=path%>/user_file/Thesises/Thesises_commit.jsp"
 			target="_parent">论文送审</a>
 		</li>
 		<c:if test="${user.status != 0 }">
@@ -114,7 +114,7 @@
 		<li><a href="UserInfo.query.do?u_id=${user.u_id }"
 			target="_parent">个人信息维护</a>
 		</li>
-		<li><a href="<%=path%>/user_file/UserInfo/PassProtect.jsp"
+		<li><a href="u.do?op=pp&s=x&u_id=${user.u_id }"
 			target="_parent">密保重设</a>
 		</li>
 		<li><a href="<%=path%>/user_file/UserInfo/PassWordInsert.jsp"

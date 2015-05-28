@@ -17,7 +17,7 @@ public class ThesisesAdapter extends VoProcessor{
 		for(int i = 0 ; i < vos.size() ; i ++) {
 			Thesises thesis = (Thesises)vos.get(i);
 			if(thesis.getT_id() == null) {
-				thesis.setT_id(this.getAid(thesis.getU_id()));
+				thesis.setT_id(this.getTid(thesis.getU_id()));
 			}
 		}
 		return null;
@@ -30,7 +30,7 @@ public class ThesisesAdapter extends VoProcessor{
 		return null;
 	}
 	
-	private String getAid(String u_id) {
+	private String getTid(String u_id) {
 		if(!map.containsKey(u_id)) {
 			map.put(u_id, 0);
 		}
