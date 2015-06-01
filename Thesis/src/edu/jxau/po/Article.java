@@ -14,7 +14,7 @@ public class Article{
 	private Date time;	//时间
 	private String image; //帖子头像;
 	private Integer p_id;	// 主题帖id
-	private Integer isleaf;	// 是否是叶子节点
+	private Integer isleaf = 0;	// 是否是叶子节点
 	
 	@PrimaryKeyAnnotation(id="a_id")
 	public Integer getA_id() {

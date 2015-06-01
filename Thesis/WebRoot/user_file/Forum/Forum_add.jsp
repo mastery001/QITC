@@ -73,6 +73,7 @@ body {
 				</table>
 				<form action="Forum_add.do" method="post" enctype="multipart/form-data">
 					<input type="hidden" name="u_id" value="${user.u_id }" />
+					<input type="hidden" name="isleaf" value="1" />
 					<table width="70%" align="center" border="0" bordercolor="#1D67DD"
 						style="background-color:#F4F4F4"
 						background="images/faceimges/whiteBg.png">

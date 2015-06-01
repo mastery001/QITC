@@ -32,8 +32,15 @@ public class QueryAction extends ActionSupport implements HttpServletRequestAwar
 		} catch (ErrorException e) {
 			this.addMessage(e.getMessage());
 		}
-		if(request.getParameter("x") != null && request.getParameter("x").equals("ot")) {
-			return "body";
+		String x = request.getParameter("x");
+		if(x != null) {
+			if(x.equals("ot")) {
+				return "body";
+			}else if(x.equals("rm")) {
+				return "delete";
+			}else {
+				return "commit";
+			}
 		}
 		return SUCCESS;
 	}

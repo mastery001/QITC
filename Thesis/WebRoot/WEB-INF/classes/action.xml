@@ -1,21 +1,21 @@
 <actions>
 	<constant name="multipart.modifyFileName" value="false"></constant>
-	<constant name="multipart.maxsize" value="0"></constant>
+	<!-- 上传的最大为200M -->
+	<constant name="multipart.maxsize" value="209715200"></constant>
 	<constant name="multipart.saveDir" value="upload"></constant>
 	<constant name="multipart.temp" value="temp"></constant>
 	<constant name="multipart.isDateDirectory" value="true"></constant>
 	<!--match的1代表是第一个*号，如何可以通过action来确定viewName则配置此参数，会自动收集对应的表单对象 -->
-	<action name="*_*" class="edu.jxau.action.OperateAction" match="{1}"
-		method="{2}">
+	<action name="*_*" class="edu.jxau.action.OperateAction" match="{1}">
 		<result name="add">user_file/{1}/{1}_{2}.jsp</result>
 	</action>
 
-	<!--  用户登录的action配置 -->
+	<!-- 用户登录的action配置 -->
 	<action name="login" class="edu.jxau.action.LoginAction">
 		<result type="redirect">index.jsp</result>
 		<result name="error">login.jsp</result>
 	</action>
-	
+
 	<!-- 用户个人信息维护action配置 -->
 	<action name="u" class="edu.jxau.action.front.UserAction">
 		<result name="up">user_file/UserInfo/UserInfo.jsp</result>
@@ -23,13 +23,21 @@
 		<result name="ps_success">login.jsp</result>
 		<result name="pp">user_file/UserInfo/PassProtect.jsp</result>
 	</action>
-	
+
 	<!-- 统一查询的action配置 -->
 	<action name="*.query" class="edu.jxau.action.QueryAction"
 		match="{1}">
 		<result name="success">user_file/{1}/{1}.jsp</result>
 		<result name="body">user_file/{1}/{1}_body.jsp</result>
+		<result name="delete">user_file/{1}/{1}_delete.jsp</result>
+		<result name="commit">user_file/{1}/{1}_commit.jsp</result>
 	</action>
+	
+	<!-- 下载的action配置 -->
+	<action name="download" class="edu.jxau.action.FileDownloadAction">
+		<result type="none"></result>
+	</action>
+	
 	<!-- <include file="action1.xml"></include> -->
 
 </actions>

@@ -7,7 +7,7 @@ import org.web.dao.core.support.Page;
 public class PageUtil {
 
 	// 设置每页显示条数
-	public static final Integer SHOW_NUM = 2;
+	public static final Integer SHOW_NUM = 6;
 
 	/**
 	 * 接收前台传递的参数并且封装成Page对象

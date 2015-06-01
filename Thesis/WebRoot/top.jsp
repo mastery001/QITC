@@ -78,14 +78,14 @@
 		<li><a href="Thesises.query.do?u_id=${user.u_id }&isdelete=0"
 			target="_parent">论文查看</a>
 		</li>
-		<li><a href="<%=path%>/user_file/Thesises/Thesises_operate.jsp"
+		<li><a href="Thesises.query.do?isdelete=0&x=rm&u_id=${user.u_id }"
 			target="_parent">论文操作</a>
 		</li>
 		<li><a href="<%=path%>/user_file/Thesises/Thesises_add.jsp"
 			target="_parent">论文上传</a>
 		</li>
 		<!--<li><a  href="" target="_parent">论文在线编辑</a></li>-->
-		<li><a href="<%=path%>/user_file/Thesises/Thesises_commit.jsp"
+		<li><a href="Thesises.query.do?isdelete=0&x=cm&u_id=${user.u_id }"
 			target="_parent">论文送审</a>
 		</li>
 		<c:if test="${user.status != 0 }">
@@ -106,7 +106,7 @@
 		<li><a href="<%=path%>/user_file/Forum/Forum_add.jsp"
 			target="_parent">发帖</a>
 		</li>
-		<li><a href="<%=path%>/user_file/Forum/Forum_delete.jsp"
+		<li><a href="Forum.query.do?isleaf=0&x=rm&u_id=${user.u_id }"
 			target="_parent">删帖</a>
 		</li>
 	</ul>

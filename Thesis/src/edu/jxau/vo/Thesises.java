@@ -9,13 +9,14 @@ public class Thesises{
 	private String t_id; //论文编号;
 	private String t_name; //论文名称;
 	private String t_front; //论文封面;
+	private String document;   // 论文
 	private String description; // 论文描述
-	private Integer verify_status; //送审状态;
-	private Integer verify_count; //送审次数;
-	private Integer trial_status; //初审状态;
-	private Integer reverify_status; //复审状态;
-	private Integer reverify_count; //复审次数;
-	private Integer isdelete; //是否删除;
+	private Integer verify_status = 0 ; //送审状态;
+	private Integer verify_count = 0 ; //送审次数;
+	private Integer trial_status = 0 ; //初审状态;
+	private Integer reverify_status = 0 ; //复审状态;
+	private Integer reverify_count = 0 ; //复审次数;
+	private Integer isdelete  = 0 ; //是否删除;
 
 	public String getU_id() {
 		 return this.u_id;
@@ -137,16 +138,24 @@ public class Thesises{
 		this.isdelete = isdelete;
 	}
 
+	public String getDocument() {
+		return document;
+	}
+
+	public void setDocument(String document) {
+		this.document = document;
+	}
+
 	@Override
 	public String toString() {
 		return "Thesises [u_id=" + u_id + ", u_name=" + u_name + ", c_id="
 				+ c_id + ", c_name=" + c_name + ", major=" + major + ", t_id="
 				+ t_id + ", t_name=" + t_name + ", t_front=" + t_front
-				+ ", description=" + description + ", verify_status="
-				+ verify_status + ", verify_count=" + verify_count
-				+ ", trial_status=" + trial_status + ", reverify_status="
-				+ reverify_status + ", reverify_count=" + reverify_count
-				+ ", isdelete=" + isdelete + "]";
+				+ ", document=" + document + ", description=" + description
+				+ ", verify_status=" + verify_status + ", verify_count="
+				+ verify_count + ", trial_status=" + trial_status
+				+ ", reverify_status=" + reverify_status + ", reverify_count="
+				+ reverify_count + ", isdelete=" + isdelete + "]";
 	}
 
 }

@@ -43,7 +43,8 @@ create table t_thesis
 (
    t_id char(12) primary key not null,
    t_name varchar(70),
-   t_front varchar(150),
+   t_front varchar(200),
+   document varchar(200),
    description varchar(300),
    isdelete int(1) default 0
 );
