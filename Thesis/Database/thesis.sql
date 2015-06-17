@@ -54,11 +54,10 @@ create table t_userthesis
 (
    t_id char(12),
    u_id char(8),
+   commit_status int(1) default 0,
    verify_status int(1) default 0,
    verify_count int(3) default 0,
-   trial_status int(1) default 0,
-   reverify_status int(1) default 0,
-   reverify_count int(3) default 0,
+   comment varchar(200),
    primary key(t_id,u_id),
    FOREIGN KEY(u_id) REFERENCES t_user(u_id) ON
    DELETE CASCADE ON
@@ -79,6 +78,7 @@ create table t_article
    p_id int(7)
 );
 
+
 create table t_userarticle
 (
    a_id int(7),
@@ -89,5 +89,4 @@ create table t_userarticle
    UPDATE CASCADE, FOREIGN KEY(a_id) REFERENCES t_article(a_id) ON
    DELETE CASCADE ON
    UPDATE CASCADE
-)
-;
+);

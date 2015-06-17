@@ -32,8 +32,13 @@ public class ForumDaoTest {
 	}
 
 	@Test
-	public void testAddWhereOrOrderCondition() {
-		fail("Not yet implemented");
+	public void testAddWhereOrOrderCondition() throws DBException {
+		Forum f = new Forum();
+		f.setP_id(5);
+		new ForumDao().delete(f);
+		
 	}
 
+	
+	
 }

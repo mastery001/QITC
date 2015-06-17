@@ -1,7 +1,5 @@
 package edu.jxau.service;
 
-import static org.junit.Assert.fail;
-
 import org.junit.Test;
 import org.web.exception.ErrorException;
 
@@ -21,7 +19,23 @@ public class LoginServiceTest {
 
 	@Test
 	public void testLogin() {
-		fail("Not yet implemented");
+		// 生成的数字
+		String str="1234";
+		// 输入的数字
+		String str1 = "1234";
+		char strArray[] = str.toCharArray();
+		int index = -1;
+		for(int i = 0 ; i < strArray.length ; i++ ) {
+			if((index = str1.indexOf(String.valueOf(strArray[i]))) != -1 ) {
+				if(index == i) {
+					System.out.println("数字相同且位置正确！");
+				}else {
+					System.out.println("数字相同但位置正确！");
+				}
+			}else {
+				System.out.println("不存在该数字");
+			}
+		}
 	}
 
 }

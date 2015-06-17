@@ -23,7 +23,7 @@ public class QueryAction extends ActionSupport implements HttpServletRequestAwar
 	@Override
 	public String execute() throws Exception {
 		String viewName = this.action.substring(0, this.action.lastIndexOf("."));
-		QueryService service = new QueryService(viewName , true , true);
+		QueryService service = new QueryService(viewName , false , true);
 		Page page = PageUtil.getPage(this.request, PageUtil.SHOW_NUM);
 		try {
 			List<Object> list = service.getResult(bean, page);
@@ -34,13 +34,7 @@ public class QueryAction extends ActionSupport implements HttpServletRequestAwar
 		}
 		String x = request.getParameter("x");
 		if(x != null) {
-			if(x.equals("ot")) {
-				return "body";
-			}else if(x.equals("rm")) {
-				return "delete";
-			}else {
-				return "commit";
-			}
+			return x;
 		}
 		return SUCCESS;
 	}

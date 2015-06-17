@@ -31,6 +31,22 @@
 	color: #FFFFFF
 }
 </style>
+<script type="text/javascript">
+	function validate(f) {
+		var tIds = document.getElementsByName("t_id");
+		var count = 0;
+		for ( var i = 0; i < tIds.length; i++) {
+			if (tIds[i].checked == true) {
+				count++;
+			}
+		}
+		if (count > 1) {
+			alert("每次只能提交一篇论文");
+			return false;
+		}
+		return true;
+	}
+</script>
 </head>
 
 <body>
@@ -55,6 +71,9 @@
 					background="images/faceimges/whiteBg.png">
 					<tr>
 						<td><table width="100%" border="0">
+								<form action="Thesises_update.do?wd=commit" method="post"
+									onSubmit="javascript:return validate()">
+									<input type="hidden" name="verify_status" value="1" />
 								<tr>
 									<td><table width="100%" height="184" border="solid"
 											align="right" cellpadding="2" cellspacing="0"
@@ -67,26 +86,24 @@
 												<td><div align="center">文件名</div></td>
 												<td><div align="center">送审状态</div></td>
 												<td><div align="center">送审次数</div></td>
-												<td><div align="center">初审状态</div></td>
-												<td><div align="center">复审状态</div></td>
 												<td><div align="center">是否送审</div></td>
 											</tr>
 											<c:forEach var="entry" varStatus="st" items="${list}">
 												<tr>
 													<td><div align="center">
-															<a href="">${entry.t_name }</a>
+															<a href="#">${entry.t_name }</a>
 														</div></td>
-													<td><div align="center">${entry.verify_status ==
+													<td><div align="center">${entry.commit_status ==
 															0 ? "未送审" : "已送审" }</div></td>
 													<td><div align="center">${entry.verify_count }</div></td>
-													<td><div align="center">${entry.trial_status ==
-															0 ? "未通过" : "通过" }</div></td>
-													<td><div align="center">${entry.reverify_status
-															== 0 ? "未通过" : "通过" }</div></td>
-													<td><div align="center">
-															<input type="checkbox" name="checkbox"
-																value="checkbox" /> 是
-														</div></td>
+													<td><c:if
+															test="${entry.commit_status ==
+															0}">
+															<div align="center">
+																<input type="checkbox" name="t_id"
+																	value="${entry.t_id }" /> 是
+															</div>
+														</c:if></td>
 												</tr>
 											</c:forEach>
 										</table></td>
@@ -101,6 +118,7 @@
 								<tr>
 									<td height="138">&nbsp;</td>
 								</tr>
+								</form>
 							</table></td>
 				</table>
 			</td>

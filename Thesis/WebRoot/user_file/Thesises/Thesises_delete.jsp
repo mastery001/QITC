@@ -48,8 +48,7 @@
 				<table width="70%" height="26" border="0" align="center">
 					<tr>
 						<td width="62%" height="26" bgcolor="1D67DD"><span
-							class="STYLE1">论文操作::</span>
-						</td>
+							class="STYLE1">论文操作::</span></td>
 						<td width="38%" bgcolor="1D67DD"><span class="STYLE1">提示：本系统禁止以任何形式转载论文。</span>
 						</td>
 					</tr>
@@ -64,53 +63,84 @@
 												<table width="100%" height="40" border="0" align="center">
 													<tr>
 														<td width="6%" height="36" align="center"><input
-															type="checkbox" name="checkbox854" value="checkbox" />
-														</td>
-														<td width="76%" bgcolor="#1D67DD"><span
-															class="STYLE1">${entry.t_name }</span>
-														</td>
+															type="checkbox" name="t_id" value="${entry.t_id }" /></td>
+														<td width="76%" bgcolor="#1D67DD"><a
+															href="user_file/Thesises/word.jsp?document=${entry.document }"><span
+																class="STYLE1">${entry.t_name }</span> </a></td>
 														<td width="6%" align="center" bgcolor="#1D67DD"><a
-															href="Thesises_delete.do?t_id=${entry.t_id }"><span
-																class="STYLE1">删除</span> </a>
-														</td>
+															href="Thesises_delete.do?t_id=${entry.t_id }&wd=d"><span
+																class="STYLE1">删除</span> </a></td>
 														<td width="6%" align="center" bgcolor="#1D67DD"><a
 															href="download.do?document=${entry.document }"><span
-															class="STYLE1">下载</span></a>
-														</td>
-														<td width="6%" align="center" bgcolor="#1D67DD"><span
-															class="STYLE1">编辑</span>
+																class="STYLE1">下载</span> </a></td>
+														<%-- 如果是学生 --%>
+														<c:if test="${user.status == 0 }">
+															<td width="6%" align="center" bgcolor="#1D67DD"><a
+																href="user_file/Thesises/word.jsp?document=${entry.document }"><span
+																	class="STYLE1">编辑</span> </a>
+														</c:if>
+
 														</td>
 													</tr>
 												</table>
-											</div>
-										</td>
+											</div></td>
 									</tr>
 								</c:forEach>
 								<tr>
-									<td width="50%" height="60" colspan="2"><center>
-											<input type="button" value="全选"
+									<td width="50%" height="60" colspan="2">
+										<form action="" method="post" id="checkForm"></form>
+										<center>
+											<input type="button"
+												onClick="javascript:__checkall('t_id' , true)" value="全选"
 												style="width:50px;height:30px" /> <input type="button"
-												value="删除" style="width:100px;height:30px" /> <input
-												type="button" value="还原" style="width:100px;height:30px" />
+												onClick="javascript:__checkall('t_id' , false)" value="取消"
+												style="width:50px;height:30px" /> <input type="button"
+												value="删除"
+												onClick="javascript:__commitAllcheck('Thesises_delete.do?wd=d' , 't_id')"
+												style="width:100px;height:30px" /> <input type="button"
+												value="下载" style="width:100px;height:30px" />
 										</center></td>
 								</tr>
 								<tr>
 									<td height="75"><center>
-											<a>共有${page.count}条记录 </a> <a>当前第${page.page}页 </a> <a
-												href="Thesises.query.do?isdelete=0&x=rm&u_id=${user.u_id }&firstIndex=1"><span
-												class="STYLE2">【首页】</span> </a> <a
-												href="Thesises.query.do?isdelete=0&x=rm&u_id=${user.u_id }&firstIndex=${page.page-1<=1?1:page.page- 1}"><span
-												class="STYLE2">【上一页】</span> </a> <a
-												href="Thesises.query.do?isdelete=0&x=rm&u_id=${user.u_id }&firstIndex=${page.page + 1 >=page.lastPage?page.lastPage:page.page + 1}"><span
-												class="STYLE2">【下一页】 </span> </a> <a
-												href="Thesises.query.do?isdelete=0&x=rm&u_id=${user.u_id }&firstIndex=${page.lastPage}"><span
-												class="STYLE2">【末页】 </span> </a>
-										</center>
-									</td>
+											<a>共有${page.count}条记录 </a> <a>当前第${page.page}页 </a>
+											<c:choose>
+												<c:when test="${user.status == 0 }">
+													<a
+														href="Thesises.query.do?isdelete=0&x=rm&u_id=${user.u_id }&firstIndex=1"><span
+														class="STYLE2">【首页】</span> </a>
+													<a
+														href="Thesises.query.do?isdelete=0&x=rm&u_id=${user.u_id }&firstIndex=${page.page-1<=1?1:page.page- 1}"><span
+														class="STYLE2">【上一页】</span> </a>
+													<a
+														href="Thesises.query.do?isdelete=0&x=rm&u_id=${user.u_id }&firstIndex=${page.page + 1 >=page.lastPage?page.lastPage:page.page + 1}"><span
+														class="STYLE2">【下一页】 </span> </a>
+													<a
+														href="Thesises.query.do?isdelete=0&x=rm&u_id=${user.u_id }&firstIndex=${page.lastPage}"><span
+														class="STYLE2">【末页】 </span> </a>
+												</c:when>
+												<c:otherwise>
+													<a
+														href="Thesises.query.do?isdelete=0&x=rm&c_id=${user.c_id}&commit_status=1&firstIndex=1"><span
+														class="STYLE2">【首页】</span> </a>
+													<a
+														href="Thesises.query.do?isdelete=0&x=rm&c_id=${user.c_id}&commit_status=1&firstIndex=${page.page-1<=1?1:page.page- 1}"><span
+														class="STYLE2">【上一页】</span> </a>
+													<a
+														href="Thesises.query.do?isdelete=0&x=rm&c_id=${user.c_id}&commit_status=1&firstIndex=${page.page + 1 >=page.lastPage?page.lastPage:page.page + 1}"><span
+														class="STYLE2">【下一页】 </span> </a>
+													<a
+														href="Thesises.query.do?isdelete=0&x=rm&c_id=${user.c_id}&commit_status=1&firstIndex=${page.lastPage}"><span
+														class="STYLE2">【末页】 </span> </a>
+												</c:otherwise>
+											</c:choose>
+										</center></td>
 								</tr>
-							</table></td>
+							</table>
+						</td>
 					</tr>
-				</table></td>
+				</table>
+			</td>
 		</tr>
 	</table>
 </body>

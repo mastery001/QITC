@@ -1,5 +1,5 @@
 <actions>
-	<constant name="multipart.modifyFileName" value="false"></constant>
+	<constant name="multipart.modifyFileName" value="true"></constant>
 	<!-- 上传的最大为200M -->
 	<constant name="multipart.maxsize" value="209715200"></constant>
 	<constant name="multipart.saveDir" value="upload"></constant>
@@ -7,13 +7,27 @@
 	<constant name="multipart.isDateDirectory" value="true"></constant>
 	<!--match的1代表是第一个*号，如何可以通过action来确定viewName则配置此参数，会自动收集对应的表单对象 -->
 	<action name="*_*" class="edu.jxau.action.OperateAction" match="{1}">
-		<result name="add">user_file/{1}/{1}_{2}.jsp</result>
+		<result>user_file/{1}/{1}_{2}.jsp</result>
+		<result name="add">Admin/{1}/{1}_{2}.jsp</result>
+		<result name="back">{1}.query.do</result>
+		<result name="operate">{1}.query.do</result>
+	</action>
+
+		<!-- 通过ajax获取值action配置 -->
+	<action name="ajax.*" class="edu.jxau.action.back.AjaxGetValueAction">
+		<result name="Grade">Admin/UserInfo/grade.jsp</result>
 	</action>
 
 	<!-- 用户登录的action配置 -->
 	<action name="login" class="edu.jxau.action.LoginAction">
 		<result type="redirect">index.jsp</result>
 		<result name="error">login.jsp</result>
+	</action>
+	
+	<!-- 管理员登录的action配置 -->
+	<action name="Admin" class="edu.jxau.action.back.AdminLoginAction">
+		<result  type="redirect">Admin/index.htm</result>
+		<result name="error">Admin/login.jsp</result>
 	</action>
 
 	<!-- 用户个人信息维护action配置 -->
@@ -28,9 +42,13 @@
 	<action name="*.query" class="edu.jxau.action.QueryAction"
 		match="{1}">
 		<result name="success">user_file/{1}/{1}.jsp</result>
-		<result name="body">user_file/{1}/{1}_body.jsp</result>
-		<result name="delete">user_file/{1}/{1}_delete.jsp</result>
-		<result name="commit">user_file/{1}/{1}_commit.jsp</result>
+		<result name="back">Admin/{1}/{1}.jsp</result>
+		<result name="bupdate">Admin/{1}/{1}_update.jsp</result>
+		<result name="ot">user_file/{1}/{1}_body.jsp</result>
+		<result name="rm">user_file/{1}/{1}_delete.jsp</result>
+		<result name="cm">user_file/{1}/{1}_commit.jsp</result>
+		<result name="j">user_file/{1}/{1}_judge.jsp</result>
+		<result name="info">user_file/{1}/{1}Info.jsp</result>
 	</action>
 	
 	<!-- 下载的action配置 -->

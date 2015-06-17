@@ -16,7 +16,11 @@
 		<property name="dao" class="edu.jxau.dao.ThesisesDao"></property>
 		<property name="adapter" class="edu.jxau.dao.adapter.ThesisesAdapter"></property>
 	</bean>
+	<bean id="grade">
+		<property name="adapter" class="edu.jxau.dao.adapter.GradeAdapter"></property>
+	</bean>
 	<bean id="UserInfo">
 		<property name="dao" class="edu.jxau.dao.UserInfoDao"></property>
+		<property name="service" class="edu.jxau.service.BackUserOper"></property>
 	</bean>
 </beans>

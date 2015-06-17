@@ -49,9 +49,11 @@
 				<table width="70%" height="26" border="0" align="center">
 					<tr>
 						<td width="60%" height="26" bgcolor="1D67DD"><span
-							class="STYLE4">我的论帖/删帖:</span></td>
+							class="STYLE4">我的论帖/删帖:</span>
+						</td>
 						<td width="40%" bgcolor="1D67DD" align="right"><span
-							class="STYLE4">提示：本论坛严禁出现不良信息，请后斟酌发帖</span></td>
+							class="STYLE4">提示：本论坛严禁出现不良信息，请后斟酌发帖</span>
+						</td>
 					</tr>
 				</table>
 				<table width="70%" align="center" border="0" bordercolor="#1D67DD"
@@ -62,27 +64,37 @@
 									<table width="87%" height="40" border="0" align="center">
 										<tr>
 											<td width="6%" height="36" align="center"><input
-												type="checkbox" name="checkbox58" value="checkbox" /></td>
+												type="checkbox" name="a_id" value="${entry.a_id }" />
+											</td>
 											<td width="82%" bgcolor="#1D67DD"><span class="STYLE4">
 													<fmt:formatDate pattern="yyyy-MM-dd HH:mm:ss"
-														value="${entry.time}" type="both" />-> ${entry.title }</span></td>
+														value="${entry.time}" type="both" />-> ${entry.title }</span>
+											</td>
 											<td width="6%" align="center" bgcolor="#1D67DD"><a
 												href="Forum_delete.do?a_id=${entry.a_id }"><span
-													class="STYLE4">删除</span> </a></td>
+													class="STYLE4">删除</span> </a>
+											</td>
 											<td width="6%" align="center" bgcolor="#1D67DD"><a
 												href="Forum.query.do?p_id=${entry.a_id }&x=ot"><span
-													class="STYLE4">查看</span> </a></td>
+													class="STYLE4">查看</span> </a>
+											</td>
 										</tr>
 									</table>
-								</div></td>
+								</div>
+							</td>
 						</tr>
 					</c:forEach>
 					<tr>
+						<form action="" method="post" id="checkForm"></form>
 						<td><center>
-								<input type="button" value="全选" style="width:50px;height:30px" />
-								<input type="button" value="删除" style="width:100px;height:30px" />
-							</center>
-						</td>
+								<input type="button"
+									onClick="javascript:__checkall('a_id' , true)" value="全选"
+									style="width:50px;height:30px" /> <input type="button"
+									onClick="javascript:__checkall('a_id' , false)" value="取消"
+									style="width:50px;height:30px" /> <input type="button"
+									onClick="javascript:__commitAllcheck('Forum_delete.do' , 'a_id')"
+									value="删除" style="width:100px;height:30px" />
+							</center></td>
 					</tr>
 					<tr>
 						<td><center>
@@ -95,10 +107,10 @@
 									class="STYLE2">【下一页】 </span> </a> <a
 									href="Forum.query.do?isleaf=0&x=rm&u_id=${user.u_id }&firstIndex=${page.lastPage}"><span
 									class="STYLE2">【末页】 </span> </a>
-							</center></td>
+							</center>
+						</td>
 					</tr>
-				</table>
-			</td>
+				</table></td>
 		</tr>
 	</table>
 

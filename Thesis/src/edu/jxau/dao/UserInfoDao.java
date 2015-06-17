@@ -16,10 +16,11 @@ public class UserInfoDao extends AbstractVoDaoAdvice {
 	@Override
 	protected VoResolve buildVoResolve() {
 		Class<?>[] allPo = new Class<?>[] { User.class, Grade.class,
-				UserClass.class};
+				UserClass.class };
 		Class<?> voClass = UserInfo.class;
-		
-		return helpAdvice.getVoResolve(allPo, voClass, null, null);
+		Class<?>[] needPoObjectClass = new Class<?>[] { User.class,
+				UserClass.class };
+		return helpAdvice.getVoResolve(allPo, voClass, needPoObjectClass, null);
 	}
 
 	@Override
@@ -31,11 +32,11 @@ public class UserInfoDao extends AbstractVoDaoAdvice {
 		UserInfo userInfo = new UserInfo();
 		userInfo.setU_id(user.getU_id());
 		List<Object> list = this.query(UserInfo.class, userInfo, null, false);
-		if(list.size() == 0) {
+		if (list.size() == 0) {
 			throw new DBException("该用户不存在！");
 		}
 		userInfo = (UserInfo) list.get(0);
 		return userInfo;
 	}
-	
+
 }

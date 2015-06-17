@@ -28,6 +28,7 @@
 <script charset="utf-8" type="text/javascript" src="js/newflord.js"></script>
 <script charset="utf-8" type="text/javascript" src="js/Rightmenu.js"></script>
 <script charset="utf-8" type="text/javascript" src="js/custom/error.js"></script>
+<script charset="utf-8" type="text/javascript" src="js/custom/check.js"></script>
 </head>
 <body>
 	<input type="hidden" id="msg" value="${info[0]}" />
@@ -45,12 +46,23 @@
 				<li><a href="index.jsp">&nbsp;&nbsp;主页&nbsp;&nbsp;</a>
 				</li>
 				<li class="line"></li>
-				<li><a href="Thesises.query.do?u_id=${user.u_id }&isdelete=0"
-					rel='dropmenu1' target="_parent">&nbsp;&nbsp;论文管理&nbsp;&nbsp;</a>
-				</li>
+				<c:choose>
+					<c:when test="${user.status == 0 }">
+						<li><a href="Thesises.query.do?u_id=${user.u_id }&isdelete=0"
+							rel='dropmenu1' target="_parent">&nbsp;&nbsp;论文管理&nbsp;&nbsp;</a>
+						</li>
+					</c:when>
+					<%-- 如果是老师--%>
+					<c:otherwise>
+						<li><a
+							href="Thesises.query.do?isdelete=0&c_id=${user.c_id}&commit_status=1"
+							rel='dropmenu1' target="_parent">&nbsp;&nbsp;论文管理&nbsp;&nbsp;</a>
+						</li>
+					</c:otherwise>
+				</c:choose>
 				<li class="line"></li>
-				<li><a href="Forum.query.do?isleaf=0"
-					rel='dropmenu2' target="_parent">&nbsp;&nbsp;论坛&nbsp;&nbsp;</a>
+				<li><a href="Forum.query.do?isleaf=0" rel='dropmenu2'
+					target="_parent">&nbsp;&nbsp;论坛&nbsp;&nbsp;</a>
 				</li>
 				<li class="line"></li>
 				<li><a href="UserInfo.query.do?u_id=${user.u_id }"
@@ -61,9 +73,23 @@
 					rel='dropmenu4' target="_parent">&nbsp;聊天室&nbsp;</a>
 				</li>
 				<li class="line"></li>
-				<li><a href="Thesises.query.do?u_id=${user.u_id }&isdelete=1&x=ot"
-					target="_parent">&nbsp;&nbsp;回收站&nbsp;&nbsp;</a>
-				</li>
+				<c:choose>
+					<%--	如果是学生	--%>
+					<c:when test="${user.status == 0 }">
+						<li><a
+							href="Thesises.query.do?u_id=${user.u_id }&isdelete=1&x=ot"
+							target="_parent">&nbsp;&nbsp;回收站&nbsp;&nbsp;</a>
+						</li>
+					</c:when>
+					<%-- 如果是老师--%>
+					<c:otherwise>
+						<li><a
+							href="Thesises.query.do?c_id=${user.c_id }&isdelete=1&x=ot&commit_status=1"
+							target="_parent">&nbsp;&nbsp;回收站&nbsp;&nbsp;</a>
+						</li>
+					</c:otherwise>
+				</c:choose>
+
 				<li class="line"></li>
 				<li class="right"></li>
 			</ul>
@@ -75,33 +101,44 @@
 	</script>
 
 	<ul id="dropmenu1" class="dropMenu">
-		<li><a href="Thesises.query.do?u_id=${user.u_id }&isdelete=0"
-			target="_parent">论文查看</a>
-		</li>
-		<li><a href="Thesises.query.do?isdelete=0&x=rm&u_id=${user.u_id }"
-			target="_parent">论文操作</a>
-		</li>
-		<li><a href="<%=path%>/user_file/Thesises/Thesises_add.jsp"
-			target="_parent">论文上传</a>
-		</li>
-		<!--<li><a  href="" target="_parent">论文在线编辑</a></li>-->
-		<li><a href="Thesises.query.do?isdelete=0&x=cm&u_id=${user.u_id }"
-			target="_parent">论文送审</a>
-		</li>
-		<c:if test="${user.status != 0 }">
-			<li><a href="<%=path%>/user_file/Thesises/ThesisesInfo.jsp"
-				target="_parent">论文信息</a>
-			</li>
-		</c:if>
+		<c:choose>
+			<%--	如果是学生	--%>
+			<c:when test="${user.status == 0 }">
+				<li><a href="Thesises.query.do?u_id=${user.u_id }&isdelete=0"
+					target="_parent">论文查看</a>
+				</li>
+				<li><a
+					href="Thesises.query.do?isdelete=0&x=rm&u_id=${user.u_id }"
+					target="_parent">论文操作</a>
+				</li>
+				<li><a href="<%=path%>/user_file/Thesises/Thesises_add.jsp"
+					target="_parent">论文上传</a>
+				</li>
+				<!--<li><a  href="" target="_parent">论文在线编辑</a></li>-->
+				<li><a
+					href="Thesises.query.do?isdelete=0&x=cm&u_id=${user.u_id }"
+					target="_parent">论文送审</a>
+				</li>
+			</c:when>
+			<%-- 如果是老师--%>
+			<c:otherwise>
+				<li><a
+					href="Thesises.query.do?isdelete=0&c_id=${user.c_id}&commit_status=1"
+					target="_parent">论文查看</a>
+				</li>
+				<li><a
+					href="Thesises.query.do?isdelete=0&x=rm&c_id=${user.c_id}&commit_status=1"
+					target="_parent">论文操作</a>
+				</li>
+				<li><a href="Thesises.query.do?isdelete=0&x=info&c_id=${user.c_id}&commit_status=1"
+					target="_parent">论文信息</a>
+				</li>
+			</c:otherwise>
+		</c:choose>
 
-		<%--
-	if the status is teacher,the fade is 
-	<li><a   href="<%=path %>/user_file/Thesis/ThesisMessage.jsp" target="_parent">论文信息</a></li>
---%>
 	</ul>
 	<ul id="dropmenu2" class="dropMenu">
-		<li><a href="Forum.query.do?isleaf=0"
-			target="_parent">查看论帖</a>
+		<li><a href="Forum.query.do?isleaf=0" target="_parent">查看论帖</a>
 		</li>
 		<li><a href="<%=path%>/user_file/Forum/Forum_add.jsp"
 			target="_parent">发帖</a>
@@ -114,8 +151,7 @@
 		<li><a href="UserInfo.query.do?u_id=${user.u_id }"
 			target="_parent">个人信息维护</a>
 		</li>
-		<li><a href="u.do?op=pp&s=x&u_id=${user.u_id }"
-			target="_parent">密保重设</a>
+		<li><a href="u.do?op=pp&s=x&u_id=${user.u_id }" target="_parent">密保重设</a>
 		</li>
 		<li><a href="<%=path%>/user_file/UserInfo/PassWordInsert.jsp"
 			target="_parent">密码重设</a>
@@ -137,12 +173,12 @@
 			<tr>
 				<td width="166"><table width="153" height="284" border="0">
 						<tr>
-							<td width="154" height="41"><span class="STYLE2">欢迎回来，${user.u_name }</span>
+							<td width="154" height="41"><span class="STYLE2">欢迎回来，${user.u_name
+									}</span>
 							</td>
 						</tr>
 						<tr>
-							<td height="30"><span class="STYLE2">学号：${user.u_id
-									}</span>
+							<td height="30"><span class="STYLE2">学号：${user.u_id }</span>
 							</td>
 						</tr>
 						<tr>
@@ -155,10 +191,12 @@
 									}</span>
 							</td>
 						</tr>
-						<tr>
-							<td height="32"><span class="STYLE2">指导老师：${user.teacher_name}</span>
-							</td>
-						</tr>
+						<c:if test="${user.status == 0 }">
+							<tr>
+								<td height="32"><span class="STYLE2">指导老师：${user.teacher_name}</span>
+								</td>
+							</tr>
+						</c:if>
 						<tr>
 							<td height="56"><div align="right">
 									<form action="cancel.jsp" method="post">

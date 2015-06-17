@@ -11,12 +11,11 @@ public class Thesises{
 	private String t_front; //论文封面;
 	private String document;   // 论文
 	private String description; // 论文描述
-	private Integer verify_status = 0 ; //送审状态;
-	private Integer verify_count = 0 ; //送审次数;
-	private Integer trial_status = 0 ; //初审状态;
-	private Integer reverify_status = 0 ; //复审状态;
-	private Integer reverify_count = 0 ; //复审次数;
-	private Integer isdelete  = 0 ; //是否删除;
+	private Integer commit_status; //送审状态;
+	private Integer verify_status ; //评审状态;
+	private Integer verify_count;	// 评审次数
+	private Integer isdelete; //是否删除;
+	private String comment;	// 教师评语
 
 	public String getU_id() {
 		 return this.u_id;
@@ -90,37 +89,6 @@ public class Thesises{
 		this.verify_status = verify_status;
 	}
 
-	public Integer getVerify_count() {
-		 return this.verify_count;
-	}
-
-	public void setVerify_count(Integer verify_count) {
-		this.verify_count = verify_count;
-	}
-
-	public Integer getTrial_status() {
-		 return this.trial_status;
-	}
-
-	public void setTrial_status(Integer trial_status) {
-		this.trial_status = trial_status;
-	}
-
-	public Integer getReverify_status() {
-		 return this.reverify_status;
-	}
-
-	public void setReverify_status(Integer reverify_status) {
-		this.reverify_status = reverify_status;
-	}
-
-	public Integer getReverify_count() {
-		 return this.reverify_count;
-	}
-
-	public void setReverify_count(Integer reverify_count) {
-		this.reverify_count = reverify_count;
-	}
 
 	public String getDescription() {
 		return description;
@@ -146,16 +114,39 @@ public class Thesises{
 		this.document = document;
 	}
 
+	public Integer getCommit_status() {
+		return commit_status;
+	}
+
+	public void setCommit_status(Integer commit_status) {
+		this.commit_status = commit_status;
+	}
+
+	public String getComment() {
+		return comment;
+	}
+
+	public void setComment(String comment) {
+		this.comment = comment;
+	}
+
+	public Integer getVerify_count() {
+		return verify_count;
+	}
+
+	public void setVerify_count(Integer verify_count) {
+		this.verify_count = verify_count;
+	}
+
 	@Override
 	public String toString() {
 		return "Thesises [u_id=" + u_id + ", u_name=" + u_name + ", c_id="
 				+ c_id + ", c_name=" + c_name + ", major=" + major + ", t_id="
 				+ t_id + ", t_name=" + t_name + ", t_front=" + t_front
 				+ ", document=" + document + ", description=" + description
-				+ ", verify_status=" + verify_status + ", verify_count="
-				+ verify_count + ", trial_status=" + trial_status
-				+ ", reverify_status=" + reverify_status + ", reverify_count="
-				+ reverify_count + ", isdelete=" + isdelete + "]";
+				+ ", commit_status=" + commit_status + ", verify_status="
+				+ verify_status + ", verify_count=" + verify_count
+				+ ", isdelete=" + isdelete + ", comment=" + comment + "]";
 	}
 
 }
