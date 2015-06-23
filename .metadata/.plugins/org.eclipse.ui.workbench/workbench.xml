@@ -1,0 +1,442 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<workbench progressCount="36" version="2.0">
+<workbenchAdvisor/>
+<window height="732" maximized="true" width="1024" x="-15" y="7">
+<fastViewData fastViewLocation="1024"/>
+<perspectiveBar>
+<itemSize x="160"/>
+</perspectiveBar>
+<coolbarLayout locked="0">
+<coolItem id="group.file" itemType="typeGroupMarker"/>
+<coolItem id="org.eclipse.ui.workbench.file" itemType="typeToolBarContribution" x="124" y="22"/>
+<coolItem id="additions" itemType="typeGroupMarker"/>
+<coolItem id="org.eclipse.debug.ui.launchActionSet" itemType="typeToolBarContribution" x="135" y="22"/>
+<coolItem id="org.eclipse.search.searchActionSet" itemType="typeToolBarContribution" x="101" y="22"/>
+<coolItem id="org.eclipse.ui.edit.text.actionSet.presentation" itemType="typeToolBarContribution" x="38" y="22"/>
+<coolItem id="org.eclipse.wst.server.ui.internal.webbrowser.actionSet" itemType="typeToolBarContribution" x="38" y="22"/>
+<coolItem id="org.eclipse.wst.xml.ui.perspective.NewFileToolBar" itemType="typeToolBarContribution" x="-1" y="-1"/>
+<coolItem id="org.eclipse.wst.xml.ui.design.DesignToolBar" itemType="typeToolBarContribution" x="-1" y="-1"/>
+<coolItem id="group.nav" itemType="typeGroupMarker"/>
+<coolItem id="org.eclipse.ui.workbench.navigate" itemType="typeToolBarContribution" x="198" y="22"/>
+<coolItem id="group.editor" itemType="typeGroupMarker"/>
+<coolItem id="org.eclipse.wst.css.core.csssource.source" itemType="typePlaceholder" x="-1" y="-1"/>
+<coolItem id="org.eclipse.ui.DefaultTextEditor" itemType="typePlaceholder" x="-1" y="-1"/>
+<coolItem id="org.eclipse.wst.html.core.htmlsource.source" itemType="typePlaceholder" x="-1" y="-1"/>
+<coolItem id="org.eclipse.ui.browser.editor" itemType="typePlaceholder" x="-1" y="-1"/>
+<coolItem id="org.eclipse.php.editor" itemType="typeToolBarContribution" x="-1" y="-1"/>
+<coolItem id="group.help" itemType="typeGroupMarker"/>
+<coolItem id="org.eclipse.ui.workbench.help" itemType="typeToolBarContribution" x="-1" y="-1"/>
+</coolbarLayout>
+<page aggregateWorkingSetId="Aggregate for window 1432540586006" focus="true" label="工作空间 － PHP">
+<editors>
+<editorArea activeWorkbook="DefaultEditorWorkbook">
+<info part="DefaultEditorWorkbook">
+<folder appearance="1" expanded="2">
+<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">
+<part id="0"/>
+<part id="1"/>
+</presentation>
+</folder>
+</info>
+</editorArea>
+<editor activePart="true" focus="true" id="org.eclipse.php.editor" name="index.php" partName="index.php" path="E:/php_work/PHP_Exercise_001/index.php" title="index.php" tooltip="PHP_Exercise_001/index.php" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/PHP_Exercise_001/index.php"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="221" selectionTopPixel="0"/>
+</editor>
+<editor id="org.eclipse.php.editor" name="del.php" partName="del.php" path="E:/php_work/PHP_Exercise_001/del.php" title="del.php" tooltip="PHP_Exercise_001/del.php" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/PHP_Exercise_001/del.php"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="379" selectionTopPixel="0"/>
+</editor>
+</editors>
+<views>
+<view id="org.eclipse.debug.ui.PHPDebugOutput" partName="Debug Output">
+<viewState/>
+</view>
+<view id="org.eclipse.php.ui.explorer" partName="PHP Explorer">
+<viewState group_libraries="1" isWindowWorkingSet="false" layout="1" linkWithEditor="0" rootMode="1" workingSetName="">
+<customFilters userDefinedPatternsEnabled="false">
+<xmlDefinedFilters>
+<child filterId="org.eclipse.php.ui.explorer.NonPublicFilter" isEnabled="false"/>
+<child filterId="org.eclipse.php.ui.explorer.EmptyPackageFilter" isEnabled="false"/>
+<child filterId="org.eclipse.php.ui.explorer.FieldsFilter" isEnabled="false"/>
+<child filterId="org.eclipse.php.ui.explorer.SMFileFilter" isEnabled="false"/>
+<child filterId="org.eclipse.php.ui.explorer.NonScriptElementFilter" isEnabled="false"/>
+<child filterId="org.eclipse.php.ui.explorer.LibraryFilter" isEnabled="false"/>
+<child filterId="org.eclipse.php.ui.explorer.PHPHTMLFilter" isEnabled="false"/>
+<child filterId="org.eclipse.php.ui.explorer.RSEProjectFilter" isEnabled="true"/>
+<child filterId="org.eclipse.php.ui.explorer.ClosedProjectsFilter" isEnabled="false"/>
+<child filterId="org.eclipse.php.ui.explorer.NonSharedProjectsFilter" isEnabled="false"/>
+<child filterId="org.eclipse.php.ui.explorer.EmptyInnerPackageFilter" isEnabled="false"/>
+<child filterId="org.eclipse.php.ui.explorer.ContainedLibraryFilter" isEnabled="false"/>
+<child filterId="org.eclipse.php.ui.explorer.ContainMembersFilter" isEnabled="false"/>
+<child filterId="org.eclipse.php.ui.explorer.UseStatementFilter" isEnabled="true"/>
+<child filterId="org.eclipse.php.ui.explorer.DotFilesFilter" isEnabled="true"/>
+<child filterId="org.eclipse.php.ui.explorer.NonScriptProjectsFilter" isEnabled="false"/>
+</xmlDefinedFilters>
+</customFilters>
+</viewState>
+</view>
+<view id="org.eclipse.ui.views.TaskList" partName="任务"/>
+<view id="org.eclipse.ui.console.ConsoleView" partName="控制台"/>
+<view id="org.eclipse.ui.views.ContentOutline" partName="大纲">
+<viewState/>
+</view>
+<view id="org.eclipse.dltk.ui.TypeHierarchy" partName="Type Hierarchy"/>
+<view id="org.eclipse.mylyn.tasks.ui.views.tasks" partName="任务列表"/>
+<view id="org.eclipse.ui.views.ProblemView" partName="问题">
+<viewState PRIMARY_SORT_FIELD="org.eclipse.ui.ide.severityAndDescriptionField" categoryGroup="org.eclipse.ui.ide.severity" markerContentGenerator="org.eclipse.ui.ide.problemsGenerator" partName="问题">
+<expanded>
+<category IMemento.internal.id="警告（1 项）"/>
+</expanded>
+<columnWidths org.eclipse.ui.ide.locationField="64" org.eclipse.ui.ide.markerType="94" org.eclipse.ui.ide.pathField="124" org.eclipse.ui.ide.resourceField="94" org.eclipse.ui.ide.severityAndDescriptionField="300"/>
+<visible IMemento.internal.id="org.eclipse.ui.ide.severityAndDescriptionField"/>
+<visible IMemento.internal.id="org.eclipse.ui.ide.resourceField"/>
+<visible IMemento.internal.id="org.eclipse.ui.ide.pathField"/>
+<visible IMemento.internal.id="org.eclipse.ui.ide.locationField"/>
+<visible IMemento.internal.id="org.eclipse.ui.ide.markerType"/>
+</viewState>
+</view>
+</views>
+<perspectives activePart="org.eclipse.php.editor" activePerspective="org.eclipse.php.perspective">
+<perspective editorAreaTrimState="2" editorAreaVisible="1" fixed="0" version="0.016">
+<descriptor class="org.eclipse.php.internal.ui.PHPPerspectiveFactory" id="org.eclipse.php.perspective" label="PHP"/>
+<alwaysOnActionSet id="org.eclipse.mylyn.context.ui.actionSet"/>
+<alwaysOnActionSet id="org.eclipse.mylyn.doc.actionSet"/>
+<alwaysOnActionSet id="org.eclipse.mylyn.tasks.ui.navigation"/>
+<alwaysOnActionSet id="org.eclipse.ui.cheatsheets.actionSet"/>
+<alwaysOnActionSet id="org.eclipse.rse.core.search.searchActionSet"/>
+<alwaysOnActionSet id="org.eclipse.search.searchActionSet"/>
+<alwaysOnActionSet id="org.eclipse.ui.edit.text.actionSet.annotationNavigation"/>
+<alwaysOnActionSet id="org.eclipse.ui.edit.text.actionSet.navigation"/>
+<alwaysOnActionSet id="org.eclipse.ui.edit.text.actionSet.convertLineDelimitersTo"/>
+<alwaysOnActionSet id="org.eclipse.ui.externaltools.ExternalToolsSet"/>
+<alwaysOnActionSet id="org.eclipse.ui.actionSet.keyBindings"/>
+<alwaysOnActionSet id="org.eclipse.ui.actionSet.openFiles"/>
+<alwaysOnActionSet id="org.eclipse.debug.ui.launchActionSet"/>
+<alwaysOnActionSet id="org.eclipse.ui.NavigateActionSet"/>
+<alwaysOnActionSet id="org.eclipse.php.ui.PHPActionSet"/>
+<alwaysOnActionSet id="org.eclipse.debug.ui.breakpointActionSet"/>
+<alwaysOnActionSet id="org.eclipse.wst.server.ui.internal.webbrowser.actionSet"/>
+<alwaysOnActionSet id="org.eclipse.php.ui.text.php.actionSet.presentation"/>
+<show_view_action id="org.eclipse.php.ui.explorer"/>
+<show_view_action id="org.eclipse.dltk.ui.TypeHierarchy"/>
+<show_view_action id="org.eclipse.php.ui.functions"/>
+<show_view_action id="org.eclipse.php.ui.projectOutline"/>
+<show_view_action id="org.eclipse.ui.console.ConsoleView"/>
+<show_view_action id="org.eclipse.mylyn.tasks.ui.views.tasks"/>
+<show_view_action id="org.eclipse.ui.views.ContentOutline"/>
+<show_view_action id="org.eclipse.ui.views.ProblemView"/>
+<show_view_action id="org.eclipse.ui.views.TaskList"/>
+<show_view_action id="org.eclipse.ui.views.ResourceNavigator"/>
+<new_wizard_action id="org.eclipse.mylyn.tasks.ui.wizards.new.repository.task"/>
+<new_wizard_action id="org.eclipse.php.ui.wizards.PHPProjectCreationWizard"/>
+<new_wizard_action id="org.eclipse.php.ui.wizards.PHPFileCreationWizard"/>
+<new_wizard_action id="org.eclipse.php.ui.wizards.UntitledPHPDocumentWizard"/>
+<new_wizard_action id="org.eclipse.ui.wizards.new.folder"/>
+<new_wizard_action id="org.eclipse.ui.wizards.new.file"/>
+<new_wizard_action id="org.eclipse.wst.css.ui.internal.wizard.NewCSSWizard"/>
+<new_wizard_action id="org.eclipse.wst.html.ui.internal.wizard.NewHTMLWizard"/>
+<new_wizard_action id="org.eclipse.wst.xml.ui.internal.wizards.NewXMLWizard"/>
+<new_wizard_action id="org.eclipse.ui.editors.wizards.UntitledTextFileWizard"/>
+<perspective_action id="org.eclipse.php.perspective"/>
+<perspective_action id="org.eclipse.php.debug.ui.PHPDebugPerspective"/>
+<hide_toolbar_item_id id="org.eclipse.ui.edit.text.toggleShowSelectedElementOnly"/>
+<hide_toolbar_item_id id="org.eclipse.jdt.ui.actions.OpenProjectWizard"/>
+<view id="org.eclipse.php.ui.explorer"/>
+<view id="org.eclipse.dltk.ui.TypeHierarchy"/>
+<view id="org.eclipse.ui.views.ContentOutline"/>
+<view id="org.eclipse.mylyn.tasks.ui.views.tasks"/>
+<view id="org.eclipse.ui.views.ProblemView"/>
+<view id="org.eclipse.ui.views.TaskList"/>
+<view id="org.eclipse.ui.console.ConsoleView"/>
+<view id="org.eclipse.debug.ui.PHPDebugOutput"/>
+<fastViewBars/>
+<layout>
+<mainWindow>
+<info folder="true" part="topLeft">
+<folder activePageID="org.eclipse.php.ui.explorer" appearance="2" expanded="2">
+<page content="org.eclipse.php.ui.explorer" label="PHP Explorer"/>
+<page content="org.eclipse.dltk.ui.TypeHierarchy" label="Type Hierarchy"/>
+<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">
+<part id="0"/>
+<part id="1"/>
+</presentation>
+</folder>
+</info>
+<info folder="true" part="org.eclipse.ui.internal.ViewStack@1fa487f" ratio="0.74950296" ratioLeft="754" ratioRight="252" relationship="2" relative="topLeft">
+<folder appearance="2" expanded="2">
+<page content="org.eclipse.help.ui.HelpView" label="LabelNotFound"/>
+<page content="org.eclipse.ui.internal.introview" label="LabelNotFound"/>
+<page content="org.eclipse.ui.cheatsheets.views.CheatSheetView" label="LabelNotFound"/>
+<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory"/>
+</folder>
+</info>
+<info part="org.eclipse.ui.editorss" ratio="0.21052632" ratioLeft="200" ratioRight="750" relationship="2" relative="topLeft"/>
+<info folder="true" part="bottom" ratio="0.75" ratioLeft="468" ratioRight="156" relationship="4" relative="org.eclipse.ui.editorss">
+<folder appearance="2" expanded="2">
+<page content="org.eclipse.ui.views.BookmarkView" label="LabelNotFound"/>
+<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory"/>
+</folder>
+</info>
+<info folder="true" part="right" ratio="0.80833334" ratioLeft="582" ratioRight="138" relationship="2" relative="org.eclipse.ui.editorss">
+<folder activePageID="org.eclipse.ui.views.ContentOutline" appearance="2" expanded="2">
+<page content="org.eclipse.ui.views.ContentOutline" label="大纲"/>
+<page content="org.eclipse.mylyn.tasks.ui.views.tasks" label="任务列表"/>
+<page content="org.eclipse.php.ui.projectOutline" label="LabelNotFound"/>
+<page content="org.eclipse.php.ui.functions" label="LabelNotFound"/>
+<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">
+<part id="0"/>
+<part id="1"/>
+</presentation>
+</folder>
+</info>
+<info folder="true" part="org.eclipse.ui.internal.ViewStack@1206174" ratio="0.75" ratioLeft="438" ratioRight="146" relationship="4" relative="org.eclipse.ui.editorss">
+<folder activePageID="org.eclipse.debug.ui.PHPDebugOutput" appearance="2" expanded="2">
+<page content="org.eclipse.ui.views.ProblemView" label="问题"/>
+<page content="org.eclipse.ui.views.TaskList" label="任务"/>
+<page content="org.eclipse.ui.console.ConsoleView" label="控制台"/>
+<page content="org.eclipse.debug.ui.PHPDebugOutput" label="Debug Output"/>
+<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">
+<part id="0"/>
+<part id="1"/>
+<part id="2"/>
+<part id="3"/>
+</presentation>
+</folder>
+</info>
+</mainWindow>
+</layout>
+</perspective>
+</perspectives>
+<workingSets/>
+<navigationHistory>
+<editors>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.php.editor" path="/PHP_Exercise_001/conf/conf_inc.php"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.php.editor" path="/PHP_Exercise_001/index.php"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.php.editor" path="/PHP_Exercise_001/conf/custom_database_func.php"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.php.editor" path="/PHP_Introduction/grammar/testArray.php"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.php.editor" path="/PHP_Exercise_001/del.php"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.php.editor" path="/PHP_Exercise_001/conf/conf_inc.php"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.php.editor" path="/PHP_Introduction/grammar/testArray.php"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.php.editor" path="/PHP_Exercise_001/login.php"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.wst.css.core.csssource.source" path="/PHP_Exercise_001/css/index.css"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.ui.systemInPlaceEditor" path="/PHP_Exercise_001/doc/设计文档.doc"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.ui.DefaultTextEditor" path="/PHP_Exercise_001/doc/messageboard.sql"/>
+</editors>
+<item historyLabel="index.php" index="1">
+<position/>
+</item>
+<item historyLabel="testArray.php" index="3">
+<position info="not_deleted" x="133" y="0"/>
+</item>
+<item historyLabel="index.php" index="1">
+<position/>
+</item>
+<item historyLabel="custom_database_func.php" index="2">
+<position info="not_deleted" x="306" y="135"/>
+</item>
+<item historyLabel="index.php" index="1">
+<position info="not_deleted" x="1079" y="0"/>
+</item>
+<item historyLabel="custom_database_func.php" index="2">
+<position info="not_deleted" x="198" y="0"/>
+</item>
+<item historyLabel="index.php" index="1">
+<position info="not_deleted" x="2309" y="0"/>
+</item>
+<item historyLabel="custom_database_func.php" index="2">
+<position info="not_deleted" x="198" y="0"/>
+</item>
+<item historyLabel="index.php" index="1">
+<position/>
+</item>
+<item historyLabel="custom_database_func.php" index="2">
+<position info="not_deleted" x="63" y="9"/>
+</item>
+<item historyLabel="conf_inc.php" index="0">
+<position info="not_deleted" x="45" y="0"/>
+</item>
+<item historyLabel="custom_database_func.php" index="2">
+<position info="not_deleted" x="96" y="156"/>
+</item>
+<item historyLabel="conf_inc.php" index="0">
+<position info="not_deleted" x="421" y="0"/>
+</item>
+<item historyLabel="index.php" index="1">
+<position info="not_deleted" x="1452" y="0"/>
+</item>
+<item historyLabel="conf_inc.php" index="0">
+<position info="not_deleted" x="172" y="0"/>
+</item>
+<item historyLabel="index.php" index="1">
+<position info="not_deleted" x="2706" y="0"/>
+</item>
+<item historyLabel="index.php" index="1">
+<position info="not_deleted" x="135" y="1"/>
+</item>
+<item historyLabel="index.php" index="1">
+<position info="not_deleted" x="95" y="0"/>
+</item>
+<item historyLabel="conf_inc.php" index="0">
+<position info="not_deleted" x="55" y="0"/>
+</item>
+<item historyLabel="index.php" index="1">
+<position info="not_deleted" x="95" y="0"/>
+</item>
+<item historyLabel="del.php" index="4">
+<position info="not_deleted" x="7" y="0"/>
+</item>
+<item historyLabel="conf_inc.php" index="5">
+<position/>
+</item>
+<item historyLabel="del.php" index="4">
+<position info="not_deleted" x="451" y="0"/>
+</item>
+<item historyLabel="conf_inc.php" index="5">
+<position/>
+</item>
+<item historyLabel="del.php" index="4">
+<position info="not_deleted" x="451" y="0"/>
+</item>
+<item historyLabel="testArray.php" index="6">
+<position info="not_deleted" x="133" y="0"/>
+</item>
+<item historyLabel="del.php" index="4">
+<position info="not_deleted" x="451" y="0"/>
+</item>
+<item historyLabel="index.php" index="1">
+<position info="not_deleted" x="2340" y="0"/>
+</item>
+<item historyLabel="del.php" index="4">
+<position info="not_deleted" x="109" y="0"/>
+</item>
+<item historyLabel="index.php" index="1">
+<position info="not_deleted" x="79" y="28"/>
+</item>
+<item historyLabel="del.php" index="4">
+<position info="not_deleted" x="449" y="0"/>
+</item>
+<item historyLabel="index.php" index="1">
+<position info="not_deleted" x="79" y="28"/>
+</item>
+<item historyLabel="del.php" index="4">
+<position info="not_deleted" x="178" y="0"/>
+</item>
+<item historyLabel="index.php" index="1">
+<position info="not_deleted" x="2297" y="0"/>
+</item>
+<item historyLabel="del.php" index="4">
+<position info="not_deleted" x="379" y="0"/>
+</item>
+<item historyLabel="index.php" index="1">
+<position info="not_deleted" x="2350" y="0"/>
+</item>
+<item historyLabel="login.php" index="7">
+<position info="not_deleted" x="0" y="0"/>
+</item>
+<item historyLabel="index.php" index="1">
+<position info="not_deleted" x="2350" y="0"/>
+</item>
+<item historyLabel="index.css" index="8">
+<position info="not_deleted" x="0" y="0"/>
+</item>
+<item historyLabel="index.php" index="1">
+<position info="not_deleted" x="2350" y="0"/>
+</item>
+<item historyLabel="conf_inc.php" index="5">
+<position info="not_deleted" x="0" y="0"/>
+</item>
+<item historyLabel="index.php" index="1">
+<position info="not_deleted" x="2350" y="0"/>
+</item>
+<item historyLabel="login.php" index="7">
+<position info="not_deleted" x="226" y="0"/>
+</item>
+<item historyLabel="index.php" index="1">
+<position info="not_deleted" x="541" y="0"/>
+</item>
+<item historyLabel="设计文档.doc" index="9"/>
+<item historyLabel="index.php" index="1">
+<position info="not_deleted" x="107" y="0"/>
+</item>
+<item historyLabel="messageboard.sql" index="10">
+<position info="not_deleted" x="250" y="0"/>
+</item>
+<item historyLabel="设计文档.doc" index="9"/>
+<item historyLabel="messageboard.sql" index="10">
+<position info="not_deleted" x="243" y="0"/>
+</item>
+<item active="true" historyLabel="index.php" index="1">
+<position info="not_deleted" x="107" y="0"/>
+</item>
+</navigationHistory>
+<input factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/" type="8"/>
+</page>
+<workbenchWindowAdvisor/>
+<actionBarAdvisor/>
+<trimLayout>
+<trimArea IMemento.internal.id="16384">
+<trimItem IMemento.internal.id="topLeft"/>
+</trimArea>
+<trimArea IMemento.internal.id="131072">
+<trimItem IMemento.internal.id="right"/>
+</trimArea>
+<trimArea IMemento.internal.id="128">
+<trimItem IMemento.internal.id="org.eclipse.ui.internal.WorkbenchWindow.topBar"/>
+</trimArea>
+<trimArea IMemento.internal.id="1024">
+<trimItem IMemento.internal.id="org.eclise.ui.internal.FastViewBar"/>
+<trimItem IMemento.internal.id="org.eclipse.jface.action.StatusLineManager"/>
+<trimItem IMemento.internal.id="org.eclipse.ui.internal.progress.ProgressRegion"/>
+<trimItem IMemento.internal.id="org.eclipse.ui.internal.ViewStack@1206174"/>
+</trimArea>
+</trimLayout>
+</window>
+<mruList>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.ui.DefaultTextEditor" name="messageboard.sql" tooltip="PHP_Exercise_001/doc/messageboard.sql">
+<persistable path="/PHP_Exercise_001/doc/messageboard.sql"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.ui.systemInPlaceEditor" name="设计文档.doc" tooltip="PHP_Exercise_001/doc/设计文档.doc">
+<persistable path="/PHP_Exercise_001/doc/设计文档.doc"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.php.editor" name="conf_inc.php" tooltip="PHP_Exercise_001/conf/conf_inc.php">
+<persistable path="/PHP_Exercise_001/conf/conf_inc.php"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.wst.css.core.csssource.source" name="index.css" tooltip="PHP_Exercise_001/css/index.css">
+<persistable path="/PHP_Exercise_001/css/index.css"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.php.editor" name="login.php" tooltip="PHP_Exercise_001/login.php">
+<persistable path="/PHP_Exercise_001/login.php"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.php.editor" name="del.php" tooltip="PHP_Exercise_001/del.php">
+<persistable path="/PHP_Exercise_001/del.php"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.php.editor" name="testArray.php" tooltip="PHP_Introduction/grammar/testArray.php">
+<persistable path="/PHP_Introduction/grammar/testArray.php"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.php.editor" name="conf_inc.php" tooltip="PHP_Introduction/custom_function/conf_inc.php">
+<persistable path="/PHP_Introduction/custom_function/conf_inc.php"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.php.editor" name="custom_database_func.php" tooltip="PHP_Introduction/custom_function/custom_database_func.php">
+<persistable path="/PHP_Introduction/custom_function/custom_database_func.php"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.php.editor" name="testTableQuery.php" tooltip="PHP_Introduction/database/testTableQuery.php">
+<persistable path="/PHP_Introduction/database/testTableQuery.php"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.php.editor" name="custom_database_func.php" tooltip="PHP_Exercise_001/conf/custom_database_func.php">
+<persistable path="/PHP_Exercise_001/conf/custom_database_func.php"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.php.editor" name="index.php" tooltip="PHP_Exercise_001/conf/index.php">
+<persistable path="/PHP_Exercise_001/conf/index.php"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.php.editor" name="conf.php" tooltip="PHP_Exercise_001/conf/conf.php">
+<persistable path="/PHP_Exercise_001/conf/conf.php"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.wst.html.core.htmlsource.source" name="form.html" tooltip="PHP_Introduction/grammar/form/form.html">
+<persistable path="/PHP_Introduction/grammar/form/form.html"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.php.editor" name="testForm.php" tooltip="PHP_Introduction/grammar/form/testForm.php">
+<persistable path="/PHP_Introduction/grammar/form/testForm.php"/>
+</file>
+</mruList>
+</workbench>

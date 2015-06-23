@@ -1,0 +1,4 @@
+create database if not exists messageboard;
+
+use messageboard;
+

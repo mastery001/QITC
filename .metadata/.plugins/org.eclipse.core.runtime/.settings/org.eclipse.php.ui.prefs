@@ -1,0 +1,6 @@
+#Mon Jun 08 08:22:45 GMT 2015
+useAnnotationsPrefPage=true
+eclipse.preferences.version=1
+org.eclipse.php.core.workspaceDefaultLocale=zh_CN
+useQuickDiffPrefPage=true
+org.eclipse.php.ui.text.custom_code_templates=<?xml version\="1.0" encoding\="UTF-8"?><templates><template autoinsert\="false" context\="php_new_file_context" deleted\="false" description\="Simple php file" enabled\="true" id\="org.eclipse.php.ui.editor.templates.php.author" name\="New simple PHP file">&lt;?php\r\n${cursor}\r\n\t/**\r\n\t * \t@Description\:\r\n\t \t\r\n\t\t@author\: master\r\n\t\t\r\n\t\t@time\: ${date}\r\n\t */</template></templates>

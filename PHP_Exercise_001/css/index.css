@@ -1,0 +1,13 @@
+.tdfont{
+  font-size:12px;
+  font-family:"ËÎÌו";
+  font-weight:normal;
+}
+td a:link,hover,active{
+  text-decoration:none;
+  color:#000000;
+}
+td a:visited{
+   text-decoration:none;
+   color:#000000;
+}

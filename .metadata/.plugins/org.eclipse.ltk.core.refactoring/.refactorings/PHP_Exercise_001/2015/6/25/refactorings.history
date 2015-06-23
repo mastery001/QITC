@@ -1,0 +1,3 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">&#x0A;<refactoring comment="Rename source module &apos;conf.conf.php&apos; to &apos;conf_inc.php&apos;&#x0D;&#x0A;- Original element: &apos;conf\conf.php&apos;&#x0D;&#x0A;- Renamed element: &apos;conf\conf_inc.php&apos;" description="Rename source module &apos;conf.php&apos;" flags="589830" id="org.eclipse.dltk.ui.rename.sourcemodule" input="/&lt;conf{conf.php" name="conf_inc.php" stamp="1434597011502" version="1.0"/>&#x0A;<refactoring comment="将 1 个资源移至“PHP_Exercise_001”" description="将 1 个资源移至“PHP_Exercise_001”" destination="/PHP_Exercise_001" element1="conf/index.php" flags="7" id="org.eclipse.ltk.core.refactoring.move.resources" resources="1" stamp="1434601093550" updateReferences="true"/>
+</session>
