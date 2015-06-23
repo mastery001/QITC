@@ -37,9 +37,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		})
 	});
 </script>
+<script charset="utf-8" type="text/javascript" src="js/custom/error.js"></script>
 </head>
 <body
 	style="background-color: #1c77ac; background-image: url(Admin/images/light.png); background-repeat: no-repeat; background-position: center top; overflow: hidden;">
+		<input type="hidden" id="msg" value="${info[0]}" />
 	<form id="form1" method="post" action="Admin.do">
 		<div id="mainBody">
 			<div id="cloud1" class="cloud"></div>

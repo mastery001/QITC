@@ -53,17 +53,17 @@
 								<div id="bannerImgesBox">
 									<a style="z-index:7; display:block;"><img
 										src="images/lunwen/132Q00592O0-155T.jpg" width="585"
-										height="453"> </a><a href="" target="_parent"><img
+										height="453"> </a><a  target="_parent"><img
 										src="images/lunwen/20100523122942532.jpg" width="585"
-										height="453"> </a> <a href="" target="_parent"><img
+										height="453"> </a> <a target="_parent"><img
 										src="images/lunwen/20090421215256-1984479794.jpg" height="453">
 									</a> <a href="" target="_parent"><img
 										src="images/lunwen/Img378564923.jpg" height="453"> </a> <a
-										href="" target="_parent"><img
+										 target="_parent"><img
 										src="images/lunwen/132Q00113960-5P58.jpg" width="585"
-										height="453"> </a> <a href="" target="_parent"><img
+										height="453"> </a> <a target="_parent"><img
 										src="images/lunwen/20090421215256-1984479794.jpg" height="453">
-									</a> <a href="" target="_parent"><img
+									</a> <a target="_parent"><img
 										src="images/lunwen/Img378564923.jpg" height="453"> </a>
 								</div>
 

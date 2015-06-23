@@ -2,12 +2,8 @@ package edu.jxau.service.match.support;
 
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.List;
 
 import org.apache.poi.POIXMLProperties.CoreProperties;
-import org.apache.poi.xwpf.extractor.XWPFWordExtractor;
-import org.apache.poi.xwpf.usermodel.XWPFDocument;
-import org.apache.poi.xwpf.usermodel.XWPFParagraph;
 
 import edu.jxau.service.match.ParseHandle;
 
@@ -20,7 +16,8 @@ public class Parse2007Handle extends ParseHandle {
 
 	@Override
 	public DocumentInformation parse0(InputStream is) throws IOException {
-		XWPFDocument doc = new XWPFDocument(is);
+		return null;
+		/*XWPFDocument doc = new XWPFDocument(is);
 		XWPFWordExtractor extractor = new XWPFWordExtractor(doc);
 		DocumentInformation di = new DocumentInformation();
 		List<XWPFParagraph> list = doc.getParagraphs();
@@ -33,7 +30,7 @@ public class Parse2007Handle extends ParseHandle {
 		di.setText(text);
 		CoreProperties coreProps = extractor.getCoreProperties();
 		di.setName(coreProps.getTitle());
-		return di;
+		return di;*/
 	}
 
 	/**

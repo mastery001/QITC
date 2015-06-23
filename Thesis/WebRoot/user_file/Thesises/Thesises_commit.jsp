@@ -73,51 +73,68 @@
 						<td><table width="100%" border="0">
 								<form action="Thesises_update.do?wd=commit" method="post"
 									onSubmit="javascript:return validate()">
-									<input type="hidden" name="verify_status" value="1" />
-								<tr>
-									<td><table width="100%" height="184" border="solid"
-											align="right" cellpadding="2" cellspacing="0"
-											bordercolor="#1D67DD">
-											<tr>
-												<td height="27" colspan="7"><div align="center">论文信息</div>
-												</td>
-											</tr>
-											<tr>
-												<td><div align="center">文件名</div></td>
-												<td><div align="center">送审状态</div></td>
-												<td><div align="center">送审次数</div></td>
-												<td><div align="center">是否送审</div></td>
-											</tr>
-											<c:forEach var="entry" varStatus="st" items="${list}">
+									<input type="hidden" name="commit_status" value="1" />
+									<tr>
+										<td><table width="100%" height="184" border="solid"
+												align="right" cellpadding="2" cellspacing="0"
+												bordercolor="#1D67DD">
 												<tr>
-													<td><div align="center">
-															<a href="#">${entry.t_name }</a>
-														</div></td>
-													<td><div align="center">${entry.commit_status ==
-															0 ? "未送审" : "已送审" }</div></td>
-													<td><div align="center">${entry.verify_count }</div></td>
-													<td><c:if
-															test="${entry.commit_status ==
-															0}">
-															<div align="center">
-																<input type="checkbox" name="t_id"
-																	value="${entry.t_id }" /> 是
-															</div>
-														</c:if></td>
+													<td height="27" colspan="7"><div align="center">论文信息</div>
+													</td>
 												</tr>
-											</c:forEach>
-										</table></td>
-								</tr>
-								<tr>
-									<td height="46"><div align="center">
-											<input type="submit" name="Submit2"
-												style="height:40px; width:100px; color:#0000FF; font-size:20px; font-family: "
-												楷体="楷体" "" value="提交" />
-										</div></td>
-								</tr>
-								<tr>
-									<td height="138">&nbsp;</td>
-								</tr>
+												<tr>
+													<td><div align="center">文件名</div></td>
+													<td width="8%"><div align="center">送审状态</div></td>
+													<td width="8%"><div align="center">送审次数</div></td>
+													<td width="8%"><div align="center">是否送审</div></td>
+													<td><div align="center">老师评语</div></td>
+												</tr>
+												<c:forEach var="entry" varStatus="st" items="${list}">
+													<tr>
+														<td><div align="center">
+																<a
+																	href="user_file/Thesises/word.jsp?document=${entry.document }">${entry.t_name
+																	}</a>
+															</div></td>
+														<td><div align="center">${entry.commit_status
+																== 0 ? "未送审" : "已送审" }</div></td>
+														<td><div align="center">${entry.verify_count }</div>
+														</td>
+														<td><c:choose>
+																<c:when
+																	test="${entry.commit_status ==
+															0}">
+																	<div align="center">
+																		<input type="checkbox" name="t_id"
+																			value="${entry.t_id }" /> 是
+																	</div>
+																</c:when>
+																<c:otherwise>
+																	<div align="center">已送审</div>
+																</c:otherwise>
+															</c:choose></td>
+
+														<c:if test="${entry.comment !=
+															null}">
+															<td>
+																<div align="center">${entry.comment }
+															</td>
+														</c:if>
+
+													</tr>
+												</c:forEach>
+											</table></td>
+									</tr>
+									<tr>
+										<td height="46"><div align="center">
+												<input type="submit" name="Submit2"
+													style="height:40px; width:100px; color:#0000FF; font-size:20px; font-family: "
+													楷体="楷体" "" value="提交" />
+											</div></td>
+									</tr>
+									<tr>
+										<td height="138">&nbsp;</td>
+									</tr>
 								</form>
 							</table></td>
 				</table>

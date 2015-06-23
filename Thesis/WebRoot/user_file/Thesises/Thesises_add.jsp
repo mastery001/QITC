@@ -59,7 +59,7 @@
 					<tr>
 						<td height="563"><div align="center">
 								<form action="Thesises_add.do" method="post"
-									enctype="multipart/form-data" name="form1" id="form1">
+									enctype="multipart/form-data" name="form1" id="form1" onSubmit="return t_check(this)">
 									<input type="hidden" name="u_id" value="${user.u_id }" />
 									<input type="hidden" name="isdelete" value="0" />
 									<table border="0" width="55%">

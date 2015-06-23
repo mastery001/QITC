@@ -32,6 +32,8 @@
 	$('.tablelist tbody tr:odd').addClass('odd');
 </script>
 <script charset="utf-8" type="text/javascript" src="js/custom/error.js"></script>
+<script type="text/javascript" src="js/custom/public_check.js"></script>
+<script type="text/javascript" src="js/border/back_check.js"></script>
 <script type="text/javascript" src="js/custom/ajax.js"></script>
 </head>
 <body>
@@ -47,7 +49,7 @@
 		<div class="formtitle">
 			<span>系统用户添加</span>
 		</div>
-		<form name="form1" action="UserInfo_add.do?wd=back" method="post">
+		<form name="form1" action="UserInfo_add.do?wd=back" method="post" onSubmit="return u_check(this)">
 			<!--主体表单开始-->
 			<!--大文本框样式为textinput,下拉框样式为select1,下拉框需用<div class="vocation"></div>包含-->
 			<ul class="forminfo">

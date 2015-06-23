@@ -39,6 +39,15 @@ public abstract class ParseHandle {
 
 	public abstract String getFormat();
 
+	/** 
+	* @Title: parse0 
+	* @Description: 解析word文档 
+	* @param @param is
+	* @param @return
+	* @param @throws IOException   
+	* @return DocumentInformation    返回类型 
+	* @throws 
+	*/ 
 	public abstract DocumentInformation parse0(InputStream is)
 			throws IOException;
 }

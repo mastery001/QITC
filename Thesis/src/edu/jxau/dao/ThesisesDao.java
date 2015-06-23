@@ -1,5 +1,9 @@
 package edu.jxau.dao;
 
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
 import org.web.dao.core.support.AbstractVoDaoAdvice;
 import org.web.dao.core.support.VoResolve;
 import org.web.exception.DBException;
@@ -19,7 +23,7 @@ public class ThesisesDao extends AbstractVoDaoAdvice{
 				Thesis.class, UserClass.class, UserThesis.class };
 		Class<?> voClass = Thesises.class;
 		Class<?>[] needPoObjectClass = new Class<?>[] { Thesis.class,
-				UserThesis.class , Grade.class };
+				UserThesis.class};
 		return helpAdvice.getVoResolve(allPo, voClass, needPoObjectClass, null);
 	}
 
@@ -46,6 +50,24 @@ public class ThesisesDao extends AbstractVoDaoAdvice{
 			// 如果存在状态标记是已经在回收站的数据，则直接删除
 			DAO.delete(t);
 		}
-		
+	}
+	
+	public String[] getAllThesisPath() throws DBException  {
+		String[] paths = null;
+		String sql = "select document from t_thesis where isdelete=0";
+		try {
+			PreparedStatement pstmt = conn.prepareStatement(sql);
+			ResultSet rs = pstmt.executeQuery();
+			rs.last();
+			paths = new String[rs.getRow()];
+			rs.beforeFirst();
+			int index = 0;
+			while(rs.next()) {
+				paths[index++] = rs.getString("document");
+			}
+		} catch (SQLException e) {
+			throw new DBException(e.getMessage());
+		}
+		return paths;
 	}
 }

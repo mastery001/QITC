@@ -1,22 +1,21 @@
 package edu.jxau.service.match.support;
 
-import java.util.HashMap;
 import java.util.Map;
 
 public class DocumentInformation {
 
-	public static final String CHINESE_SUMMARY = "摘要";
+	public static final String THESIS_INTRODUCTION = "封面";
 	
+	public static final String THESIS_CONTEXT = "正文";
 	
-	private String name; 	// 文档名称
-	
-	private int numParagraphs;	// 文档有多少个段落
-	
-	private String text;	// 文档所有内容
+	public static final String[] THESIS_KEY = new String[] { "摘要", "Abstract",
+		 "致谢","总结", "参考文献" };
 
-	private String[] ParagraphTexts;
-	
-	private Map<String , String> sectionContext = new HashMap<String , String>();
+	private String name; // 文档名称
+
+	private String text; // 文档所有内容
+
+	private Map<String, String> sectionContext;
 
 	public String getName() {
 		return name;
@@ -24,14 +23,6 @@ public class DocumentInformation {
 
 	public void setName(String name) {
 		this.name = name;
-	}
-
-	public int getNumParagraphs() {
-		return numParagraphs;
-	}
-
-	public void setNumParagraphs(int numParagraphs) {
-		this.numParagraphs = numParagraphs;
 	}
 
 	public String getText() {
@@ -42,14 +33,6 @@ public class DocumentInformation {
 		this.text = text;
 	}
 
-	public String[] getParagraphTexts() {
-		return ParagraphTexts;
-	}
-
-	public void setParagraphTexts(String[] paragraphTexts) {
-		ParagraphTexts = paragraphTexts;
-	}
-
 	public Map<String, String> getSectionContext() {
 		return sectionContext;
 	}
@@ -57,6 +40,11 @@ public class DocumentInformation {
 	public void setSectionContext(Map<String, String> sectionContext) {
 		this.sectionContext = sectionContext;
 	}
-	
-	
+
+	@Override
+	public String toString() {
+		return "DocumentInformation [name=" + name + ", sectionContext="
+				+ sectionContext + "]";
+	}
+
 }

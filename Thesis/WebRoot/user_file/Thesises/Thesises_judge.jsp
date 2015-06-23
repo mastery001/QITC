@@ -52,7 +52,7 @@
 				<table width="70%" align="center" border="0" bordercolor="#1D67DD"
 					style="background-color:#F4F4F4"
 					background="images/faceimges/whiteBg.png">
-					<form action="Thesises_update.do?wd=j" method="post">
+					<form action="Thesises_update.do?wd=j" method="post" onSubmit="tj_check(f)">
 						<input type="hidden" name="t_id" value="${list[0].t_id }">
 						<input type="hidden" name="verify_count" value="${list[0].verify_count + 1 }">
 						<tr>
@@ -95,16 +95,16 @@
 												<tr>
 													<td height="28">本次评审是否通过</td>
 													<td><div align="center">
-															<input type="checkbox" name="verify_status" value="1" />
-															通过&nbsp;&nbsp; <input type="checkbox"
+															<input type="radio" name="verify_status" value="1" />
+															通过&nbsp;&nbsp; <input type="radio"
 																name="verify_status" value="0" /> 不通过
 														</div></td>
 												</tr>
 												<tr>
 													<td height="28">是否退回</td>
 													<td><div align="center">
-															<input type="checkbox" name="commit_status" value="0" />
-															是&nbsp;&nbsp; <input type="checkbox" name="commit_status"
+															<input type="radio" name="commit_status" value="0" />
+															是&nbsp;&nbsp; <input type="radio" name="commit_status"
 																value="1" /> 否
 														</div></td>
 												</tr>

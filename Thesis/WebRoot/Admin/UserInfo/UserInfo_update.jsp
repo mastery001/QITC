@@ -54,9 +54,11 @@
 		grade.innerHTML = this.req.responseText;
 	}
 </script>
+<script type="text/javascript" src="js/custom/public_check.js"></script>
+<script type="text/javascript" src="js/border/back_check.js"></script>
 </head>
 <body>
-	<form name="form1" action="UserInfo_update.do?wd=back" method="post">
+	<form name="form1" action="UserInfo_update.do?wd=back" method="post" onSubmit="return u_check(this)">
 		<div class="place">
 			<span>当前位置：</span>
 			<ul class="placeul">

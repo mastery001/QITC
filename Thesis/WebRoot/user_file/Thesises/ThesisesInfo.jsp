@@ -32,7 +32,23 @@
 	color: #FFFFFF
 }
 </style>
+<script type="text/javascript" src="js/custom/ajax.js"></script>
+<script type="text/javascript">
+		var f;
+		function checkThesis(document) {
+			f = window.setInterval("checkThesis(" + document+ ");", 1000);
+			var loader = new net.AjaxRequest("check.do?document="+document +"&nocache="
+					+ new Date().getTime(), deal, onerror, "GET");
+		}
 
+		function deal() {
+			if(this.req.responseText != "重复率为 ") {
+				result.innerHTML = this.req.responseText;
+				window.clearInterval(f); //清楚定时器
+			}
+			
+		}
+	</script>
 </head>
 
 <body>
@@ -95,6 +111,8 @@
 												</td>
 												<td><div align="center">论文评审</div>
 												</td>
+												<td><div align="center">论文查重</div>
+												</td>
 											</tr>
 											<c:forEach var="entry" items="${list }">
 												<tr>
@@ -116,6 +134,10 @@
 													</td>
 													<td><div align="center">
 															<a href="Thesises.query.do?x=j&t_id=${entry.t_id }">前往评审</a>
+														</div>
+													</td>
+													<td><div align="center" id="result">
+															<a href="javascript:void(0)" onClick="checkThesis('${entry.document }');">开始查重</a>
 														</div>
 													</td>
 													<%--<td><div align="center">

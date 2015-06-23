@@ -37,10 +37,12 @@ $(document).ready(function(e) {
 		<script type="text/javascript">
 $('.tablelist tbody tr:odd').addClass('odd');
 <script charset="utf-8" type="text/javascript" src="js/custom/error.js"></script>
+<script type="text/javascript" src="js/custom/public_check.js"></script>
+<script type="text/javascript" src="js/border/back_check.js"></script>
 </head>
 <body>
 	<input type="hidden" id="msg" value="${info[0]}" />
-		<form name="form1" action="Grade_add.do?wd=back" method="post">
+		<form name="form1" action="Grade_add.do?wd=back" method="post" onSubmit="return c_check(this)">
 			<div class="place">
 				<span>当前位置：</span>
 				<ul class="placeul">

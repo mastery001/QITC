@@ -71,7 +71,7 @@
 															href="Thesises_delete.do?t_id=${entry.t_id }&wd=d"><span
 																class="STYLE1">删除</span> </a></td>
 														<td width="6%" align="center" bgcolor="#1D67DD"><a
-															href="download.do?document=${entry.document }"><span
+															href="download.do?document=${entry.document }&t_name=${entry.t_name}"><span
 																class="STYLE1">下载</span> </a></td>
 														<%-- 如果是学生 --%>
 														<c:if test="${user.status == 0 }">

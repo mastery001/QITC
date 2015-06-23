@@ -29,6 +29,8 @@
 <script charset="utf-8" type="text/javascript" src="js/Rightmenu.js"></script>
 <script charset="utf-8" type="text/javascript" src="js/custom/error.js"></script>
 <script charset="utf-8" type="text/javascript" src="js/custom/check.js"></script>
+<script charset="utf-8" type="text/javascript" src="js/custom/public_check.js"></script>
+<script charset="utf-8" type="text/javascript" src="js/border/front_check.js"></script>
 </head>
 <body>
 	<input type="hidden" id="msg" value="${info[0]}" />

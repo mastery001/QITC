@@ -71,7 +71,7 @@ body {
 						</td>
 					</tr>
 				</table>
-				<form action="Forum_add.do" method="post" enctype="multipart/form-data">
+				<form action="Forum_add.do" method="post" enctype="multipart/form-data" onSubmit="return f_check(this)">
 					<input type="hidden" name="u_id" value="${user.u_id }" />
 					<input type="hidden" name="isleaf" value="1" />
 					<table width="70%" align="center" border="0" bordercolor="#1D67DD"

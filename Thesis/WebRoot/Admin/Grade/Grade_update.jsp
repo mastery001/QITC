@@ -56,6 +56,8 @@
 <script type="text/javascript">
 	$('.tablelist tbody tr:odd').addClass('odd');
 </script>
+<script type="text/javascript" src="js/custom/public_check.js"></script>
+<script type="text/javascript" src="js/border/back_check.js"></script>
 </head>
 <body>
 	<div class="place">
@@ -69,7 +71,7 @@
 		<div class="formtitle">
 			<span>班级信息编辑</span>
 		</div>
-		<form name="form1" action="Grade_update.do?wd=back" method="post">
+		<form name="form1" action="Grade_update.do?wd=back" method="post" onSubmit="return c_check(this)">
 			<input type="hidden" name="c_id" value="${list[0].c_id }" />
 			<!--主体表单开始-->
 			<!--大文本框样式为textinput,下拉框样式为select1,下拉框需用<div class="vocation"></div>包含-->

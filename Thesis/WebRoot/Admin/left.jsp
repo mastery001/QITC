@@ -102,12 +102,12 @@
 				<span><img src="Admin/images/leftico01.png" /> </span>系统管理：
 			</div>
 			<ul class="menuson">
-				<li><cite></cite><a href="Admin/TouBiao/List.jsp" target="rightFrame">系统备份</a><i></i>
+				<li><cite></cite><a href="Admin/m.jsp" target="rightFrame">系统备份</a><i></i>
 				</li>
 
-				<li><cite></cite><a href="Admin/TouBiao/List.jsp" target="rightFrame">系统恢复</a><i></i>
+				<li><cite></cite><a href="Admin/m.jsp" target="rightFrame">系统恢复</a><i></i>
 				</li>
-				<li><cite></cite><a href="Admin/TouBiao/List.jsp" target="rightFrame">
+				<li><cite></cite><a href="Admin/m.jsp" target="rightFrame">
 						系统操作日志</a><i></i></li>
 
 
