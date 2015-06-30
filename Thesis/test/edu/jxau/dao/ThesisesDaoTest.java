@@ -1,11 +1,9 @@
 package edu.jxau.dao;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.fail;
 
 import org.junit.Test;
 import org.web.exception.DBException;
-
-import tool.mastery.core.StringUtil;
 
 public class ThesisesDaoTest {
 
@@ -31,9 +29,6 @@ public class ThesisesDaoTest {
 
 	@Test
 	public void testGetAllThesisPath() throws DBException {
-		System.out
-				.println(StringUtil.changeArrayStringToString(new ThesisesDao()
-						.getAllThesisPath()));
 
 	}
 

@@ -36,14 +36,18 @@
 <script type="text/javascript">
 		var f;
 		function checkThesis(document) {
-			f = window.setInterval("checkThesis(" + document+ ");", 1000);
+			checkThesis0(document);
+			f = window.setInterval("checkThesis0('" + document+ "');", 1000);
+		}
+		
+		function checkThesis0(document) {
 			var loader = new net.AjaxRequest("check.do?document="+document +"&nocache="
 					+ new Date().getTime(), deal, onerror, "GET");
 		}
 
 		function deal() {
-			if(this.req.responseText != "重复率为 ") {
-				result.innerHTML = this.req.responseText;
+			result.innerHTML = this.req.responseText;
+			if(this.req.responseText.trim().indexOf("重复率为") != -1) {
 				window.clearInterval(f); //清楚定时器
 			}
 			
@@ -62,8 +66,7 @@
 				<table width="70%" height="26" border="0" align="center">
 					<tr>
 						<td width="77%" height="26" bgcolor="1D67DD"><span
-							class="STYLE4">论文送审::</span>
-						</td>
+							class="STYLE4">论文送审::</span></td>
 						<td width="23%" bgcolor="1D67DD"><span class="STYLE4">提示：非本人操作请自觉。</span>
 						</td>
 					</tr>
@@ -77,69 +80,56 @@
 									<td height="53"><div align="center">
 											<a
 												href="Thesises.query.do?isdelete=0&x=info&c_id=${user.c_id}&commit_status=1">全部论文</a>
-										</div>
-									</td>
+										</div></td>
 									<td height="53"><div align="center">
 											<a
 												href="Thesises.query.do?isdelete=0&x=info&c_id=${user.c_id}&commit_status=1&verify_status=1">已通过评审论文</a>
-										</div>
-									</td>
+										</div></td>
 
 									<td height="53"><div align="center">
-											<a href="Thesises.query.do?isdelete=0&x=info&c_id=${user.c_id}&commit_status=1&verify_status=0">未评审通过论文</a>
-										</div>
-									</td>
+											<a
+												href="Thesises.query.do?isdelete=0&x=info&c_id=${user.c_id}&commit_status=1&verify_status=0">未评审通过论文</a>
+										</div></td>
 								</tr>
 								<tr>
-									<td colspan="3"><table width="913"
-											border="solid" align="right" cellpadding="2" cellspacing="0"
+									<td colspan="3"><table width="913" border="solid"
+											align="right" cellpadding="2" cellspacing="0"
 											bordercolor="#1D67DD">
 											<tr>
-												<td height="27" colspan="8"><div align="center"><font size="5"><b>论文信息</b></font></div>
-												</td>
+												<td height="27" colspan="8"><div align="center">
+														<font size="5"><b>论文信息</b>
+														</font>
+													</div></td>
 											</tr>
 											<tr>
-												<td height="20"><div align="center">学生</div>
-												</td>
-												<td><div align="center">班级</div>
-												</td>
-												<td><div align="center">文件名</div>
-												</td>
-												<td><div align="center">评审状态</div>
-												</td>
-												<td><div align="center">评审次数</div>
-												</td>
-												<td><div align="center">论文评审</div>
-												</td>
-												<td><div align="center">论文查重</div>
-												</td>
+												<td height="20"><div align="center">学生</div></td>
+												<td><div align="center">班级</div></td>
+												<td><div align="center">文件名</div></td>
+												<td><div align="center">评审状态</div></td>
+												<td><div align="center">评审次数</div></td>
+												<td><div align="center">论文评审</div></td>
+												<td><div align="center">论文查重</div></td>
 											</tr>
 											<c:forEach var="entry" items="${list }">
 												<tr>
 													<td height="33"><div align="center">${entry.c_name
-															}</div>
-													</td>
-													<td><div align="center">${entry.c_name }</div>
-													</td>
+															}</div></td>
+													<td><div align="center">${entry.c_name }</div></td>
 													<td><div align="center">
 															<a
-																href="user_file/Thesises/word.jsp?document=${entry.document }">${entry.t_name
+																href="user_file/Thesises/word.jsp?document=${entry.document }&c=${entry.commit_status}">${entry.t_name
 																}</a>
-														</div>
-													</td>
+														</div></td>
 													<td><div align="center">${entry.verify_status ==
-															0 ? "未评审" : "已评审" }</div>
-													</td>
-													<td><div align="center">${entry.verify_count }</div>
-													</td>
+															0 ? "未评审" : "已评审" }</div></td>
+													<td><div align="center">${entry.verify_count }</div></td>
 													<td><div align="center">
 															<a href="Thesises.query.do?x=j&t_id=${entry.t_id }">前往评审</a>
-														</div>
-													</td>
+														</div></td>
 													<td><div align="center" id="result">
-															<a href="javascript:void(0)" onClick="checkThesis('${entry.document }');">开始查重</a>
-														</div>
-													</td>
+															<a href="javascript:void(0)"
+																onClick="checkThesis('${entry.document }');">开始查重</a>
+														</div></td>
 													<%--<td><div align="center">
 															<a
 																href="user_file/Thesises/word.jsp?document=${entry.document }">查看论文</a>
@@ -147,8 +137,7 @@
 												--%>
 												</tr>
 											</c:forEach>
-										</table>
-									</td>
+										</table></td>
 								</tr>
 								<tr>
 									<td colspan="3">
@@ -162,11 +151,12 @@
 												class="STYLE2">【下一页】 </span> </a> <a
 												href="Thesises.query.do?isdelete=0&x=info&c_id=${user.c_id}&commit_status=1&firstIndex=${page.lastPage}"><span
 												class="STYLE2">【末页】 </span> </a>
-										</center></td>
+										</center>
+									</td>
 								</tr>
-							</table>
-						</td>
-				</table></td>
+							</table></td>
+				</table>
+			</td>
 		</tr>
 	</table>
 

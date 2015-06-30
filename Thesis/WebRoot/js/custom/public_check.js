@@ -18,7 +18,9 @@ function public_check(f , conditions) {
 				forms[i].focus();
 				return false;
 			}
+			flag = false;
 		}
 	}
 	return true;
 }
+

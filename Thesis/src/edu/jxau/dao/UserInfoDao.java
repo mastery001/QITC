@@ -28,6 +28,11 @@ public class UserInfoDao extends AbstractVoDaoAdvice {
 		return null;
 	}
 
+	@Override
+	protected void delete(Object[] poValue) throws DBException {
+		DAO.delete(poValue[0]);
+	}
+
 	public UserInfo getByUser(User user) throws DBException {
 		UserInfo userInfo = new UserInfo();
 		userInfo.setU_id(user.getU_id());

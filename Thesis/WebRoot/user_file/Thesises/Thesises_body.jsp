@@ -47,7 +47,6 @@ body {
 						</td>
 					</tr>
 				</table>
-
 				<table width="70%" align="center" border="0" bordercolor="#1D67DD"
 					style="background-color:#F4F4F4; background-image:url(images/faceimges/whiteBg.png)">
 					<c:forEach var="entry" items="${list }">
@@ -59,7 +58,7 @@ body {
 												type="checkbox" name="t_id" value="${entry.t_id }" />
 											</td>
 											<td width="76%" bgcolor="#1D67DD"><a
-												href="user_file/Thesises/word.jsp?document=${entry.document }"><span
+												href="user_file/Thesises/word.jsp?document=${entry.document }&c=${entry.commit_status}"><span
 													class="STYLE8">${entry.u_id }- ${entry.u_name } :
 														${entry.t_name }</span>
 											</a></td>

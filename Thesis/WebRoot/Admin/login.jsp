@@ -48,10 +48,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			<div id="cloud2" class="cloud"></div>
 		</div>
 		<div class="logintop">
-			<span>欢迎登录后台管理界面平台</span>
+			<span>欢迎登录论文评审后台管理界面平台</span>
 			<ul>
-				<li><a href="#">帮助</a></li>
-				<li><a href="#">关于</a></li>
+				<li><a href="Admin/login.jsp">帮助</a></li>
+				<li><a href="Admin/login.jsp">关于</a></li>
 			</ul>
 		</div>
 		<div class="loginbody">
@@ -62,11 +62,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						type="text"></input></li>
 					<li><input id="passwd" name="passwd" class="loginpwd"
 						type="password"></input></li>
-					<li><input type="submit" class="loginbtn" value="登录" /></li>
+					<li><input type="submit" class="loginbtn" value="登录" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					&nbsp;&nbsp;<a href="login.jsp" style="font-size:15px">普通用户登陆</a></li>
+					
 				</ul>
 			</div>
 		</div>
-		<div class="loginbm">版权所有 软件1202</div>
+		<div class="loginbm">版权所有 江西农业大学软件学院软件1202</div>
 	</form>
 </body>
 </html>

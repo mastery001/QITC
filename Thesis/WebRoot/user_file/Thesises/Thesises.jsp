@@ -94,7 +94,7 @@
 											</tr>
 											<tr>
 												<td height="54" colspan="2" align="center"><a
-													href="user_file/Thesises/word.jsp?document=${entry.document }"><span
+													href="user_file/Thesises/word.jsp?document=${entry.document }&c=${entry.commit_status}"><span
 														class="STYLE2">${entry.t_name }</span> </a></td>
 											</tr>
 										</table>

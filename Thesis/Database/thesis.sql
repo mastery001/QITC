@@ -23,7 +23,9 @@ create table t_user
 
 create table t_class
 (
-   c_id varchar (20) primary key not null, c_name varchar (20), major varchar (30)
+   c_id varchar (20) primary key not null,
+   c_name varchar (20),
+   major varchar (30)
 );
 
 create table t_userclass
@@ -89,4 +91,11 @@ create table t_userarticle
    UPDATE CASCADE, FOREIGN KEY(a_id) REFERENCES t_article(a_id) ON
    DELETE CASCADE ON
    UPDATE CASCADE
+);
+
+create table t_docs (
+	id int(11) primary key auto_increment,
+	d_name varchar(100),
+	document varchar(150),
+	up_time datetime
 );

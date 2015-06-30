@@ -72,6 +72,19 @@
 		</dd>
 		<dd>
 			<div class="title">
+				<span><img src="Admin/images/leftico01.png" /> </span>论文库管理：
+			</div>
+			<ul class="menuson">
+				<li><cite></cite><a href="Documents.query.do?x=back"
+					target="rightFrame">论文库查看</a><i></i></li>
+					<li><cite></cite><a href="Admin/Documents/Documents_add.jsp"
+					target="rightFrame">论文库上传</a><i></i></li>
+
+			</ul>
+		</dd>
+		
+		<dd>
+			<div class="title">
 				<span><img src="Admin/images/leftico01.png" /> </span>论文管理：
 			</div>
 			<ul class="menuson">

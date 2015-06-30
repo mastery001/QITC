@@ -76,7 +76,7 @@
 												<tr>
 													<td height="28">文件名</td>
 													<td><a
-														href="user_file/Thesises/word.jsp?document=${list[0].document }">${list[0].t_name
+														href="user_file/Thesises/word.jsp?document=${list[0].document }&c=${entry.commit_status}">${list[0].t_name
 															}</a></td>
 												</tr>
 												<tr>

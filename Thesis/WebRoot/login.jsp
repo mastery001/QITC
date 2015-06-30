@@ -41,6 +41,7 @@
 							<label>密 码</label><input type="password" class="text"
 								id="value_2" placeholder="密码" name="password" tabindex="2">
 							<input type="submit" class="submit" tabindex="3" value="登录">
+							<a href="Admin/login.jsp" style="font-size:15px" >管理员登录</a>
 							<div class="check"></div>
 						</div>
 						<div class="tip"></div>

@@ -1,3 +1,5 @@
+<%@page import="edu.jxau.vo.UserInfo"%>
+<%@page import="edu.jxau.action.filter.LoginUser"%>
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%
 	String path = request.getContextPath();
@@ -34,6 +36,7 @@
 		<font size="+2" color="#E82030"> 注销中...</font>
 	</center>
 	<%
+			LoginUser.removeLoginUser((UserInfo)session.getAttribute("user"));
 			session.invalidate();
 			response.sendRedirect("login.jsp");
 		}

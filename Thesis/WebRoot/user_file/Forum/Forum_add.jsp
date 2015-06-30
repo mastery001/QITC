@@ -1,4 +1,5 @@
 <%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%
 	String path = request.getContextPath();
 	String basePath = request.getScheme() + "://"
@@ -8,6 +9,9 @@
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
+<%
+	request.setAttribute("reply", request.getParameter("reply"));
+%>
 <head>
 <base href="<%=basePath%>">
 <title>江西农业大学论文评审系统</title>
@@ -65,42 +69,75 @@ body {
 			<td height="550">
 				<table width="70%" height="26" border="0" align="center">
 					<tr>
-						<td width="63%" height="26" bgcolor="1D67DD"><span
-							class="STYLE4">我的论帖/发帖::</span></td>
+						<c:choose>
+							<c:when test="${reply == null }">
+								<td width="63%" height="26" bgcolor="1D67DD"><span
+									class="STYLE4">我的论帖/发帖::</span>
+								</td>
+							</c:when>
+							<c:otherwise>
+								<td width="63%" height="26" bgcolor="1D67DD"><span
+									class="STYLE4">我的论帖/回复::</span>
+								</td>
+							</c:otherwise>
+						</c:choose>
 						<td width="37%" bgcolor="1D67DD"><span class="STYLE4">提示：本论坛严禁出现不良信息，请后斟酌发帖</span>
 						</td>
 					</tr>
 				</table>
-				<form action="Forum_add.do" method="post" enctype="multipart/form-data" onSubmit="return f_check(this)">
+				<form action="Forum_add.do" method="post"
+					enctype="multipart/form-data" onSubmit="return f_check(this)">
 					<input type="hidden" name="u_id" value="${user.u_id }" />
-					<input type="hidden" name="isleaf" value="1" />
+					<c:choose>
+						<c:when test="${reply == null }">
+							<input type="hidden" name="isleaf" value="0" />
+						</c:when>
+						<c:otherwise>
+							<input type="hidden" name="isleaf" value="1" />
+							<input type="hidden" name="p_id" value="<%=request.getParameter("pi") %>" />
+						</c:otherwise>
+					</c:choose>
+
 					<table width="70%" align="center" border="0" bordercolor="#1D67DD"
 						style="background-color:#F4F4F4"
 						background="images/faceimges/whiteBg.png">
 						<tr>
 							<td height="753"><table width="100%" height="738" border="0">
+									<c:choose>
+										<c:when test="${reply == null }">
+											<tr>
+												<td height="50" colspan="2"><br> <br> <br>
+													<br> <label>
+														<div align="center">
+															<span class="STYLE3">标题：</span> <input type="text"
+																name="title" style="width:200px; height:25px" />
+														</div> </label>
+												</td>
+											</tr>
+										</c:when>
+										<c:otherwise>
+											<tr>
+												<td height="50" colspan="2"><br> <br> <br>
+													<br> <label>
+														<div align="center">
+															<span class="STYLE3">标题：</span> <input type="text"
+																disabled name="title" style="width:200px; height:25px"
+																value="<%=request.getParameter("t")%>" />
+														</div> </label>
+												</td>
+											</tr>
+										</c:otherwise>
+									</c:choose>
 									<tr>
-										<td height="50" colspan="2"><br> <br> <br>
-											<br> <label>
-												<div align="center">
-													<span class="STYLE3">标题：</span> <input type="text"
-														name="title" style="width:200px; height:25px" />
-												</div> </label></td>
-									</tr>
-									<tr>
-										<td height="50" colspan="2"><br> <br>
-											<div align="center">
-												<span class="STYLE3">主题：</span> <input type="text"
-													name="subject" style="width:200px; height:25px" />
-											</div></td>
-									</tr>
-									<tr >
-										<td height="172" colspan="2"><div id="Smohan_FaceBox" align="center">
-												<div align="left"><span class="STYLE3">正文：</span></div> <br> <br>
+										<td height="172" colspan="2"><div id="Smohan_FaceBox"
+												align="center">
+												<div align="left">
+													<span class="STYLE3">正文：</span>
+												</div>
+												<br> <br>
 												<textarea name="content" id="content" class="content"></textarea>
 											</div>
-											<div id="Zones"></div>
-										</td>
+											<div id="Zones"></div></td>
 									</tr>
 									<tr>
 										<td height="178" colspan="2"><div align="center">
@@ -120,22 +157,35 @@ body {
 												</p>
 												<p>&nbsp;</p>
 												<p>
-													<input type="submit" name="Submit2"
+													<c:choose>
+														<c:when test="${reply == null }">
+															<input type="submit" name="Submit2"
 														style="height:40px; width:100px; color:#0000FF;font-size:20px; font-family: "
 														楷体"" value="发布" />
+														</c:when>
+														<c:otherwise>
+															<input type="submit" name="Submit2"
+														style="height:40px; width:100px; color:#0000FF;font-size:20px; font-family: "
+														楷体"" value="回复" />
+														</c:otherwise>
+													</c:choose>
+													
 													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <input
 														type="submit" name="Submit"
 														style="height:40px; width:100px; font-size:20px; color:#0000FF; font-family: "
 														楷体"" value="取消" />
 												</p>
-											</div></td>
+											</div>
+										</td>
 									</tr>
 									</form>
 									<tr>
-										<td height="243" colspan="2"><label></label></td>
+										<td height="243" colspan="2"><label></label>
+										</td>
 									</tr>
-								</table></td>
+								</table>
+							</td>
 						</tr>
 					</table>
 			</td>

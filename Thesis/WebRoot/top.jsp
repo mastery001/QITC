@@ -14,7 +14,8 @@
 <title>江西农业大学论文评审系统</title>
 
 <script type="text/javascript" src="js/jquery-2.1.1.min.js"></script>
-<script type="text/javascript" src="js/wordchek.js"></script>
+<%--<script type="text/javascript" src="js/wordchek.js"></script>
+--%>
 <script type="text/javascript" src="js/jquery-1.7.2.min.js"></script>
 <script type="text/javascript" src="js/letguide.js"></script>
 <script type='text/javascript' src='js/dropdown.js'></script>
@@ -29,8 +30,23 @@
 <script charset="utf-8" type="text/javascript" src="js/Rightmenu.js"></script>
 <script charset="utf-8" type="text/javascript" src="js/custom/error.js"></script>
 <script charset="utf-8" type="text/javascript" src="js/custom/check.js"></script>
-<script charset="utf-8" type="text/javascript" src="js/custom/public_check.js"></script>
-<script charset="utf-8" type="text/javascript" src="js/border/front_check.js"></script>
+<script charset="utf-8" type="text/javascript"
+	src="js/custom/public_check.js"></script>
+<script charset="utf-8" type="text/javascript"
+	src="js/border/front_check.js"></script>
+<script charset="utf-8" type="text/javascript" src="js/custom/ajax.js"></script>
+<script type="text/javascript">
+	function chatRoom(oper) {
+		var loader = new net.AjaxRequest("comeon.do?oper=" + oper, deal_chat,
+				onerror, "GET");
+	}
+
+	function deal_chat() {
+	}
+	
+	function onerror(){
+	}
+</script>
 </head>
 <body>
 	<input type="hidden" id="msg" value="${info[0]}" />
@@ -132,7 +148,8 @@
 					href="Thesises.query.do?isdelete=0&x=rm&c_id=${user.c_id}&commit_status=1"
 					target="_parent">论文操作</a>
 				</li>
-				<li><a href="Thesises.query.do?isdelete=0&x=info&c_id=${user.c_id}&commit_status=1"
+				<li><a
+					href="Thesises.query.do?isdelete=0&x=info&c_id=${user.c_id}&commit_status=1"
 					target="_parent">论文信息</a>
 				</li>
 			</c:otherwise>
@@ -221,6 +238,22 @@
 			</li>
 		</ul>
 	</div>
-
+	<script type="text/javascript">
+		var aUl = document.getElementsByTagName("ul");
+		for ( var j = 0; j < aUl.length; j++) {
+			var aLi = aUl[j].getElementsByTagName("li");
+			for ( var i = 0; i < aLi.length; i++) {
+				//alert(aLi[i].innerHTML);
+				aLi[i].onclick = function() {
+					if (this.innerHTML.indexOf("聊天室") != -1
+							|| this.innerHTML.indexOf("群消息查看") != -1) {
+						chatRoom("come");
+					} else {
+						chatRoom("exit");
+					}
+				}
+			}
+		}
+	</script>
 </body>
 </html>

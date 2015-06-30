@@ -65,7 +65,7 @@
 														<td width="6%" height="36" align="center"><input
 															type="checkbox" name="t_id" value="${entry.t_id }" /></td>
 														<td width="76%" bgcolor="#1D67DD"><a
-															href="user_file/Thesises/word.jsp?document=${entry.document }"><span
+															href="user_file/Thesises/word.jsp?document=${entry.document }&c=${entry.commit_status}"><span
 																class="STYLE1">${entry.t_name }</span> </a></td>
 														<td width="6%" align="center" bgcolor="#1D67DD"><a
 															href="Thesises_delete.do?t_id=${entry.t_id }&wd=d"><span

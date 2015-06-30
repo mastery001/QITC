@@ -73,7 +73,8 @@
 						<td><table width="100%" border="0">
 								<form action="Thesises_update.do?wd=commit" method="post"
 									onSubmit="javascript:return validate()">
-									<input type="hidden" name="commit_status" value="1" />
+									<input type="hidden" name="commit_status" value="1" /> 
+									<input type="hidden" name="comment" value=" " />
 									<tr>
 										<td><table width="100%" height="184" border="solid"
 												align="right" cellpadding="2" cellspacing="0"
@@ -93,7 +94,7 @@
 													<tr>
 														<td><div align="center">
 																<a
-																	href="user_file/Thesises/word.jsp?document=${entry.document }">${entry.t_name
+																	href="user_file/Thesises/word.jsp?document=${entry.document }&c=${entry.commit_status}">${entry.t_name
 																	}</a>
 															</div></td>
 														<td><div align="center">${entry.commit_status

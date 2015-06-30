@@ -1,3 +1,4 @@
+<%@page import="edu.jxau.vo.UserInfo"%>
 <%@page import="com.zhuozhengsoft.pageoffice.FileSaver"%>
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%
@@ -25,13 +26,22 @@
 
 </head>
 <%
-	FileSaver fs = new FileSaver(request, response);
-	//保存Word文档到相应的磁盘路径中
-	fs.saveToFile(request.getSession().getServletContext()
-			.getRealPath("")
-			+ "/" + fs.getFormField("doc"));
-	//fs.showPage(300,300);//可在前台弹出相应大小的窗口，并在上面显示想要显示的信息内容
-	fs.close();
+	String c = request.getParameter("c");
+	UserInfo ui = (UserInfo) session.getAttribute("user");
+	if(ui.getStatus() == 0 && c.equals("1")) {
+		out.write("<script>alert('该论文已经提交至审核！老师尚未退回！不能修改！');</script>");
+		out.flush();
+		out.close();
+	}else {
+		FileSaver fs = new FileSaver(request, response);
+		//保存Word文档到相应的磁盘路径中
+		fs.saveToFile(request.getSession().getServletContext()
+				.getRealPath("")
+				+ "/" + fs.getFormField("doc"));
+		//fs.showPage(300,300);//可在前台弹出相应大小的窗口，并在上面显示想要显示的信息内容
+		fs.close();
+	}
+	
 %>
 <body>
 </body>

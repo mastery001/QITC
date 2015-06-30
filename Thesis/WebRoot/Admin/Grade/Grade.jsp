@@ -36,62 +36,65 @@
 
 	});
 </script>
-
+<script type="text/javascript" src="js/custom/error.js"></script>
 </head>
 <body>
-	<form name="form1" action="CaiGou.do" method="post">
-		<div class="place">
-			<span>当前位置:</span>
-			<ul class="placeul">
-				<li><a href="#">班级管理</a></li>
-			</ul>
-		</div>
-		<div class="rightinfo">
-			<!--操作按钮开始===========================-->
-			<!--操作按钮结束===========================-->
-			<!--查询开始===========================-->
+	<div class="place">
+		<span>当前位置:</span>
+		<ul class="placeul">
+			<li><a href="Grade.query.do?x=back">班级管理</a>
+			</li>
+		</ul>
+	</div>
+	<div class="rightinfo">
+		<!--操作按钮开始===========================-->
+		<!--操作按钮结束===========================-->
+		<!--查询开始===========================-->
 
-			<!--查询结束===========================-->
-			<!--列表 开始===========================-->
-			<table class="tablelist">
+		<!--查询结束===========================-->
+		<!--列表 开始===========================-->
+		<table class="tablelist">
 
-				<thead>
+			<thead>
+				<tr>
+					<th>班级名称</th>
+					<th>班级方向</th>
+					<th>操作</th>
+				</tr>
+			</thead>
+			<c:forEach var="entry" items="${list }">
+				<tbody>
 					<tr>
-						<th>班级名称</th>
-						<th>班级方向</th>
-						<th>操作</th>
+						<td>${entry.c_name }</td>
+						<td>${entry.major }</td>
+						<td><a href="Grade.query.do?c_id=${entry.c_id }&x=bupdate"
+							class="tablelink">修改</a>&nbsp; <a href="javascript:void(0)"
+							onclick="return isDelete('Grade_delete.do?wd=back&c_id=${entry.c_id }');"
+							class="tablelink">删除</a>
+						</td>
 					</tr>
-				</thead>
-				<c:forEach var="entry" items="${list }">
-					<tbody>
-						<tr>
-							<td>${entry.c_name }</td>
-							<td>${entry.major }</td>
-							<td><a href="Grade.query.do?c_id=${entry.c_id }&x=bupdate" class="tablelink">修改</a>&nbsp; <a
-								href="Grade_delete.do?wd=back&c_id=${entry.c_id }" onclick="return isDelete();"
-								class="tablelink">删除</a></td>
-						</tr>
-					</tbody>
-				</c:forEach>
-				<script type="text/javascript">
-					function isDelete() {
-						if (confirm("您确定要删除吗？")) {
-							return true;
-						}
-						return false;
-					}
-				</script>
+				</tbody>
+			</c:forEach>
+			<tr>
+				<td height="67" colspan="5"><div align="center" class="STYLE2">
+						<a>共有${page.count}条记录 </a><a>当前第${page.page}页 </a> <a
+							href="Grade.query.do?x=back&firstIndex=1">【首页】</a> <a
+							href="Grade.query.do?x=back&firstIndex=${page.page-1<=1?1:page.page- 1}">【上一页】</a>
+						<a
+							href="Grade.query.do?x=back&firstIndex=${page.page + 1 >=page.lastPage?page.lastPage:page.page + 1}">【下一页】
+						</a> <a href="Grade.query.do?x=back&firstIndex=${page.lastPage}">【末页】</a>
+					</div>
+				</td>
+			</tr>
+		</table>
+		<!--列表 结束===========================-->
+		<!--p s===========================-->
+		<div class="pagin"></div>
+		<!--p e===========================-->
+	</div>
 
-			</table>
-			<!--列表 结束===========================-->
-			<!--p s===========================-->
-			<div class="pagin"></div>
-			<!--p e===========================-->
-		</div>
-
-		<script type="text/javascript">
-			$('.tablelist tbody tr:odd').addClass('odd');
-		</script>
-	</form>
+	<script type="text/javascript">
+		$('.tablelist tbody tr:odd').addClass('odd');
+	</script>
 </body>
 </html>

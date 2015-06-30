@@ -1,6 +1,6 @@
 package edu.jxau.service;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.fail;
 
 import org.junit.Test;
 
@@ -10,7 +10,7 @@ public class CheckThesisServiceTest {
 	public void testCheckThesisService() {
 		CheckThesisService cts = new CheckThesisService("");
 		String document = "Java集合.doc";
-		cts.check(document );
+		cts.check(document);
 	}
 
 	@Test

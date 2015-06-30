@@ -4,3 +4,11 @@ window.onload=function() {
 		alert(msg.value);
 	}
 };
+
+function isDelete(url) {
+	if (confirm("您确定要删除吗？")) {
+		window.location.href = url;
+		return true;
+	}
+	return false;
+}

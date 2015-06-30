@@ -71,7 +71,6 @@ public class Forum{
 
 	public void setTitle(String title) {
 		this.title = title;
-		this.time = new Date();
 	}
 
 	public String getSubject() {
@@ -88,6 +87,7 @@ public class Forum{
 
 	public void setContent(String content) {
 		this.content = content;
+		this.time = new Date();
 	}
 
 	public String getImage() {

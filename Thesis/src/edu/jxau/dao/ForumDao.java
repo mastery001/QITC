@@ -26,23 +26,25 @@ public class ForumDao extends AbstractVoDaoAdvice {
 	@Override
 	protected void save(Object[] poValue) throws DBException {
 		DAO.save(poValue[0]);
-		Article article = (Article) DAO.query(Article.class, poValue[0], null, false).get(0);
-		article.setP_id(article.getA_id());
-		DAO.update(article);
+		Article article = (Article) DAO.query(Article.class, poValue[0], null,
+				false).get(0);
+		if (article.getP_id() == null) {
+			article.setP_id(article.getA_id());
+			DAO.update(article);
+		}
 		UserArticle ua = (UserArticle) poValue[1];
 		ua.setA_id(article.getA_id());
-		System.out.println(ua);
 		DAO.save(ua);
 	}
 
 	@Override
 	protected Class<?>[] whenUpdateOrDeleteUnNecessaryClasses() {
-		return new Class<?>[]{UserArticle.class};
+		return new Class<?>[] { UserArticle.class };
 	}
 
 	@Override
 	protected String addWhereOrOrderCondition() {
 		return "order by t_article.time desc";
 	}
-	
+
 }
