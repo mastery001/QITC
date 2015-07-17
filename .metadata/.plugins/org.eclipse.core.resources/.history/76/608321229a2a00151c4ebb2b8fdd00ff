@@ -1,0 +1,276 @@
+package chap2;
+public class IsWinChess {
+
+	
+	/** 
+	
+	* @Title: winUpDown 
+	
+	* @Description: TODO 	判断向上下移动时赢的情况
+	
+	* @param @param allChess
+	* @param @param indexX
+	* @param @param indexY
+	* @param @return   
+	
+	* @return boolean    返回类型 
+	
+	* @throws 
+	
+	*/ 
+	public static boolean winUpDown(int allChess[][], int indexX, int indexY) {
+		int total = 1, j = 1;
+		while (true) {
+			// 向上下移动
+			if (indexY + j < 19
+					&& allChess[indexX][indexY] == allChess[indexX][indexY + j]) {
+				total++;
+				j++;
+			} else {
+				j=1;
+				break;
+			}
+		}
+
+		while (true) {
+			// 向上下移动
+			if (indexY - j > -1
+					&& allChess[indexX][indexY] == allChess[indexX][indexY - j]) {
+				total++;
+				j++;
+			} else {
+				break;
+			}
+		}
+		if(total>=5) {
+			return true;
+		}
+		return false;
+
+	}
+	
+	
+	/** 
+	
+	* @Title: winLeftRight 
+	
+	* @Description: TODO 	判断向左右移动时赢的情况
+	
+	* @param @param allChess
+	* @param @param indexX
+	* @param @param indexY
+	* @param @return   
+	
+	* @return boolean    返回类型 
+	
+	* @throws 
+	
+	*/ 
+	public static boolean winLeftRight(int allChess[][], int indexX, int indexY) {
+		int total =1,j =1;
+		while (true) {
+			// 向左右移动
+			if (indexX + j < 19
+					&& allChess[indexX][indexY] == allChess[indexX + j][indexY]) {
+				total++;
+				j++;
+			} else {
+				j=1;
+				break;
+			}
+		}
+		while(true) {
+			if (indexX - j > -1
+					&& allChess[indexX][indexY] == allChess[indexX
+							- j][indexY]) {
+				total++;
+				j++;
+			} else {
+				break;
+			}
+		}
+		if(total>=5) {
+			return true;
+		}
+		return false;
+		
+	}
+	
+	
+	/** 
+	
+	* @Title: winSkew1 
+	
+	* @Description: TODO 	判断向斜正撇移动时赢的情况
+	
+	* @param @param allChess
+	* @param @param indexX
+	* @param @param indexY
+	* @param @return   
+	
+	* @return boolean    返回类型 
+	
+	* @throws 
+	
+	*/ 
+	public static boolean winSkew1(int allChess[][], int indexX, int indexY) {
+		int total =1,j =1;
+		while (true) {
+			// 向斜的移动
+			if (indexX - j > -1 && indexY + j < 19
+				&& allChess[indexX][indexY] == allChess[indexX - j][indexY
+							+ j] ) {
+				total++;
+				j++;
+			} else {
+				j=1;
+				break;
+			}
+		}
+		while (true) {
+			// 向斜的移动
+			if (indexX + j < 19&& indexY - j > -1
+					&& allChess[indexX][indexY] == allChess[indexX
+							+ j][indexY - j]) {
+				total++;
+				j++;
+			} else {
+				break;
+			}
+		}
+		if(total>=5) {
+			return true;
+		}
+		return false;
+	}
+	
+	
+	/** 
+	
+	* @Title: winSkew2 
+	
+	* @Description: TODO 		判断向斜正捺移动时赢的情况
+	
+	* @param @param allChess
+	* @param @param indexX
+	* @param @param indexY
+	* @param @return   
+	
+	* @return boolean    返回类型 
+	
+	* @throws 
+	
+	*/ 
+	public static boolean winSkew2(int allChess[][], int indexX, int indexY) {
+		int total =1,j =1;
+		while (true) {
+			// 向斜的移动
+			if (indexX - j > -1 && indexY - j > -1
+					&& allChess[indexX][indexY] == allChess[indexX
+							- j][indexY - j]) {
+				total++;
+				j++;
+			} else {
+				j=1;
+				break;
+			}
+		}
+		while (true) {
+			// 向斜的移动
+			if (indexX + j < 19&& indexY + j < 19
+					&& allChess[indexX][indexY] == allChess[indexX + j][indexY
+							+ j]) {
+				total++;
+				j++;
+			} else {
+				break;
+			}
+		}
+		if(total>=5) {
+			return true;
+		}
+		return false;
+	}
+}
+/*	*//**
+	 * 
+	 * @Title: winChess
+	 * 
+	 * @Description: TODO 判断下棋的输赢
+	 * 
+	 * @param @param indexX
+	 * @param @param indexY
+	 * @param @return
+	 * 
+	 * @return boolean 返回类型 当赢时返回true
+	 * 
+	 * @throws
+	 *//*
+	public static boolean winChess(int allChess[][], int indexX, int indexY) {
+
+		// 四个total分别为不同方式的判断输赢的棋子数
+		int total1 = 1, total2 = 1, total3 = 1, total4 = 1, j = 1;
+		while (true) {
+			// 向上下移动
+			if (indexY + j < 19&& indexY - j > -1
+			&& (allChess[indexX][indexY] == allChess[indexX][indexY + j] 
+			|| allChess[indexX][indexY] == allChess[indexX][indexY- j])) {
+				total1++;
+				j++;
+			} else {
+				break;
+			}
+		}
+		j = 1;
+		while (true) {
+			// 向左右移动
+			if (indexX + j < 19
+					&& indexX - j > -1
+					&& (allChess[indexX][indexY] == allChess[indexX + j][indexY] || allChess[indexX][indexY] == allChess[indexX
+							- j][indexY])) {
+				total2++;
+				j++;
+			} else {
+				break;
+			}
+		}
+		j = 1;
+		while (true) {
+			// 向斜的移动
+			if (indexX + j < 19
+					&& indexX - j > -1
+					&& indexY + j < 19
+					&& indexY - j > -1
+					&& (allChess[indexX][indexY] == allChess[indexX - j][indexY
+							+ j] || allChess[indexX][indexY] == allChess[indexX
+							+ j][indexY - j])) {
+				total3++;
+				j++;
+			} else {
+				break;
+			}
+		}
+		j = 1;
+		while (true) {
+			// 向斜的移动
+			if (indexX + j < 19
+					&& indexX - j > -1
+					&& indexY + j < 19
+					&& indexY - j > -1
+					&& (allChess[indexX][indexY] == allChess[indexX + j][indexY
+							+ j] || allChess[indexX][indexY] == allChess[indexX
+							- j][indexY - j])) {
+				total4++;
+				j++;
+			} else {
+				break;
+			}
+		}
+		if (total1 >= 5 || total2 >= 5 || total3 >= 5 || total4 >= 5) {
+			return true;
+		}
+		return false;
+	}
+
+}
+*/

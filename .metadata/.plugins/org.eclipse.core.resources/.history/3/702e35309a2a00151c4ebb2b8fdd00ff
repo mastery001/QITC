@@ -1,0 +1,399 @@
+package chap2;
+
+import java.awt.Color;
+import java.awt.Font;
+import java.awt.Graphics;
+import java.awt.Point;
+import java.awt.Rectangle;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.awt.image.BufferedImage;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.text.DecimalFormat;
+
+import javax.imageio.ImageIO;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+
+@SuppressWarnings("serial")
+public class TestFrame extends JFrame {
+
+	public int getIndexX() {
+		return indexX;
+	}
+
+	public int getIndexY() {
+		return indexY;
+	}
+
+	public boolean setCountTime(double time) {
+		if (time != -1) {
+			blackCountTime = time;
+			whiteCountTime = time;
+			return true;
+		}
+		return false;
+	}
+
+	private BufferedImage bi;
+	private int allChess[][] = new int[19][19], backCount = 1, indexX, indexY,
+			chess = -1; // chess判断棋子是否为白色或黑色
+	private double blackCountTime = 300.0, whiteCountTime = 300.0, setTime;
+	private String gameInfo = null; // 显示谁下
+	private boolean IsSet = false, isWalk = false; // 判断是否悔棋
+	private Font font = new Font("serif", Font.BOLD, 20);
+	private MouseAdapter walkChess;
+	private Thread blackThread, whiteThread;
+	// 使显示的时间格式化
+	private DecimalFormat d = new DecimalFormat("#.0");
+
+	// private CountTime countTime = new CountTime();
+
+	/*
+	 * (非 Javadoc)
+	 * 
+	 * <p>Title: paint</p>
+	 * 
+	 * <p>Description: 画图 </p>
+	 * 
+	 * @param g
+	 * 
+	 * @see java.awt.Container#paint(java.awt.Graphics)
+	 */
+
+	@Override
+	public void paint(Graphics g) {
+		
+		g.drawImage(bi, 0, 20, null);
+		for (int i = 0; i < 19; i++) {
+			g.drawLine(10, 70 + i * 20, 370, 70 + i * 20);
+			g.drawLine(10 + i * 20, 70, 10 + i * 20, 430);
+		}
+		for (int i = 0; i < 19; i++) {
+			for (int j = 0; j < 19; j++) {
+				int x1 = i * 20 + 10;
+				int y1 = j * 20 + 70;
+				if (allChess[i][j] == 1) {
+					g.setColor(Color.BLACK);
+					g.fillOval(x1 - 7, y1 - 7, 14, 14);
+				}
+				if (allChess[i][j] == 2) {
+					g.setColor(Color.WHITE);
+					g.fillOval(x1 - 7, y1 - 7, 14, 14);
+
+				}
+			}
+		}
+		if (gameInfo != null) {
+			g.setColor(Color.BLACK);
+			g.setFont(font);
+			g.drawString(gameInfo, 140, 60);
+
+			g.setFont(new Font("serif", Font.BOLD, 35));
+			// String.valueOf(blackCountTime),String.valueOf(whiteCountTime)
+			g.drawString(d.format(blackCountTime), 80, 475);
+			g.drawString(d.format(whiteCountTime), 305, 475);
+		}
+
+	}
+
+	public boolean isWin(int allChess[][], int indexX, int indexY) {
+		if (IsWinChess.winUpDown(allChess, indexX, indexY)
+				|| IsWinChess.winLeftRight(allChess, indexX, indexY)
+				|| IsWinChess.winSkew1(allChess, indexX, indexY)
+				|| IsWinChess.winSkew2(allChess, indexX, indexY)) {
+			return true;
+		}
+		return false;
+
+	}
+
+	/**
+	 * 
+	 * @Title: IsBackChess
+	 * 
+	 * @Description: TODO 判断是否悔棋
+	 * 
+	 * @param @param IsBack
+	 * 
+	 * @return void 返回类型
+	 * 
+	 * @throws
+	 */
+	public void IsBackChess(boolean IsBack) {
+		if (IsBack)
+			allChess[this.getIndexX()][this.getIndexY()] = 0;
+	}
+
+	public TestFrame() {
+		setTitle("邹紫雯-五子棋");
+		setSize(495, 500);
+		setVisible(true);
+		setLocationRelativeTo(null);
+		this.setResizable(false);
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		try {
+			bi = ImageIO.read(new FileInputStream("fzq.jpg"));
+		} catch (FileNotFoundException e) {
+			JOptionPane.showMessageDialog(null, "文件路径错误，请重新填写！");
+			System.exit(0);
+		} catch (IOException e) {
+			JOptionPane.showMessageDialog(null, "读取出错！请检查!");
+			System.exit(0);
+		}
+		this.addMouseListener(new fuctionListener()); // 添加功能监听事件
+		this.addMouseListener(walkChess = new MouseAdapter() {
+			/*
+			 * (非 Javadoc)
+			 * 
+			 * <p>Title: mouseClicked</p>
+			 * 
+			 * <p>Description: 响应鼠标响应事件，进行下棋 </p>
+			 * 
+			 * @param e
+			 * 
+			 * @see
+			 * java.awt.event.MouseAdapter#mouseClicked(java.awt.event.MouseEvent
+			 * )
+			 */
+
+			@SuppressWarnings("deprecation")
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				Point p = e.getPoint();
+				if (p.x < 380 && p.y > 60 && p.y < 440) {
+					indexX = Math.round((p.x - 10) / 20.0f);
+					indexY = Math.round((p.y - 70) / 20.0f);
+					if (allChess[indexX][indexY] == 0 && isWalk) {
+						if (chess == 0) { // 当chess为0时，棋子变为黑色
+							blackThread.stop();
+							if (!whiteThread.isAlive()) {
+								startWhiteThread();
+								whiteThread.start();
+							}
+							allChess[indexX][indexY] = 1; // 若为1，则黑棋先行
+							if (isWin(allChess, indexX, indexY)) {
+								whiteThread.stop();
+								blackThread.stop();
+								JOptionPane.showMessageDialog(null, "黑方获胜！");
+								repaint();
+								isWalk = false;
+							} else {
+								gameInfo = "白棋行走";
+								chess = 1;
+							}
+						} else if ((chess == 1)) { // 当chess为1时，棋子变为白色
+							whiteThread.stop();
+							if (!blackThread.isAlive()) {
+
+								startBlackThread();
+								blackThread.start();
+							}
+							allChess[indexX][indexY] = 2; // 若为2，则白棋先行
+							if (isWin(allChess, indexX, indexY)) {
+								whiteThread.stop();
+								blackThread.stop();
+								JOptionPane.showMessageDialog(null, "白方获胜！");
+								repaint();
+								isWalk = false;
+							} else {
+								gameInfo = "黑棋行走";
+								chess = 0;
+							}
+						}
+						// repaint();
+					}
+				}
+
+			}
+		});
+		this.repaint();
+
+	}
+
+	private class fuctionListener extends MouseAdapter {
+
+		/*
+		 * (非 Javadoc)
+		 * 
+		 * <p>Title: mouseClicked</p>
+		 * 
+		 * <p>Description: 响应功能的事件， </p>
+		 * 
+		 * @param e
+		 * 
+		 * @see
+		 * java.awt.event.MouseAdapter#mouseClicked(java.awt.event.MouseEvent)
+		 */
+
+		@SuppressWarnings("deprecation")
+		@Override
+		public void mouseClicked(MouseEvent e) {
+			Point p = e.getPoint();
+			if (new Rectangle(395, 70, 75, 30).contains(p.x, p.y)) { // 开始游戏
+				if (!setCountTime(-1) && setTime == 0) {
+					blackCountTime = 300.0;
+					whiteCountTime = 300.0;
+				} else {
+					setCountTime(setTime);
+				}
+				startWhiteThread();
+				startBlackThread();
+				if (IsSet) {
+					JOptionPane.showMessageDialog(null, "游戏开始，白棋先行！");
+					gameInfo = "白棋先行";
+					chess = 1;
+					whiteThread.start();
+				} else {
+					JOptionPane.showMessageDialog(null, "游戏开始，黑棋先行！");
+					gameInfo = "黑棋先行";
+					chess = 0;
+					blackThread.start();
+				}
+				for (int i = 0; i < 19; i++) { // 使棋子的值恢复，清空棋子
+					for (int j = 0; j < 19; j++)
+						allChess[i][j] = 0;
+				}
+				isWalk = true; // 设置可以下棋
+				addMouseListener(walkChess);
+				repaint();
+			}
+			if (new Rectangle(395, 120, 75, 30).contains(p.x, p.y)) { // 游戏设置
+				String str = JOptionPane
+						.showInputDialog("请输入0或1（1代表白棋或0代表黑棋）先行");
+				if (str != null) {
+					int b = Integer.parseInt(str);
+					if (b == 1) {
+						IsSet = true;
+					} else if (b == 0) {
+						IsSet = false;
+					}
+				}
+				String time = JOptionPane.showInputDialog("请输入下棋时间");
+				if (time != null) {
+					setTime = Double.parseDouble(time);
+					if (setCountTime(setTime)) {
+						JOptionPane.showMessageDialog(null, "设置成功");
+					}
+				}
+
+			}
+			if (new Rectangle(395, 170, 75, 30).contains(p.x, p.y)) { // 游戏说明
+				String str = "本游戏纯属娱乐专用，不参与任何商业交易！谢谢你的支持";
+				JOptionPane.showMessageDialog(null, str);
+			}
+			if (new Rectangle(395, 270, 75, 30).contains(p.x, p.y)) { // 认输
+				if (isWalk) {
+					if (chess == 0) { // 当为黑棋时
+						JOptionPane.showMessageDialog(null, "黑方认输，白方获胜！");
+						whiteThread.stop();
+						blackThread.stop(); // 关闭时间线程
+					} else if (chess == 1) {
+						JOptionPane.showMessageDialog(null, "白方认输，黑方获胜");
+						whiteThread.stop();
+						blackThread.stop();
+					}
+				}
+				isWalk = false;
+			}
+			if (new Rectangle(395, 320, 75, 30).contains(p.x, p.y)) { // 悔棋
+				if (isWalk) { // 判断是否可以下棋
+					if (backCount == 1
+							&& allChess[getIndexX()][getIndexY()] != 0) {
+						if (chess == 0) { // 当为黑棋时
+							gameInfo = "白棋行走";
+							chess = 1;
+						} else if (chess == 1) {
+							gameInfo = "黑棋行走";
+							chess = 0;
+						}
+						allChess[getIndexX()][getIndexY()] = 0;
+						backCount = 2; // 通过设置这个值来控制只能悔棋一次
+					} else {
+						backCount = 1;
+					}
+					// repaint();
+				}
+			}
+			if (new Rectangle(395, 370, 75, 30).contains(p.x, p.y)) { // 退出
+				int result = JOptionPane.showConfirmDialog(null, "是否确认退出？");
+				if (result == 0) {
+					System.exit(0);
+				}
+			}
+		}
+	}
+
+	/**
+	 * 
+	 * @Title: startBlackThread
+	 * 
+	 * @Description: TODO 初始化黑棋的时间线程
+	 * 
+	 * @param
+	 * 
+	 * @return void 返回类型
+	 * 
+	 * @throws
+	 */
+	public void startBlackThread() {
+		blackThread = new Thread(new Runnable() {
+			@SuppressWarnings("deprecation")
+			public void run() {
+				while (blackCountTime > 0) {
+					try {
+						Thread.sleep(100);
+					} catch (InterruptedException e) {
+						e.printStackTrace();
+					}
+					blackCountTime -= 0.1;
+					repaint();
+				}
+				if (blackCountTime == 0) {
+					JOptionPane.showMessageDialog(null, "时间到，白方获胜！");
+					whiteThread.stop();
+					blackThread.stop();
+					isWalk = false;
+				}
+			}
+		});
+	}
+
+	/**
+	 * 
+	 * @Title: startWhiteThread
+	 * 
+	 * @Description: TODO 初始化白棋的时间线程
+	 * 
+	 * @param
+	 * 
+	 * @return void 返回类型
+	 * 
+	 * @throws
+	 */
+	public void startWhiteThread() {
+		whiteThread = new Thread(new Runnable() {
+			@SuppressWarnings("deprecation")
+			public void run() {
+				while (whiteCountTime > 0) {
+					try {
+						Thread.sleep(100);
+					} catch (InterruptedException e) {
+						e.printStackTrace();
+					}
+					whiteCountTime -= 0.1;
+					repaint();
+				}
+				if (whiteCountTime == 0) {
+					JOptionPane.showMessageDialog(null, "时间到，黑方获胜！");
+					whiteThread.stop();
+					blackThread.stop();
+					isWalk = false;
+				}
+			}
+		});
+
+	}
+}

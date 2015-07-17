@@ -1,0 +1,63 @@
+package datastructure.tree;
+
+/**
+ * 链式实现二叉树
+ * @Description 
+ * @author mastery
+ * @Date 2015年7月16日下午8:54:27
+ */
+public class LinkedBinaryTree<T> extends AbstractBinaryTree<T>{
+	
+	private TreeNode<T> root;
+	
+	public LinkedBinaryTree() {
+		root = null;
+	}
+	
+	public LinkedBinaryTree(TreeNode<T> root) {
+		root = null;
+	}
+	
+	/**
+	 * 添加指定结点的左结点
+	 * @param node 指定的结点
+	 * @param data 需要添加的数据
+	 * @return
+	 */
+	public BinaryTree<T> insertLeftNode(TreeNode<T> node , T data) {
+		return null;
+	}
+
+	/**
+	 * 添加指定结点的右结点
+	 * @param node 指定的结点
+	 * @param data 需要添加的数据
+	 * @return
+	 */
+	public BinaryTree<T> insertRightNode(TreeNode<T> node , T data) {
+		return null;
+	}
+
+	/**
+	 * 删除指定结点的左结点
+	 * @param node 指定的结点
+	 * @return
+	 */
+	public BinaryTree<T> deleteLeftNode(TreeNode<T> node) {
+		return null;
+	}
+
+	/**
+	 * 删除指定结点的右结点
+	 * @param node 指定的结点
+	 * @return
+	 */
+	public BinaryTree<T> deleteRightNode(TreeNode<T> node) {
+		return null;
+	}
+
+	@Override
+	public T getRoot() {
+		return root.getData();
+	}
+}

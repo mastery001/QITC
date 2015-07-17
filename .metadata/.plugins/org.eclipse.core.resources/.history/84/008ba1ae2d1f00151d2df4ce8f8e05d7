@@ -1,0 +1,34 @@
+package datastructure.linear.linked;
+
+import static org.junit.Assert.*;
+
+import org.junit.Test;
+
+public class BidirectionalLinkedListTest {
+
+	@Test
+	public void testBidirectionalLinkedList() {
+		fail("尚未实现");
+	}
+
+	@Test
+	public void testIndexNodeToCurrent() {
+		fail("尚未实现");
+	}
+
+	@Test
+	public void testInsert() {
+		fail("尚未实现");
+	}
+
+	@Test
+	public void testDelete() {
+		fail("尚未实现");
+	}
+
+	@Test
+	public void testGet() {
+		fail("尚未实现");
+	}
+
+}

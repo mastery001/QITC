@@ -1,0 +1,10 @@
+package datastructure.tree;
+
+/**
+ * @Description 二叉树的结点
+ * @author mastery
+ * @Date 2015年7月16日下午8:56:45
+ */
+public class TreeNode {
+
+}

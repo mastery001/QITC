@@ -1,0 +1,44 @@
+package datastructure.linear.linked.single;
+
+import static org.junit.Assert.*;
+
+import org.junit.Test;
+
+import datastructure.linear.List;
+import datastructure.linear.sequence.SequenceList;
+
+public class SingleLinkedListTest {
+
+	@Test
+	public void testSingleLinkedList() {
+		List<Integer> list = new SequenceList<Integer>();
+		for(int i = 0 ; i < 10 ; i ++) {
+			list.insert(i, i+1);
+		}
+		list.delete(4);
+		for(int i = 0 ; i < list.size() ; i++) {
+			System.out.print(list.get(i) + "   ");
+		}
+	}
+
+	@Test
+	public void testIndexNodeToCurrent() {
+		fail("尚未实现");
+	}
+
+	@Test
+	public void testInsert() {
+		fail("尚未实现");
+	}
+
+	@Test
+	public void testDelete() {
+		fail("尚未实现");
+	}
+
+	@Test
+	public void testGet() {
+		fail("尚未实现");
+	}
+
+}

@@ -1,0 +1,29 @@
+package datastructure.queue;
+
+import static org.junit.Assert.*;
+
+import org.junit.Test;
+
+public class LinkedQueueTest {
+
+	@Test
+	public void testLinkedQueue() {
+		fail("尚未实现");
+	}
+
+	@Test
+	public void testAdd() {
+		fail("尚未实现");
+	}
+
+	@Test
+	public void testRemove() {
+		fail("尚未实现");
+	}
+
+	@Test
+	public void testPeek() {
+		fail("尚未实现");
+	}
+
+}

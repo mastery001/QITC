@@ -1,0 +1,24 @@
+package datastructure.tree;
+
+/**
+ * @Description 二叉树的抽象数据类型
+ * @author mastery
+ * @Date 2015年7月16日下午8:28:13
+ * @param <T>
+ */
+public interface BinaryTree<T> {
+
+	BinaryTree<T> insertLeftNode(T data);
+
+	BinaryTree<T> insertRightNode(T data);
+
+	BinaryTree<T> deleteLeftNode(T data);
+
+	BinaryTree<T> deleteRightNode(T data);
+	
+	/**
+	 * @param strategy
+	 * @return
+	 */
+	String[] traverse(TraverseStrategy strategy);
+}

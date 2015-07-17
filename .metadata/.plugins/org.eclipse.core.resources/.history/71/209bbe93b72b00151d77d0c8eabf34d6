@@ -1,0 +1,5 @@
+package datastructure.tree;
+
+public abstract class AbstractBinaryTree<T> implements BinaryTree<T> {
+
+}

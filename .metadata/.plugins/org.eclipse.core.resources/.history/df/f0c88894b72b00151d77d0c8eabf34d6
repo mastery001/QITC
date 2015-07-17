@@ -1,0 +1,12 @@
+package datastructure.tree;
+
+public abstract class AbstractBinaryTree<T> implements BinaryTree<T> {
+
+	@Override
+	public String[] traverse(TraverseStrategy strategy) {
+		// TODO 自动生成的方法存根
+		return null;
+	}
+
+	
+}

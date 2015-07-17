@@ -1,0 +1,52 @@
+package datastructure.linear.sequence;
+
+import static org.junit.Assert.fail;
+
+import org.junit.Test;
+
+import datastructure.exception.StructureException;
+import datastructure.linear.List;
+
+public class SequenceListTest {
+
+	@Test
+	public void testSequenceList() throws StructureException {
+		List<String> list = new SequenceList<String>();
+		list.insert(1, "asdas");
+		String s = list.get(0);
+		list.insert(1, "1");
+		System.out.println(s);
+		System.out.println(list.size());
+	}
+
+	@Test
+	public void testSequenceListInt() {
+		fail("尚未实现");
+	}
+
+	@Test
+	public void testInsert() {
+		fail("尚未实现");
+	}
+
+	@Test
+	public void testDelete() {
+		fail("尚未实现");
+	}
+
+	@Test
+	public void testGet() {
+		fail("尚未实现");
+	}
+
+	@Test
+	public void testSize() {
+		fail("尚未实现");
+	}
+
+	@Test
+	public void testIsEmpty() {
+		fail("尚未实现");
+	}
+
+}

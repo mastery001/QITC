@@ -1,0 +1,19 @@
+package datastructure.tree;
+
+public abstract class AbstractBinaryTree<T> implements BinaryTree<T> {
+
+	protected int deep;
+	
+	@Override
+	public String[] traverse(TraverseStrategy strategy) {
+		return strategy.traverse();
+	}
+
+	@Override
+	public int deep() {
+		// TODO 自动生成的方法存根
+		return 0;
+	}
+	
+	
+}

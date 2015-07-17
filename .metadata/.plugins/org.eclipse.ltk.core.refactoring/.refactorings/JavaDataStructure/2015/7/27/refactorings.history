@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring clone="true" comment="对“JavaDataStructure”推断通用类型参数&#x0D;&#x0A;－ 原始项目：“JavaDataStructure”&#x0D;&#x0A;－ 原始元素：&#x0D;&#x0A;     datastructure.stack.Pair.java&#x0D;&#x0A;－ 假定 clone() 返回 receiver 类型的实例&#x0D;&#x0A;－ 让无约束类型参数保留原型" description="推断通用类型参数" element1="/src&lt;datastructure.stack{Pair.java" flags="6" id="org.eclipse.jdt.ui.infer.typearguments" leave="true" stamp="1435987329829" version="1.0"/>
+</session>
