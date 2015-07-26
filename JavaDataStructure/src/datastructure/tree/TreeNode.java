@@ -59,4 +59,8 @@ public class TreeNode<T> {
 		this.right = right;
 	}
 	
+	public static <E> TreeNode<E> createNode(E value) {
+		return new TreeNode<E>(value);
+	}
+	
 }

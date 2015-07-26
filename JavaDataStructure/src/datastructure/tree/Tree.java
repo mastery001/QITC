@@ -9,10 +9,10 @@ package datastructure.tree;
 public interface Tree<T> {
 
 	/**
-	 * 获得根节点的值
+	 * 获得根节点
 	 * @return
 	 */
-	T getRoot();
+	TreeNode<T> root();
 	
 	/**
 	 * 返回树的深度
@@ -26,6 +26,17 @@ public interface Tree<T> {
 	 */
 	int size();
 	
+	void insert(T value);
+	
+	//void insert(TreeNode<T> node);
+	
+	//void delete(T value);
+	
+	//void delete(TreeNode<T> node);
+	
+
+	TreeNode<T> find(T value);
+	
 	/**
 	 * 是否是空树
 	 */
@@ -33,6 +44,7 @@ public interface Tree<T> {
 	
 	/**
 	 * 显示出树的结构
+	 * 默认使用先序遍历的方式
 	 */
 	void display();
 	

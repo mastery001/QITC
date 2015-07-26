@@ -5,39 +5,37 @@ import datastructure.tree.TreeNode;
 
 public class ArrayBinaryTree<T> extends AbstractTree<T> {
 
-	private TreeNode<T> curr;
-	
 	/**
 	 * 使用数组构建二叉树
 	 */
 	public ArrayBinaryTree(T[] arrs) {
-		curr = root;
-		for(T i : arrs) {
+		for (T i : arrs) {
 			insert(i);
 		}
 	}
-	
-	public void insert(T value) {
-		insert(root,value);
+
+	@Override
+	public TreeNode<T> insertLeftNode(TreeNode<T> curr, T data) {
+		throw new UnsupportedOperationException(
+				"This method has not been implemented");
 	}
 
-	private TreeNode<T> insert(TreeNode<T> node , T value) {
-		if(node == null) {
-			node = new TreeNode<T>(value);
-		}else {
-			if(curr.getLeft() == null) {
-				curr.setLeft(insert(curr.getLeft() , value));
-			}else {
-				curr.setRight(insert(curr.getRight() , value));
-			}
-		}
-		return node;
-	}
-	
 	@Override
-	public void display() {
-		// TODO Auto-generated method stub
-		
+	public TreeNode<T> insertRightNode(TreeNode<T> curr, T data) {
+		throw new UnsupportedOperationException(
+				"This method has not been implemented");
+	}
+
+	@Override
+	public TreeNode<T> deleteLeftNode(TreeNode<T> curr) {
+		throw new UnsupportedOperationException(
+				"This method has not been implemented");
+	}
+
+	@Override
+	public TreeNode<T> deleteRightNode(TreeNode<T> curr) {
+		throw new UnsupportedOperationException(
+				"This method has not been implemented");
 	}
 
 }
