@@ -1,0 +1,178 @@
+.auditList {
+	overflow:auto;
+	// height:380px !important;
+}
+
+/* CSS Document */
+
+a{ COLOR:#666;TEXT-DECORATION:none;blr:expression(this.onFocus=this.blur());}
+a:hover{color:#cc0001; text-decoration:underline;}
+input, select { vertical-align: middle;}
+
+.audit-option{
+	height:45px;
+	background-color:white;
+	line-height:45px;
+	padding-left:6px;
+}
+
+.audit-option span{
+	padding-left:3px;
+}
+
+.audit-option button{
+	padding:4px;
+	font-weight:bold;
+}
+
+.audit-option .btn{
+	margin-left:30px;
+}
+
+.audit-title{
+	height:45px;
+	background-color:white;
+	border-top:2px solid #ccc;
+	border-bottom:2px solid #ccc;
+	line-height:45px;
+	padding-left:6px;
+	background-color:#F7F7F7;
+}
+
+
+.title{
+	width:540px;
+	white-space: nowrap;
+	overflow:hidden;
+}
+
+
+
+.audit-title span{
+	padding-left:22px;
+	font-weight:bold;
+}
+
+.audit-title p,.right,.right p{
+	display:inline-block;
+}
+
+
+
+.audit-title p a{
+	color:blue;
+}
+
+.audit-title .right{
+	width:520px;
+	float: right;
+	margin-right: 30px;
+}
+
+
+.audit-title input{
+	position:relative;
+	top:-6px;
+}
+
+
+.audit-title .right button{
+	padding:8px;
+	margin-top: 4px;
+}
+
+
+.audit-content{
+	
+	height:251px;
+	border-right:1px dashed #ccc;
+	float:left;
+}
+
+
+.audit-content .audit-box{
+	width:440px;
+	height:251px;
+	margin:0 auto;
+}
+
+
+.audit-content li{
+	width:100px;
+	height:100px;
+	border:1px solid #ccc;
+	float:left;
+	margin-left:5px;
+	margin-top:15px;
+}
+
+.audit-content2{
+	width:27%;
+	height:251px;
+	float:left;
+	border-right:1px dashed #ccc;
+}
+
+.audit-content2 p{
+	padding:13px;
+}
+
+.audit-content2 .txt{
+	width:93%;
+	height:100px;
+	margin-left:3%;
+	overflow-y:auto;
+	border:1px solid #ccc;
+}
+
+.audit-content2 span{
+	display:block;
+	padding-left:13px;
+	padding-top:0px;
+}
+
+.audit-content2 button{
+	display:block;
+	margin-left:13px;
+	margin-top:10px;
+	width:118px;
+	height:30px;
+}
+
+.audit-content3{
+	width:32%;
+	height:251px;
+	float:left;
+}
+
+
+.audit-content3 button{
+	width:91px;
+	height:30px;
+    margin-top: 2px;
+	margin-left:8px;
+}
+
+.audit-content3 p{
+	margin-left:8px;
+	margin-top:21px;
+	
+}
+
+
+.audit-content3 p span{
+	width:48%;
+}
+
+.audit-content3 p .last{
+	width:30%;
+	
+}
+
+
+.audit-img {
+    border: none;
+    width: 100px;
+}
+
+

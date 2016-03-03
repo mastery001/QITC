@@ -1,0 +1,281 @@
+<div class="pageHeader ovh nore">
+	#if($!pageByAudio)
+		<form method="post" id="pagerForm" action="../search/searchAudioList.action">
+	#else
+		<form method="post" id="pagerForm" action="../search/search.action">
+	#end
+			<input type="hidden" name="pageNum" value="#if($!pageNum) $!pageNum #else 1 #end" />
+			<input type="hidden" name="numPerPage" value="#if($!numPerPage) $!numPerPage #else 10 #end" />
+			<input type="hidden" name="pid" value="$!pid"/>
+			<input type="hidden" name="videoType" value="$!videoType"/>
+			<input type="hidden" name="subCategory" value="$!subCategory"/>
+			<input type="hidden" name="tabFlag" value="$!tabFlag"/><!--批量修改翻页使用-->
+			<input type="hidden" name="filterTimeSlave" value="$!filterTime"/>
+		</form>
+	<form method="post" rel="pagerForm" class="pageForm required-validate" action="../search/search.action" onsubmit="return navTabSearch(this);">
+	<div class="fl">
+	  库内搜索：
+	  <!--<input type="text" name="searchName" value="$!searchName"  title="请输入专辑、视频的id或者标题"  >-->
+	  <input type="text"   name="searchName" value="$!searchName" suggestfields="key" suggesturl="../search/getSuggest.action" lookupgroup="indexSuggest" callback="indexSuggest.key" value class="inp textInput valid" autocomplete="off"> 
+	  <select name="type" onchange="hiddenFilterName(this.value);">
+	  	#if($!channelList.size()>0)
+	  		<option value="1" #if($!type == 1)selected="selected" #end >专辑</option>
+			<option value="2" #if($!type == 2)selected="selected" #end >视频</option>
+	  	#end
+	  </select>
+	 <select name="cid" onchange="showStyleByCid(this.value);">
+		#foreach($!info in $!allChannels)
+		 <option #if($!info.id == $!cid) selected="selected" #end value="$!info.id">$!info.name</option>
+		#end
+	</select>	
+	  <select name="nameType" >
+	    <option value="0" #if($!nameType == 0)selected="selected" #end>标题</option>
+		<option value="1" #if($!nameType == 1)selected="selected" #end>ID</option>
+        <option value="2" #if($!nameType == 2)selected="selected" #end>上传者ID</option>
+	  </select>
+	  #if($!type == 2)
+		 &nbsp;	&nbsp;
+		<select name="filterName" id="filterName" onchange="showRelateSel(this.value);">
+			<option value="-1" #if($!filterName == -1) selected="selected"  #end>筛选条件</option>
+			<option value="0" #if($!filterName == 0) selected="selected"  #end>未勾选平台</option>
+			<option value="2" #if($!filterName == 2) selected="selected"  #end>勾选平台</option>
+			<option value="1" #if($!filterName == 1) selected="selected"  #end>视频分类</option>
+		</select>
+		<select name="filterTime" id="filterTime">
+			<option value="-1" #if($!filterTime == -1) selected="selected" #end>全部</option>
+			<option value="1" #if($!filterTime == 1) selected="selected" #end  class="filterTime" disabled="disabled" hidden>一天内</option>
+			<option value="2" #if($!filterTime == 2) selected="selected" #end  class="filterTime" disabled="disabled" hidden>二天内</option>
+			<option value="3" #if($!filterTime == 3) selected="selected" #end  class="filterTime" disabled="disabled" hidden>三天内</option>
+			<option value="7" #if($!filterTime == 7) selected="selected" #end  class="filterTime" disabled="disabled" hidden>一周内</option>
+		</select>
+		<select name="sourceId" id="sourceId_">
+			<option value="" #if($!sourceId == '') selected="selected" #end>视频来源</option>
+			<option value="200001" #if($!sourceId == 200001) selected="selected" #end>网站</option>
+			<option value="200002" #if($!sourceId == 200002) selected="selected" #end>大咔</option>
+			<option value="200003" #if($!sourceId == 200003) selected="selected" #end>PTV</option>
+			<option value="200017" #if($!sourceId == 200017) selected="selected" #end>乐拍</option>
+			<option value="200018" #if($!sourceId == 200018) selected="selected" #end>UGC网页上传</option>
+			<option value="200022" #if($!sourceId == 200022) selected="selected" #end>UGC批量上传</option>
+		</select>
+	  #end
+	  #if($!type == 3 || $!type == 4)
+		<select name="filterName" id="filterName" disabled="disabled" hidden onchange="showRelateSel(this.value);"> 
+			<option value="-1" #if($!filterName == -1) selected="selected"  #end>筛选条件</option>
+			<option value="0" #if($!filterName == 0) selected="selected"  #end>未勾选平台</option>
+			<option value="2" #if($!filterName == 2) selected="selected"  #end>勾选平台</option>
+			<option value="1" #if($!filterName == 1) selected="selected"  #end>视频分类</option>
+		</select>
+		<select name="filterTime" id="filterTime" disabled="disabled" hidden>
+			<option value="-1" #if($!filterTime == -1) selected="selected" #end>全部</option>
+			<option value="1" #if($!filterTime == 1) selected="selected" #end  class="filterTime" disabled="disabled" hidden>一天内</option>
+			<option value="2" #if($!filterTime == 2) selected="selected" #end  class="filterTime" disabled="disabled" hidden>二天内</option>
+			<option value="3" #if($!filterTime == 3) selected="selected" #end  class="filterTime" disabled="disabled" hidden>三天内</option>
+			<option value="7" #if($!filterTime == 7) selected="selected" #end  class="filterTime" disabled="disabled" hidden>一周内</option>
+		</select>
+		<select name="sourceId" id="sourceId_" >
+			<option value="" #if($!sourceId == '') selected="selected"  #end>全部来源</option>
+			<option value="200001" #if($!sourceId == 200001) selected="selected"  #end>无损音乐</option>
+			<option value="200024" #if($!sourceId == 200024) selected="selected"  #end>虾米音乐</option>
+		</select>
+	 #end
+	  #if(!$!type || $!type == 1)
+		 &nbsp;	&nbsp;
+		<select name="filterName" id="filterName" disabled="disabled" hidden onchange="showRelateSel(this.value);"> 
+			<option value="-1" #if($!filterName == -1) selected="selected"  #end>筛选条件</option>
+			<option value="0" #if($!filterName == 0) selected="selected"  #end>未勾选平台</option>
+			<option value="2" #if($!filterName == 2) selected="selected"  #end>勾选平台</option>
+			<option value="1" #if($!filterName == 1) selected="selected"  #end>视频分类</option>
+		</select>
+		<select name="filterTime" id="filterTime" disabled="disabled" hidden>
+			<option value="-1" #if($!filterTime == -1) selected="selected" #end>全部</option>
+			<option value="1" #if($!filterTime == 1) selected="selected" #end  class="filterTime" disabled="disabled" hidden>一天内</option>
+			<option value="2" #if($!filterTime == 2) selected="selected" #end  class="filterTime" disabled="disabled" hidden>二天内</option>
+			<option value="3" #if($!filterTime == 3) selected="selected" #end  class="filterTime" disabled="disabled" hidden>三天内</option>
+			<option value="7" #if($!filterTime == 7) selected="selected" #end  class="filterTime" disabled="disabled" hidden>一周内</option>
+		</select>
+		<select name="sourceId" id="sourceId_" disabled="disabled" hidden>
+			<option value="" #if($!sourceId == '') selected="selected"  #end>全部来源</option>
+		</select>
+	  #end
+	</div>
+	<div class="buttonActive">
+	   <div class="buttonContent">
+		 <button type="submit">搜索</button>
+	   </div>
+	</div>
+	 <!--  <div class="buttonActive" id="more_search">
+	    <div class="buttonContent">
+		<button type="button" name="0" onclick="displaySearchWindow();">高级检索</button>
+		</div>
+		
+	</div>-->
+	<div class="fr tar paixu">
+	   排序方式： 
+	   <select name="orderBy" >
+	    <option value="0">录入时间</option>
+		<option value="1"  #if($!orderBy ==1) selected="selected" #end>修改时间</option>
+	   </select>
+	   <select name="flag">
+		<option value="0">降序</option>
+	    <option value="1"   #if($!flag ==1) selected="selected" #end>升序</option>
+	   </select>
+	</div>
+	<div class="newclear"></div>
+	</form>
+</div>
+ 
+<script type="text/javascript">
+<!--
+displaySearchWindow = function(){
+if($("#sear_div").is(":visible")==false){
+$("#sear_div").show();}else{
+$("#sear_div").hide();}
+
+}
+-->
+var hiddenFilterName = function(val) {
+	var $box = navTab.getCurrentPanel();
+	if (val == 1) {
+		$("#filterName",$box).hide();
+		$("#filterTime",$box).hide();
+		$("#filterName",$box).attr('disabled','disabled');
+		$("#filterTime",$box).attr('disabled','disabled');
+		
+		$("#sourceId_",$box).html("");
+		var option = '<option value="" #if($!sourceId == '') selected="selected"  #end>全部来源</option>';
+		$("#sourceId_",$box).html(option);
+		$("#sourceId_",$box).hide();
+		$("#sourceId_",$box).attr('disabled','disabled');
+	}
+	
+	if (val == 2) {
+		$("#filterName",$box).removeAttr('disabled');
+		$("#filterTime",$box).removeAttr('disabled');
+		$("#filterName",$box).removeAttr('hidden');
+		$("#filterTime",$box).removeAttr('hidden');
+		$("#filterName",$box).show();
+		$("#filterTime",$box).show();
+		
+		var option = '<option value="" #if($!sourceId == '') selected="selected" #end>视频来源</option>';
+		option += '<option value="200001" #if($!sourceId == 200001) selected="selected" #end>网站</option>';
+		option += '<option value="200002" #if($!sourceId == 200002) selected="selected" #end>大咔</option>';
+		option += '<option value="200003" #if($!sourceId == 200003) selected="selected" #end>PTV</option>';
+		option += '<option value="200017" #if($!sourceId == 200017) selected="selected" #end>乐拍</option>';
+		option += '<option value="200018" #if($!sourceId == 200018) selected="selected" #end>UGC网页上传</option>';
+		option += '<option value="200022" #if($!sourceId == 200022) selected="selected" #end>UGC批量上传</option>';
+		$("#sourceId_",$box).html("");
+		$("#sourceId_",$box).html(option);
+		$("#sourceId_",$box).removeAttr('disabled');
+		$("#sourceId_",$box).removeAttr('hidden');
+		$("#sourceId_",$box).show();
+	}
+	
+	if (val == 3 || val == 4) {
+		$("#filterName",$box).hide();
+		$("#filterTime",$box).hide();
+		$("#filterName",$box).attr('disabled','disabled');
+		$("#filterTime",$box).attr('disabled','disabled');
+		
+		var option = '<option value="" #if($!sourceId == '') selected="selected"  #end>全部来源</option>';
+		option += '<option value="200001" #if($!sourceId == 200001) selected="selected"  #end>无损音乐</option>';
+		option += '<option value="200024" #if($!sourceId == 200024) selected="selected"  #end>虾米音乐</option>';
+		$("#sourceId_",$box).html("");
+		$("#sourceId_",$box).html(option);
+		$("#sourceId_",$box).removeAttr('disabled');
+		$("#sourceId_",$box).removeAttr('hidden');
+		$("#sourceId_",$box).show();
+	}
+}
+
+var showRelateSel = function(val) {
+	$box = navTab.getCurrentPanel();
+	if (val == -1) {
+		$(".filterStyle",$box).hide();
+		$(".filterStyle",$box).attr('disabled','disabled');
+		$(".filterTime",$box).hide();
+		$(".filterTime",$box).attr('disabled','disabled');
+	}
+	if (val == 0 || val == 2) {
+		$(".filterTime",$box).removeAttr('disabled');
+		$(".filterTime",$box).show();
+		$(".filterStyle",$box).hide();
+		$(".filterStyle",$box).attr('disabled','disabled');
+	}
+	if (val == 1) {
+		$(".filterTime",$box).hide();
+		$(".filterTime",$box).attr('disabled','disabled');
+		$(".filterStyle",$box).remove();
+		var cid = $("select[name='cid']", $box).val();
+		var $callback = function(json) {
+			 for (var i = 0; i < json.length; i++) {
+			 		var option ='<option value="' + json[i]['id'] + '" class="filterStyle">' + json[i]['key'] + '</option>';
+			 		$(option).appendTo($("select[name='filterTime']", $box));
+			 }
+		}
+		$.ajax({
+			type: 'POST',
+			url: '../search/styleList.action',
+			data: 'cid=' + cid,
+			dataType: 'json',
+			cache: false,
+			success: $callback,
+			error: DWZ.ajaxError
+		});
+	 }
+	}
+	
+	var showStyleByCid = function(val){
+		var $box = navTab.getCurrentPanel();
+		if(val == -1 || $("select[name='type']",$box).val() == 1 || $("#filterName",$box).val() != 1){
+			return;
+		}
+		var cid = $("select[name='cid']", $box).val();
+		var $callbackRep = function(json) {
+			$("select[name='filterTime']", $box).children().hide();
+			$("select[name='filterTime']", $box).children().attr('disabled','disabled');
+			$(".filterStyle",$box).remove();
+			 for (var i = 0; i < json.length; i++) {
+			 		var option ='<option value="' + json[i]['id'] + '" class="filterStyle">' + json[i]['key'] + '</option>';
+			 		$(option).appendTo($("select[name='filterTime']", $box));
+			 }
+		}
+		$.ajax({
+			type: 'POST',
+			url: '../search/styleList.action',
+			data: 'cid=' + cid,
+			dataType: 'json',
+			cache: false,
+			success: $callbackRep,
+			error: DWZ.ajaxError
+		});
+	}
+	
+	if($("select[name='filterName']",$box).val() != -1 && $(".filterStyle",$box).size() == 0 && $("select[name='type']",$box).val() == 2){
+		var $box = navTab.getCurrentPanel();
+		var $callbackResult = function(json) {
+			 for (var i = 0; i < json.length; i++) {
+			 		var option ='<option value="' + json[i]['id'] + '" class="filterStyle">' + json[i]['key'] + '</option>';
+			 		$(option).appendTo($("select[name='filterTime']", $box));
+			 }
+			 #if(!$null.isNull($!filterTime)&&$!filterTime.size()!=0&&$!filterTime)
+			var filterTime =  $!filterTime;
+		#end
+			$(".filterStyle",$box).each(function(){
+				if($(this).val() == filterTime){
+					$(this).attr("selected","selected");
+				}
+			});
+		}
+		var cid = $("select[name='cid']", $box).val();
+		$.ajax({
+			type: 'POST',
+			url: '../search/styleList.action',
+			data: 'cid=' + cid,
+			dataType: 'json',
+			cache: false,
+			success: $callbackResult,
+			error: DWZ.ajaxError
+		});
+	}
+	
+</script>
