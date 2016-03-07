@@ -121,5 +121,11 @@
             <groupId>org.mybatis</groupId>
             <artifactId>mybatis-spring</artifactId>
         </dependency>
+        
+        <dependency>
+			<groupId>com.mastery</groupId>
+			<artifactId>vrs-common</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
 	</dependencies>
 </project>

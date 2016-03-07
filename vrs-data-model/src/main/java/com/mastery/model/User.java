@@ -49,4 +49,9 @@ public class User extends BaseModel{
         return (((User) obj).getId() == getId());
     }
 
+	@Override
+	public String toString() {
+		return "User [username=" + username + ", fullname=" + fullname + ", password=" + password + "]";
+	}
+
 }

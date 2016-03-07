@@ -3,7 +3,7 @@ package com.mastery.dao;
 import java.util.List;
 import java.util.Map;
 
-import com.mastery.dao.sql.object.ISql;
+import com.mastery.common.sql.object.ISql;
 
 public interface IBaseDao<T> {
 	

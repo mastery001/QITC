@@ -23,12 +23,12 @@
 	<tool>
 		<key>fn</key>
 		<scope>application</scope>
-		<class>com.letv.mms.webapp.util.VeloctityUtil</class>
+		<class>com.mastery.webapp.util.VeloctityUtil</class>
 	</tool>
 	<tool>
 		<key>dt</key>
 		<scope>application</scope>
-		<class>com.letv.common.util.CalendarUtil</class>
+		<class>com.mastery.common.CalendarUtil</class>
 	</tool >
 	<tool>
 		<key>math</key>

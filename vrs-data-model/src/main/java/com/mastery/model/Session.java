@@ -21,6 +21,16 @@ public class Session implements Serializable{
 	
 	private List<Channel> channelList = new ArrayList<Channel>();
 
+	public Session() {
+		super();
+	}
+
+	public Session(User user, List<Channel> channelList) {
+		super();
+		this.user = user;
+		this.channelList = channelList;
+	}
+
 	public User getUser() {
 		return user;
 	}

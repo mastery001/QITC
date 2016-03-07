@@ -95,7 +95,7 @@ where 1=1
 </select>
 
 <!-- 根据sql查询 -->
-<select id="selectByBuilder" resultMap="BaseResultMap" parameterType="com.mastery.dao.sql.object.SelectSql">
+<select id="selectByBuilder" resultMap="BaseResultMap" parameterType="com.mastery.common.sql.object.SelectSql">
 	 SELECT ${selectCondition}
 	FROM con_user
 	<if test="whereCondition != null and whereCondition != '' "> 
@@ -110,7 +110,7 @@ where 1=1
 </select>
 
 <!-- 根据sql查询列表总数-->
-<select id="selectCountByBuilder" resultType="java.lang.Integer" parameterType="com.mastery.dao.sql.object.SelectSql">
+<select id="selectCountByBuilder" resultType="java.lang.Integer" parameterType="com.mastery.common.sql.object.SelectSql">
 	 SELECT count(*)
 	FROM con_user
 	<if test="whereCondition != null and whereCondition != '' "> 

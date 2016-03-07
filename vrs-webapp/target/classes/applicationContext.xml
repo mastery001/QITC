@@ -11,7 +11,7 @@
        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.1.xsd
        http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd">
 
-
+	<import resource="classpath:core-applicationContext.xml" />
 	<context:component-scan base-package="com.mastery" />
 
 	<!-- ============ Spring MVC config start ============ -->
@@ -68,5 +68,12 @@
 			</list>
 		</property>
 	</bean>
+	
+	<mvc:interceptors>
+		<mvc:interceptor>
+			<mvc:mapping path="/**" />
+			<bean class="com.mastery.webapp.interceptor.AuthenticationInterceptor" />
+		</mvc:interceptor>
+	</mvc:interceptors>
 	
 </beans>
