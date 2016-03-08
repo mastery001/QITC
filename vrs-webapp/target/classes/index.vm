@@ -93,7 +93,7 @@
                 <ul class="nav">
                     #if($!user)
                         <li>
-                            <a href="javascript:void(0)">欢迎您,$!user</a>
+                            <a href="javascript:void(0)">欢迎您,$!user.username</a>
                         </li>
                         #else
                             <li>
@@ -158,7 +158,7 @@
                     <div class="accordionContent">
                         <ul class="tree treeFolder">
 							 <li>
-                                <a href="../dbconfig/list.action?queryType=0" target="navTab" rel="rightcontent">频道管理</a>
+                                <a href="../channel/list.action" target="navTab" rel="rightcontent">频道管理</a>
                             </li>
                             <li>
                                 <a>频道属性管理</a>

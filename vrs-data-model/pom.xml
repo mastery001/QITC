@@ -123,6 +123,16 @@
         </dependency>
         
         <dependency>
+			<groupId>commons-beanutils</groupId>
+			<artifactId>commons-beanutils</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>commons-lang</groupId>
+			<artifactId>commons-lang</artifactId>
+		</dependency>
+        
+        
+        <dependency>
 			<groupId>com.mastery</groupId>
 			<artifactId>vrs-common</artifactId>
 			<version>0.0.1-SNAPSHOT</version>

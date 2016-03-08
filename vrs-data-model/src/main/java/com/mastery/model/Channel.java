@@ -2,6 +2,8 @@ package com.mastery.model;
 
 import java.io.Serializable;
 
+import com.mastery.data.base.BaseModel;
+
 
 /**
  * 频道类
@@ -35,13 +37,13 @@ public class Channel extends BaseModel  implements Serializable{
 		if (getClass() != obj.getClass())
 			return false;
 		Channel other = (Channel) obj;
-		if (id != other.id)
+		if (getId() != other.getId())
 			return false;
 		return true;
 	}
 	@Override
 	public String toString() {
-		return "Channel [name=" + name + "]";
+		return "Channel [name=" + name + "]" + super.toString();
 	}
     
 }

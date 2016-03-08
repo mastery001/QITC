@@ -53,7 +53,10 @@ public class IChannelDaoTest {
 
 	@Test
 	public void testSelectByModel() {
-		System.out.println(channelDao.selectByModel(new Channel()));
+		Channel channel = new Channel();
+		channel.setBaseStart(0);
+		channel.setBaseSize(30);
+		System.out.println(channelDao.selectByModel(channel));
 	}
 
 	@Test

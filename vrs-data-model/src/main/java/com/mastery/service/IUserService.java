@@ -1,5 +1,6 @@
 package com.mastery.service;
 
+import com.mastery.data.base.IBaseService;
 import com.mastery.model.User;
 
 /**

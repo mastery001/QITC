@@ -2,19 +2,12 @@ package com.mastery.common.exception;
 
 
 
-public class CommonException extends RuntimeException {
+public class CommonException extends BusinessException {
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = -8597829683133573474L;
-
-	/**
-	 * Creates a new instance of <code>SecurityServiceException</code> without
-	 * detail message.
-	 */
-	public CommonException() {
-	}
 
 	/**
 	 * Constructs an instance of <code>SecurityServiceException</code> with the
@@ -27,14 +20,25 @@ public class CommonException extends RuntimeException {
 		super(msg);
 	}
 
+	public CommonException() {
+		super();
+		
+	}
+
+	public CommonException(String message, Throwable cause, boolean enableSuppression, boolean writableStackTrace) {
+		super(message, cause, enableSuppression, writableStackTrace);
+		
+	}
+
 	public CommonException(String message, Throwable cause) {
 		super(message, cause);
+		
 	}
 
 	public CommonException(Throwable cause) {
 		super(cause);
+		
 	}
-
 
 
 }

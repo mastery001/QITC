@@ -26,7 +26,9 @@ public class AuthenticationInterceptor implements HandlerInterceptor {
 			throws Exception {
 		Session session = SessionUtils.getSession(request);
 		if(session == null && !request.getRequestURI().contains("login")) {
-			response.sendRedirect("/login.action");
+			logger.info("current url is {}" , request.getRequestURI());
+			response.sendRedirect("/login/login.action");
+			return false;
 		}
 		return true;
 	}
@@ -34,14 +36,12 @@ public class AuthenticationInterceptor implements HandlerInterceptor {
 	@Override
 	public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler,
 			ModelAndView modelAndView) throws Exception {
-		
+		return ;
 	}
 
 	@Override
 	public void afterCompletion(HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex)
 			throws Exception {
-		// TODO Auto-generated method stub
-		
 	}
 
 }

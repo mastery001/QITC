@@ -2,6 +2,7 @@ package com.mastery.webapp.controller;
 
 import java.io.PrintWriter;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -12,6 +13,8 @@ import org.springframework.ui.ModelMap;
 
 import com.alibaba.fastjson.JSON;
 import com.mastery.common.Constant;
+import com.mastery.common.PagingUtil.PagingVO;
+import com.mastery.data.base.BaseVo;
 import com.mastery.model.Channel;
 import com.mastery.model.Session;
 
@@ -33,6 +36,16 @@ public abstract class BaseContorller {
 		return "/error";
 	}
 
+	protected void setPage(BaseVo vo , Map<String, Object> map) {
+		PagingVO pageVo = vo.getPageVo();
+		map.put("recordCount", pageVo.getRecordCount()); // 总记录数
+		map.put("pageNum", pageVo.getPageNum()); // 第几页
+		map.put("pageCount", pageVo.getPageCount()); // 总页数
+		map.put("numPerPage", pageVo.getNumPerPage()); // 每页记录数
+		map.put("pageBegin", pageVo.getPageBegin()); // 显示页码开始
+		map.put("pageEnd", pageVo.getPageEnd()); // 显示页码范围结束
+	}
+	
 	protected Session getSession(HttpServletRequest request) {
 		return (Session) request.getSession().getAttribute(Constant.SESSION_KEY);
 	}

@@ -31,7 +31,6 @@ public class DefaultMappingExceptionResolver extends SimpleMappingExceptionResol
 		}else {
 			responseJson(request, response, ERROR_SYSTEM_ERROR);
 		}
-		
 		return null;
 	}
 

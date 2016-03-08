@@ -1,5 +1,7 @@
 package com.mastery.webapp.controller;
 
+import java.io.IOException;
+
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 
@@ -9,7 +11,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.mastery.common.Constant;
 import com.mastery.model.Session;
 import com.mastery.model.User;
 import com.mastery.service.IChannelService;
@@ -26,22 +27,28 @@ public class LoginController extends BaseContorller{
 	@Resource
 	private IChannelService channelService;
 	
-	@RequestMapping("/login")
-	public String show() {
+	@RequestMapping("/login/login")
+	public String show( ModelMap map) {
 		return "/login";
 	}
 	
-	@RequestMapping("/doLogin")
-	public String doLogin(User user , HttpServletRequest request , ModelMap map) {
+	@RequestMapping("/login/doLogin")
+	public String doLogin(User user , HttpServletRequest request, ModelMap map) throws IOException {
 		User newUser = userService.login(user);
 		logger.info("user is {} , new User is {}" , user , newUser);
 		if(newUser == null) {
 			logger.info("error用户名或密码错误");
-			map.put("error", "用户名或密码错误");
+			map.put("invalidMsg", "用户名或密码错误");
 			return "/login";
 		}
-		Session session = new Session(newUser , channelService.getChannels());
-		request.getSession().setAttribute(Constant.SESSION_KEY, session);
-		return "/";
+		// 构造一个新的session
+		Session.newSession(request.getSession() , newUser , channelService.getChannels());
+		return "redirect:/index/index.action";
+	}
+	
+	@RequestMapping("/login/logout")
+	public String logout( HttpServletRequest request) {
+		request.getSession().invalidate();
+		return "/login";
 	}
 }

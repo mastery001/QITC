@@ -3,11 +3,16 @@ package com.mastery.service;
 import java.util.List;
 import java.util.Map;
 
+import com.mastery.common.CalendarUtil;
+import com.mastery.common.PagingUtil;
+import com.mastery.common.PagingUtil.PagingVO;
 import com.mastery.common.sql.object.SqlBuilder;
-import com.mastery.dao.IBaseDao;
-import com.mastery.model.BaseModel;
+import com.mastery.data.base.BaseModel;
+import com.mastery.data.base.BaseVo;
+import com.mastery.data.base.IBaseDao;
+import com.mastery.data.base.IBaseService;
 
-public abstract class AbstractBaseService<T extends BaseModel> implements IBaseService<T> {
+public abstract class AbstractBaseService<T extends BaseModel> extends AbstractConvert implements IBaseService<T> {
 
 	protected final Class<T> entityClass;
 
@@ -74,11 +79,36 @@ public abstract class AbstractBaseService<T extends BaseModel> implements IBaseS
 	public Integer selectCountByBuilder(SqlBuilder sqlBuilder) {
 		return getDao().selectCountByBuilder(sqlBuilder.build());
 	}
-
+	
 	/**
 	 * 获取对应的dao
 	 * @return
 	 * 2016年3月7日 下午6:22:52
 	 */
 	public abstract IBaseDao<T> getDao();
+
+	@SuppressWarnings("unchecked")
+	@Override
+	protected <K> K innerConvert(Object convertObject, Class<K> retClass) {
+		K k = super.innerConvert(convertObject, retClass);
+		if(convertObject instanceof BaseModel && k instanceof BaseVo) {
+			BaseModel model = (BaseModel)convertObject;
+			BaseVo vo = (BaseVo)k;
+			vo.setId(model.getId());
+			vo.setCreateTimeStr(CalendarUtil.getDefaultDateString(model.getCreateTime()));
+			vo.setUpdateTimeStr(CalendarUtil.getDefaultDateString(model.getUpdateTime()));
+		}else if(convertObject instanceof BaseVo && k instanceof BaseModel) {
+			BaseVo vo = (BaseVo)convertObject;
+			BaseModel model = (BaseModel)k;
+			int count = selectByModelCount((T)model);
+			PagingVO pageVo = PagingUtil.getPagingSupport(vo.getNumPerPage(), count, vo.getPageNum(), 0);
+			vo.setPageVo(pageVo);
+			model.setId(vo.getId());
+			model.setBaseSize(vo.getNumPerPage());
+			model.setBaseStart(pageVo.getRecordBegin());
+		}
+		return k;
+	}
+	
+	
 }

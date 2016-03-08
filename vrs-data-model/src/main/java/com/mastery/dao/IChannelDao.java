@@ -1,5 +1,6 @@
 package com.mastery.dao;
 
+import com.mastery.data.base.IBaseDao;
 import com.mastery.model.Channel;
 
 /**

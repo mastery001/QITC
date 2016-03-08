@@ -6,8 +6,8 @@ import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
 
-import com.mastery.dao.IBaseDao;
 import com.mastery.dao.IChannelDao;
+import com.mastery.data.base.IBaseDao;
 import com.mastery.model.Channel;
 import com.mastery.service.AbstractBaseService;
 import com.mastery.service.IChannelService;

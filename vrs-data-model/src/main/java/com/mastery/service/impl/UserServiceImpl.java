@@ -7,8 +7,8 @@ import javax.annotation.Resource;
 import org.springframework.stereotype.Service;
 import org.springframework.util.Assert;
 
-import com.mastery.dao.IBaseDao;
 import com.mastery.dao.IUserDao;
+import com.mastery.data.base.IBaseDao;
 import com.mastery.model.User;
 import com.mastery.service.AbstractBaseService;
 import com.mastery.service.IUserService;

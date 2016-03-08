@@ -6,7 +6,7 @@
 	<!-- Result Map -->
 	<resultMap id="BaseResultMap" type="Channel">
 		<result column="id" property="id" />
-		<result column="name" property="name" />
+		<result column="NAME" property="name" />
 		<result column="CREATE_TIME" property="createTime" />
 		<result column="UPDATE_TIME" property="updateTime" />
 		<result column="USER_ID" property="userId" />
@@ -16,7 +16,7 @@
 
 	<!-- con_channel table all fields -->
 	<sql id="Base_Column_List">
-		id,name,CREATE_TIME,UPDATE_TIME,USER_ID,UPDATE_UID,DELETED
+		id,NAME,CREATE_TIME,UPDATE_TIME,USER_ID,UPDATE_UID,DELETED
 	</sql>
 
 	<!-- 查询条件 -->
@@ -26,8 +26,8 @@
 			<if test="id != null  ">
 				and id=#{id}
 			</if>
-			<if test="name != null  and name != ''   ">
-				and name=#{name}
+			<if test="name != null  and name != ''">
+				and NAME=#{name}
 			</if>
 			<if test="createTime != null  ">
 				and CREATE_TIME=#{createTime}
@@ -50,7 +50,7 @@
 
 	<!-- 插入记录 -->
 	<insert id="insert" parameterType="Channel">
-		insert into con_channel(name,CREATE_TIME,USER_ID)
+		insert into con_channel(NAME,CREATE_TIME,USER_ID)
 		values(#{name},NOW(),#{userId})
 		<selectKey keyProperty="id" resultType="long" order="AFTER">
 			select
@@ -61,7 +61,7 @@
 	<!-- 根据id，修改记录 -->
 	<update id="update" parameterType="Channel">
 		update con_channel set
-		name=#{name},UPDATE_UID=#{updateUid},UPDATE_TIME = NOW() where
+		NAME=#{name},UPDATE_UID=#{updateUid},UPDATE_TIME = NOW() where
 		id=#{id}
 	</update>
 

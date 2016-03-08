@@ -2,6 +2,7 @@ package com.mastery.service;
 
 import java.util.List;
 
+import com.mastery.data.base.IBaseService;
 import com.mastery.model.Channel;
 
 /**
@@ -18,4 +19,5 @@ public interface IChannelService extends IBaseService<Channel>{
 	 * 2016年3月7日 下午6:09:06
 	 */
 	List<Channel> getChannels();
+	
 }

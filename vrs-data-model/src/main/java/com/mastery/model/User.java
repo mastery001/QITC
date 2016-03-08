@@ -1,5 +1,7 @@
 package com.mastery.model;
 
+import com.mastery.data.base.BaseModel;
+
 public class User extends BaseModel{
 
 	/**

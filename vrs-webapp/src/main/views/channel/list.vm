@@ -1,0 +1,66 @@
+<div class="pageHeader">
+    <form  class="pageForm required-validate"  onsubmit="return navTabSearch(this);"  id="pagerForm" action="../channel/list.action" method="post">
+		 <input type="hidden" name="pageNum" value="#if($!pageNum) $!pageNum #else 1 #end" />
+	  <input type="hidden" name="numPerPage" value="#if($!numPerPage) $!numPerPage #else 50 #end" />
+    <div class="searchBar">
+        <table class="searchContent">
+            <tbody><tr>
+				<td><label>属性名称：</label>
+					<input maxlength="30" id="name" type="text" size="30" name="name" #if($!name)value=$!name #end >
+				</td>
+                <td>&nbsp;</td>
+				<td>
+					<div class="buttonActive"><div class="buttonContent"><button type="submit">检  索</button></div></div>
+                </td>
+				<td><a class="button"  target="navTab" rel="rightcontent" href="../channel/toEdit.action"  mask="true" title="添加频道"><span>添加新频道</span></a></td>
+            </tr>
+			</tbody>
+		</table>
+    </div>
+    </form>
+</div>
+<div class="pageContent">
+	<div id="w_list_print">
+	<table class="list" width="100%" targetType="navTab" layoutH="90">
+		<thead>
+			<tr align="center">
+				<th width="40">序号</th>
+				<th width="150">频道名称</th>
+				<th width="150">创建时间</th>
+				<th width="100">创建人</th>
+				<th width="150">修改时间</th>
+				<th width="100">修改人</th>
+				<th width="120">操作</th>
+			</tr>
+		</thead>
+		<tbody>
+			  #foreach($!info in $!voList)
+			<tr target="sid_user" rel="1" align="center" >
+				<td>$velocityCount</td>
+				<td>$!info.name</td>
+				<td>$!info.createTimeStr</td>
+				<td>$!info.userId</td>
+				<td>$!info.updateTimeStr</td>
+				<td>$!info.updateUid</td>
+				<td>
+				<a  class="button" target="navTab" href="../channel/toEdit.action?id=$!info.id
+				#if($!pageNum)&pageNumTab=$!pageNum#end
+				#if($!numPerPage)&numPerPageTab=$!numPerPage#end
+				" rel="editPage21" mask="true" fresh="false" title="维护频道"><span>维护</span></a>
+				<a  class="button" target="ajaxTodo" href="../channel/delete.action?id=$!info.id"  rel="rightcontent" mask="true" title="确定要删除吗?"><span>删除</span></a>
+				</td>
+			</tr>
+			#end
+		</tbody>
+	</table>
+	</div>
+	
+  #parse("search/pageFoot.vm")
+</div>
+<script type="text/javascript">
+checkDelete = function(){
+if(confirm('您确定删除该频道吗？')){
+location.href='../channel/delete.action?id=$!info.id';}
+return false;
+}
+</script>
