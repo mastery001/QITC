@@ -49,13 +49,4 @@ public interface IOperateService<T> {
 	 */
 	List<T> selectByModel(T t);
 	
-	
-	/**
-	 * 取得当前service对应的实体类型
-	 *
-	 * @author zouziwen
-	 * @date 2015年2月28日 下午5:28:50 
-	 * @return
-	 */
-	public Class<T> getEntityClass();
 }

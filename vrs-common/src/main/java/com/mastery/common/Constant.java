@@ -3,7 +3,7 @@ package com.mastery.common;
 public class Constant {
 
 	public static final String SESSION_KEY = "vrs.session";
-	
+
 	public static final String SINGLE_QUOTES = "'";
 	public static final String NULL_STRING = "null";
 	public static final String IMAGE_BAK = "_bak";
@@ -53,4 +53,7 @@ public class Constant {
 	public static final int MIN_SECONDNUM = 60; // 一分钟对应的秒数
 	public static final long NEW_VID_START = 2000 * 10000;// 新的vid，从2000万开始
 	public final static int DAY_DEFAULT = 31;
+
+	public static final String SUCCESS = "操作成功！";
+	public static final String FAIL = "操作失败！";
 }

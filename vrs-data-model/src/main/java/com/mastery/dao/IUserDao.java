@@ -11,5 +11,4 @@ import com.mastery.model.User;
  */
 public interface IUserDao extends IBaseDao<User>{
 
-	
 }

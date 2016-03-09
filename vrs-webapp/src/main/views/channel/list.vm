@@ -44,8 +44,8 @@
 				<td>$!info.updateUid</td>
 				<td>
 				<a  class="button" target="navTab" href="../channel/toEdit.action?id=$!info.id
-				#if($!pageNum)&pageNumTab=$!pageNum#end
-				#if($!numPerPage)&numPerPageTab=$!numPerPage#end
+				#if($!pageNum)&pageNum=$!pageNum#end
+				#if($!numPerPage)&numPerPage=$!numPerPage#end
 				" rel="editPage21" mask="true" fresh="false" title="维护频道"><span>维护</span></a>
 				<a  class="button" target="ajaxTodo" href="../channel/delete.action?id=$!info.id"  rel="rightcontent" mask="true" title="确定要删除吗?"><span>删除</span></a>
 				</td>

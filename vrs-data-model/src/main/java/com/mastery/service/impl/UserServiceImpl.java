@@ -8,17 +8,11 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.Assert;
 
 import com.mastery.dao.IUserDao;
-import com.mastery.data.base.IBaseDao;
 import com.mastery.model.User;
-import com.mastery.service.AbstractBaseService;
 import com.mastery.service.IUserService;
 
 @Service("userService")
-public class UserServiceImpl  extends AbstractBaseService<User>  implements IUserService {
-
-	public UserServiceImpl() {
-		super(User.class);
-	}
+public class UserServiceImpl implements IUserService {
 
 	@Resource
 	private IUserDao userDao;
@@ -26,16 +20,11 @@ public class UserServiceImpl  extends AbstractBaseService<User>  implements IUse
 	@Override
 	public User login(User user) {
 		Assert.notNull(user, "user is null");
-		List<User> users = this.selectByModel(user);
+		List<User> users = userDao.selectByModel(user);
 		if (users != null && !users.isEmpty()) {
 			return users.get(0);
 		}
 		return null;
-	}
-
-	@Override
-	public IBaseDao<User> getDao() {
-		return userDao;
 	}
 
 }

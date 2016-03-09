@@ -1,6 +1,5 @@
 package com.mastery.service;
 
-import com.mastery.data.base.IBaseService;
 import com.mastery.model.User;
 
 /**
@@ -10,7 +9,7 @@ import com.mastery.model.User;
  *
  *         2016年3月7日 下午6:08:28
  */
-public interface IUserService extends IBaseService<User> {
+public interface IUserService {
 
 	User login(User user);
 }

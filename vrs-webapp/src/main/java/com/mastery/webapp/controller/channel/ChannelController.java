@@ -9,8 +9,10 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.mastery.common.Constant;
 import com.mastery.webapp.CallbackType;
 import com.mastery.webapp.controller.BaseContorller;
 import com.mastery.webapp.controller.result.DwzResultObject;
@@ -44,7 +46,8 @@ public class ChannelController extends BaseContorller {
 		return new ModelAndView("/channel/edit", map);
 	}
 	
-	@RequestMapping("edit")
+	@RequestMapping("/edit")
+	@ResponseBody
 	public DwzResultObject doEdit(ChannelVo channelVo) {
 		channelVoService.update(channelVo);
 		DwzResultObject dwz = new DwzResultObject();
@@ -54,4 +57,18 @@ public class ChannelController extends BaseContorller {
 		return dwz;
 	}
 	
+	@RequestMapping("/delete")
+	@ResponseBody
+	public DwzResultObject doRemove(ChannelVo channelVo) {
+		DwzResultObject dwz = new DwzResultObject();
+		String result = Constant.SUCCESS;
+		if (channelVo.getId() == null) {
+			logger.error("属性id为空!");
+			result = "请选择删除内容！";
+		}else {
+			channelVoService.delete(channelVo);
+		}
+		dwz.setMessage(result);
+		return dwz;
+	}
 }

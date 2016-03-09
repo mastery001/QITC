@@ -2,7 +2,6 @@ package com.mastery.service;
 
 import java.util.List;
 
-import com.mastery.data.base.IBaseService;
 import com.mastery.model.Channel;
 
 /**
@@ -11,7 +10,7 @@ import com.mastery.model.Channel;
  *
  * 2016年3月7日 下午6:08:40
  */
-public interface IChannelService extends IBaseService<Channel>{
+public interface IChannelService{
 
 	/**
 	 * 获取所有的频道

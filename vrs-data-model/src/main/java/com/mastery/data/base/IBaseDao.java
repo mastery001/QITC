@@ -28,5 +28,5 @@ public interface IBaseDao<T> {
 	public List<T> selectByBuilder(ISql sql);
 	
 	public Integer selectCountByBuilder(ISql sql);
-
+	
 }
