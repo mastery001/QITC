@@ -11,10 +11,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.mastery.model.Session;
 import com.mastery.model.User;
-import com.mastery.service.IChannelService;
 import com.mastery.service.IUserService;
+import com.mastery.webapp.SessionUtils;
 
 @Controller
 public class LoginController extends BaseContorller{
@@ -23,9 +22,6 @@ public class LoginController extends BaseContorller{
 	
 	@Resource
 	private IUserService userService;
-	
-	@Resource
-	private IChannelService channelService;
 	
 	@RequestMapping("/login/login")
 	public String show( ModelMap map) {
@@ -42,7 +38,7 @@ public class LoginController extends BaseContorller{
 			return "/login";
 		}
 		// 构造一个新的session
-		Session.newSession(request.getSession() , newUser , channelService.getChannels());
+		SessionUtils.setUser(request, newUser);
 		return "redirect:/index/index.action";
 	}
 	

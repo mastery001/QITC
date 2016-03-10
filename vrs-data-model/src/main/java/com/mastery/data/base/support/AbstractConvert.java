@@ -1,6 +1,5 @@
 package com.mastery.data.base.support;
 
-import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -45,7 +44,8 @@ public class AbstractConvert implements IConvert {
 		K retVal;
 		try {
 			retVal = retClass.newInstance();
-			copyValue(retVal , convertObject , "serialVersionUID");
+			PropertyUtils.copyProperties(retVal, convertObject);
+//			copyValue(retVal , convertObject , "serialVersionUID");
 		} catch (Exception e) {
 			logger.info("value convert failed! exception is {}", e);
 			throw new CommonException("value convert failed! exception is {}", e);
@@ -53,51 +53,51 @@ public class AbstractConvert implements IConvert {
 		return retVal;
 	}
 	
-	/**
-	 * 将一个对象属性值赋值到另一个对象中
-	 * @param retObj		需要赋值的对象
-	 * @param obj			有值的对象
-	 * @param uncopyField	不需要赋值的字段
-	 * @return
-	 * @throws VoProcessorException 
-	 */
-	protected void copyValue(Object retObj , Object obj , String uncopyField) throws Exception {
-		//得到值对象的所有字段
-		Field[] objFields = obj.getClass().getDeclaredFields();
-		if(uncopyField == null) {
-			uncopyField = "";
-		}
-		//得到不需要赋值的字段
-		String[] uncopyFields = uncopyField.split(",");
-		for(Field field : objFields) {
-			String objFieldName = field.getName();
-			
-			//当两者中的属性字段名不相同时
-			try {
-				retObj.getClass().getDeclaredField(objFieldName);
-			} catch (Exception e1) {
-				e1.printStackTrace();
-				continue;
-			} 
-			if(!isExist(objFieldName, uncopyFields)) {
-				try {
-					//得到该字段的值
-					Object retVal = PropertyUtils.getProperty(obj, objFieldName);
-					//将该字段的值赋给需要返回的对象
-					PropertyUtils.setProperty(retObj, objFieldName, retVal);
-				} catch (Exception e) {
-					throw e;
-				} 
-			}
-		}
-	}
-	
-	private boolean isExist(String fieldName , String[] uncopyFields) {
-		for(int i = 0 ; i < uncopyFields.length ; i ++) {
-			if(fieldName.equals(uncopyFields[i])) {
-				return true;
-			}
-		}
-		return false;
-	}
+//	/**
+//	 * 将一个对象属性值赋值到另一个对象中
+//	 * @param retObj		需要赋值的对象
+//	 * @param obj			有值的对象
+//	 * @param uncopyField	不需要赋值的字段
+//	 * @return
+//	 * @throws VoProcessorException 
+//	 */
+//	protected void copyValue(Object retObj , Object obj , String uncopyField) throws Exception {
+//		//得到值对象的所有字段
+//		Field[] objFields = obj.getClass().getDeclaredFields();
+//		if(uncopyField == null) {
+//			uncopyField = "";
+//		}
+//		//得到不需要赋值的字段
+//		String[] uncopyFields = uncopyField.split(",");
+//		for(Field field : objFields) {
+//			String objFieldName = field.getName();
+//			
+//			//当两者中的属性字段名不相同时
+//			try {
+//				retObj.getClass().getDeclaredField(objFieldName);
+//			} catch (Exception e1) {
+//				e1.printStackTrace();
+//				continue;
+//			} 
+//			if(!isExist(objFieldName, uncopyFields)) {
+//				try {
+//					//得到该字段的值
+//					Object retVal = PropertyUtils.getProperty(obj, objFieldName);
+//					//将该字段的值赋给需要返回的对象
+//					PropertyUtils.setProperty(retObj, objFieldName, retVal);
+//				} catch (Exception e) {
+//					throw e;
+//				} 
+//			}
+//		}
+//	}
+//	
+//	private boolean isExist(String fieldName , String[] uncopyFields) {
+//		for(int i = 0 ; i < uncopyFields.length ; i ++) {
+//			if(fieldName.equals(uncopyFields[i])) {
+//				return true;
+//			}
+//		}
+//		return false;
+//	}
 }

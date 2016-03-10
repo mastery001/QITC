@@ -1,0 +1,89 @@
+<div class="pageFormContent nowrap" layoutH="127">
+    <dl>
+        <dt>所属频道：</dt>
+        <dd>$!vo.cname</dd>
+    </dl>
+    <dl>
+        <dt>专辑id：</dt>
+        <dd>#if($!vo.id)$!vo.id#end</dd>
+    </dl>
+    <dl>
+        <dt>专辑名称：</dt>
+        <dd>
+            <input type="text" name="name" #if($!vo.name)value="$!vo.name"#end />
+        </dd>
+    </dl>
+    <dl>
+        <dt>副标题：</dt>
+        <dd>
+            <input type="text" name="name" #if($!vo.subTitle)value="$!vo.subTitle"#end />
+        </dd>
+    </dl>
+    <dl>
+        <dt>详细介绍：</dt>
+        <dd>
+            <input type="text" name="name" #if($!vo.description)value="$!vo.description"#end />
+        </dd>
+    </dl>
+    <dl>
+        <dt>简略介绍：</dt>
+        <dd>
+            <input type="text" name="name" #if($!vo.shortDesc)value="$!vo.shortDesc"#end />
+        </dd>
+    </dl>
+    <dl>
+        <dt>标签：</dt>
+        <dd>
+            <input type="text" name="name" #if($!vo.tag)value="$!vo.tag"#end />
+        </dd>
+    </dl>
+    <dl>
+        <dt>上映时间：</dt>
+        <dd>
+            <input type="text" name="name" #if($!vo.releaseDate)value="$!vo.releaseDate"#end />
+        </dd>
+    </dl>
+    <dl>
+        <dt>是否完结：</dt>
+        <dd>
+            <input type="radio" name="isEnd"  value="1" #if($!vo.isEnd == 1) selected #end>是
+                    <input type="radio" name="isEnd"  value="0" #if($!vo.isEnd == 0) selected #end>否
+</dd>
+</dl>
+<dl>
+    <dt>专辑封面图片：</dt>
+    <dd>
+        <input type="file" name="img" uploader="../uploadify/scripts/uploadify.swf" 
+            cancelImg="../uploadify/cancel.png" 
+            script="../upload/uploadPicSource.action" 
+            folder="/temp" 
+            fileDataName="myFile" 
+            height="30" 
+            width="110" 
+            queueSizeLimit="1" 
+            multi="false" 
+            onComplete="source_image_callback" 
+            fileExt="*.jpg" 
+            sizeLimit="2048000000" 
+            fileDesc="支持格式：jpg"  />
+    </dd>
+</dl>
+#if($!vo.id)
+    <dl>
+        <dt>创建时间：</dt>
+        <dd>$!vo.createTimeStr</dd>
+    </dl>
+    <dl>
+        <dt>修改时间：</dt>
+        <dd>$!vo.updateTimeStr</dd>
+    </dl>
+    <dl>
+        <dt>创建人：</dt>
+        <dd>$!vo.userId</dd>
+    </dl>
+    <dl>
+        <dt>修改人：</dt>
+        <dd>$!vo.updateUid</dd>
+    </dl>
+#end
+</div>

@@ -16,7 +16,6 @@ import com.mastery.common.Constant;
 import com.mastery.common.PagingUtil.PagingVO;
 import com.mastery.data.base.BaseVo;
 import com.mastery.model.Channel;
-import com.mastery.model.Session;
 
 /**
  * base controller
@@ -35,7 +34,22 @@ public abstract class BaseContorller {
 	public String toErrorPage() {
 		return "/error";
 	}
+	
+	@SuppressWarnings("unchecked")
+	protected List<Channel> getChannels(HttpServletRequest request) {
+		return (List<Channel>) request.getSession().getAttribute("channelList");
+	}
 
+	protected Channel getChannel(HttpServletRequest request , Long cid) {
+		List<Channel> channels = getChannels(request);
+		for(Channel channel : channels) {
+			if(channel.getId().equals(cid)) {
+				return channel;
+			}
+		}
+		return null;
+	}
+	
 	protected void setPage(BaseVo vo , Map<String, Object> map) {
 		PagingVO pageVo = vo.getPageVo();
 		map.put("recordCount", pageVo.getRecordCount()); // 总记录数
@@ -46,34 +60,6 @@ public abstract class BaseContorller {
 		map.put("pageEnd", pageVo.getPageEnd()); // 显示页码范围结束
 	}
 	
-	protected Session getSession(HttpServletRequest request) {
-		return (Session) request.getSession().getAttribute(Constant.SESSION_KEY);
-	}
-	
-	/**
-	 * 获取频道列表
-	 * 
-	 * @param request
-	 * @return
-	 */
-	protected List<Channel> getChannelList(HttpServletRequest request) {
-		return getSession(request).getChannelList();
-	}
-	
-	/**
-	 * 获取频道名称
-	 */
-	protected String getChannelName(Integer cid, HttpServletRequest request) {
-		if (null != cid) {
-			for (Channel c : getChannelList(request)) {
-				if(c.getId() == cid.intValue()){
-					return c.getName();
-				}
-			}
-		}
-		return "";
-	}
-
 	/**
 	 * 定向到错误页面
 	 * 

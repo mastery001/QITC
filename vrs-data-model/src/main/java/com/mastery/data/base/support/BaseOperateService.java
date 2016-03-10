@@ -35,7 +35,7 @@ public abstract class BaseOperateService<V extends BaseVo, M extends BaseModel> 
 		if(t.getId() == null) {
 			insert(t);
 		}else {
-			getDao().updateBySelective(convert(t, getModelClass()));
+			getDao().update(convert(t, getModelClass()));
 		}
 	}
 
@@ -84,7 +84,6 @@ public abstract class BaseOperateService<V extends BaseVo, M extends BaseModel> 
 		if (convertObject instanceof BaseModel && k instanceof BaseVo) {
 			BaseModel model = (BaseModel) convertObject;
 			BaseVo vo = (BaseVo) k;
-			vo.setId(model.getId());
 			vo.setCreateTimeStr(CalendarUtil.getDefaultDateString(model.getCreateTime()));
 			vo.setUpdateTimeStr(CalendarUtil.getDefaultDateString(model.getUpdateTime()));
 		} else if (convertObject instanceof BaseVo && k instanceof BaseModel) {
@@ -93,7 +92,6 @@ public abstract class BaseOperateService<V extends BaseVo, M extends BaseModel> 
 			int count = getDao().selectByModelCount((M) model);
 			PagingVO pageVo = PagingUtil.getPagingSupport(vo.getNumPerPage(), count, vo.getPageNum(), 0);
 			vo.setPageVo(pageVo);
-			model.setId(vo.getId());	
 			model.setBaseSize(vo.getNumPerPage());
 			model.setBaseStart(pageVo.getRecordBegin());
 		}

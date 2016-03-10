@@ -1,0 +1,75 @@
+<style type="text/css">
+td.v_bfpt label{padding-right:6px;}
+.infobtn div{width:160px;}
+.infobtn div a{margin-right:5px;margin-bottom:5px;_display:inline;}
+.extend{margin-right: 25px;}
+</style>
+<!--引用搜索-->
+#parse("search/search.vm")
+<div class="pageContent">
+  <!-- search list -->
+	<div class="tabList">
+	  <div style="overflow:auto;" layouth="65" class="gridScroller">
+		#if(!$null.isNull($!list)&&$!list.size()!=0&&$!list)
+	  #foreach($!info in $!list)
+		 <div class="tabli clearf" style="margin:0;border-top:1px dashed #c1c1c1;">
+		  <div class="imgbox">
+		    <a title="专辑 - $!info.nameCn" href="../album/view.action?id=$!info.id" target="navTab" rel="editAlbum$!info.id"><img src="$!{info.picCollectionsJsonObject.ar34['96*128']}" width="96" height="128" ></a>
+		  </div>
+		  <div class="infobox">
+		    <table class="tabbox" cellpadding="0" cellspacing="0">
+			   <tr>
+                 <td>专辑ID：</td>
+			     <td>$!info.id</td>
+			   </tr>
+			   <tr>
+			     <td>名称：</td>
+				 <td>$!info.name</td>
+			   </tr>
+			   <tr>
+			     <td>副标题：</td>
+			     <td>$!info.subTitle</td>
+			   </tr>
+			  <!-- 	 <tr>
+			   	 	#if($!cid != 1)
+			   			<td>总集数：</td>
+			  		 	<td>$!info.episode</td>
+			 	 	#end
+			  </tr> -->
+			 	  <tr>
+               		  <td>是否完结：</td>
+			      	  <td> #if($!info.isEnd == 1)
+							是
+						 #else
+							 否
+						  #end
+				     </td>
+			  	 </tr>
+			   <tr>
+			      <td>上映时间：</td>
+				  <td>$!info.releaseDate</td>
+			   </tr>
+			   <tr>
+				 <td colspan="2" style="width:auto; width:300px" >
+				  <div class="clearf">
+					<a class="buttonActive extend"  href="../search/searchList.action?pid=$!info.id&cid=$!info.category&orderBy=0&type=2&albumName=$!info.nameCn"  target="navTab" title="$!info.nameCn - 专辑视频管理" rel="albumVideoList$!info.id">
+							<span>专辑视频管理</span>
+					</a>
+					<a class="buttonActive extend" href="../album/view.action?id=$!info.id" target="navTab" rel="editAlbum$!info.id" title="专辑 - $!info.nameCn">
+						<span>维护</span>
+					</a>
+
+				  </div>
+				 </td>			   
+			   </tr>
+			</table>
+		  </div>
+		</div>
+		#end
+		#else
+		<div>符合条件的数据不存在!</div>
+		#end
+	  </div>
+	</div>
+  #parse("search/pageFoot.vm")
+</div>

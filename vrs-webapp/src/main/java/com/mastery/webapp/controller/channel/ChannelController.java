@@ -3,6 +3,7 @@ package com.mastery.webapp.controller.channel;
 import java.util.List;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -14,6 +15,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.mastery.common.Constant;
 import com.mastery.webapp.CallbackType;
+import com.mastery.webapp.SessionUtils;
 import com.mastery.webapp.controller.BaseContorller;
 import com.mastery.webapp.controller.result.DwzResultObject;
 import com.mastery.webapp.service.IChannelVoService;
@@ -48,7 +50,8 @@ public class ChannelController extends BaseContorller {
 	
 	@RequestMapping("/edit")
 	@ResponseBody
-	public DwzResultObject doEdit(ChannelVo channelVo) {
+	public DwzResultObject doEdit(ChannelVo channelVo , HttpServletRequest request ) {
+		channelVo.setUpdateUid(SessionUtils.getUser(request).getUsername());
 		channelVoService.update(channelVo);
 		DwzResultObject dwz = new DwzResultObject();
 		dwz.setForwardUrl("../channel/list.action");
@@ -59,13 +62,14 @@ public class ChannelController extends BaseContorller {
 	
 	@RequestMapping("/delete")
 	@ResponseBody
-	public DwzResultObject doRemove(ChannelVo channelVo) {
+	public DwzResultObject doRemove(ChannelVo channelVo , HttpServletRequest request ) {
 		DwzResultObject dwz = new DwzResultObject();
 		String result = Constant.SUCCESS;
 		if (channelVo.getId() == null) {
 			logger.error("属性id为空!");
 			result = "请选择删除内容！";
 		}else {
+			channelVo.setUpdateUid(SessionUtils.getUser(request).getUsername());
 			channelVoService.delete(channelVo);
 		}
 		dwz.setMessage(result);

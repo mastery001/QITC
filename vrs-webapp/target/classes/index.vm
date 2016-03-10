@@ -3,7 +3,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=7" />
-        <title>媒资管理后台</title>
+        <title>vrs管理后台</title>
         <link rel="Shortcut Icon" href=" http://www.letv.com/favicon.ico">
             <link rel="stylesheet" type="text/css" href="../themes/default/style.css" media="screen"/>
             <link rel="stylesheet" type="text/css" href="../themes/css/core.css" media="screen"/>
@@ -134,13 +134,10 @@
                                         <a>$!info.name</a>
                                         <ul>
                                             <li>
-                                                <a href="../album/forwardAdd.action?type=1&cid=$!info.id" target="navTab" rel="addAlbum$!info.id" title="新增$!info.name专辑">新增专辑</a>
+                                                <a href="../album/toEdit.action?cid=$!info.id" target="navTab" rel="addAlbum$!info.id" title="新增$!info.name专辑">新增专辑</a>
                                             </li>
                                             <li>
-                                                <a href="../search/search.action?orderBy=1&type=1&cid=$!info.id" target="navTab" rel="albumList$!info.id" title="$!info.name专辑列表">专辑列表</a>
-                                            </li>
-                                            <li>
-                                                <a href="../search/search.action?orderBy=1&type=2&cid=$!info.id" target="navTab" rel="videoList$!info.id" title="$!info.name视频列表">视频列表</a>
+                                                <a href="../album/view.action?orderBy=1&cid=$!info.id" target="navTab" rel="albumList$!info.id" title="$!info.name专辑列表">专辑列表</a>
                                             </li>
                                         </ul>
                                     </li>
@@ -159,17 +156,6 @@
                         <ul class="tree treeFolder">
 							 <li>
                                 <a href="../channel/list.action" target="navTab" rel="rightcontent">频道管理</a>
-                            </li>
-                            <li>
-                                <a>频道属性管理</a>
-                                <ul>
-                                    <li>
-                                        <a href="../channelRelation/list.action" target="navTab" rel="rightcontent">频道属性关系管理</a>
-                                    </li>
-                                    <li>
-                                        <a href="../property/list.action" target="navTab" rel="rightcontentChannel">频道属性管理</a>
-                                    </li>
-                                </ul>
                             </li>
                         </ul>
                     </div>

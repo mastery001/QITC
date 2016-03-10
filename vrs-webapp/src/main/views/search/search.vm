@@ -17,14 +17,8 @@
 	  库内搜索：
 	  <!--<input type="text" name="searchName" value="$!searchName"  title="请输入专辑、视频的id或者标题"  >-->
 	  <input type="text"   name="searchName" value="$!searchName" suggestfields="key" suggesturl="../search/getSuggest.action" lookupgroup="indexSuggest" callback="indexSuggest.key" value class="inp textInput valid" autocomplete="off"> 
-	  <select name="type" onchange="hiddenFilterName(this.value);">
-	  	#if($!channelList.size()>0)
-	  		<option value="1" #if($!type == 1)selected="selected" #end >专辑</option>
-			<option value="2" #if($!type == 2)selected="selected" #end >视频</option>
-	  	#end
-	  </select>
 	 <select name="cid" onchange="showStyleByCid(this.value);">
-		#foreach($!info in $!allChannels)
+		#foreach($!info in $!channelList)
 		 <option #if($!info.id == $!cid) selected="selected" #end value="$!info.id">$!info.name</option>
 		#end
 	</select>	
@@ -33,70 +27,6 @@
 		<option value="1" #if($!nameType == 1)selected="selected" #end>ID</option>
         <option value="2" #if($!nameType == 2)selected="selected" #end>上传者ID</option>
 	  </select>
-	  #if($!type == 2)
-		 &nbsp;	&nbsp;
-		<select name="filterName" id="filterName" onchange="showRelateSel(this.value);">
-			<option value="-1" #if($!filterName == -1) selected="selected"  #end>筛选条件</option>
-			<option value="0" #if($!filterName == 0) selected="selected"  #end>未勾选平台</option>
-			<option value="2" #if($!filterName == 2) selected="selected"  #end>勾选平台</option>
-			<option value="1" #if($!filterName == 1) selected="selected"  #end>视频分类</option>
-		</select>
-		<select name="filterTime" id="filterTime">
-			<option value="-1" #if($!filterTime == -1) selected="selected" #end>全部</option>
-			<option value="1" #if($!filterTime == 1) selected="selected" #end  class="filterTime" disabled="disabled" hidden>一天内</option>
-			<option value="2" #if($!filterTime == 2) selected="selected" #end  class="filterTime" disabled="disabled" hidden>二天内</option>
-			<option value="3" #if($!filterTime == 3) selected="selected" #end  class="filterTime" disabled="disabled" hidden>三天内</option>
-			<option value="7" #if($!filterTime == 7) selected="selected" #end  class="filterTime" disabled="disabled" hidden>一周内</option>
-		</select>
-		<select name="sourceId" id="sourceId_">
-			<option value="" #if($!sourceId == '') selected="selected" #end>视频来源</option>
-			<option value="200001" #if($!sourceId == 200001) selected="selected" #end>网站</option>
-			<option value="200002" #if($!sourceId == 200002) selected="selected" #end>大咔</option>
-			<option value="200003" #if($!sourceId == 200003) selected="selected" #end>PTV</option>
-			<option value="200017" #if($!sourceId == 200017) selected="selected" #end>乐拍</option>
-			<option value="200018" #if($!sourceId == 200018) selected="selected" #end>UGC网页上传</option>
-			<option value="200022" #if($!sourceId == 200022) selected="selected" #end>UGC批量上传</option>
-		</select>
-	  #end
-	  #if($!type == 3 || $!type == 4)
-		<select name="filterName" id="filterName" disabled="disabled" hidden onchange="showRelateSel(this.value);"> 
-			<option value="-1" #if($!filterName == -1) selected="selected"  #end>筛选条件</option>
-			<option value="0" #if($!filterName == 0) selected="selected"  #end>未勾选平台</option>
-			<option value="2" #if($!filterName == 2) selected="selected"  #end>勾选平台</option>
-			<option value="1" #if($!filterName == 1) selected="selected"  #end>视频分类</option>
-		</select>
-		<select name="filterTime" id="filterTime" disabled="disabled" hidden>
-			<option value="-1" #if($!filterTime == -1) selected="selected" #end>全部</option>
-			<option value="1" #if($!filterTime == 1) selected="selected" #end  class="filterTime" disabled="disabled" hidden>一天内</option>
-			<option value="2" #if($!filterTime == 2) selected="selected" #end  class="filterTime" disabled="disabled" hidden>二天内</option>
-			<option value="3" #if($!filterTime == 3) selected="selected" #end  class="filterTime" disabled="disabled" hidden>三天内</option>
-			<option value="7" #if($!filterTime == 7) selected="selected" #end  class="filterTime" disabled="disabled" hidden>一周内</option>
-		</select>
-		<select name="sourceId" id="sourceId_" >
-			<option value="" #if($!sourceId == '') selected="selected"  #end>全部来源</option>
-			<option value="200001" #if($!sourceId == 200001) selected="selected"  #end>无损音乐</option>
-			<option value="200024" #if($!sourceId == 200024) selected="selected"  #end>虾米音乐</option>
-		</select>
-	 #end
-	  #if(!$!type || $!type == 1)
-		 &nbsp;	&nbsp;
-		<select name="filterName" id="filterName" disabled="disabled" hidden onchange="showRelateSel(this.value);"> 
-			<option value="-1" #if($!filterName == -1) selected="selected"  #end>筛选条件</option>
-			<option value="0" #if($!filterName == 0) selected="selected"  #end>未勾选平台</option>
-			<option value="2" #if($!filterName == 2) selected="selected"  #end>勾选平台</option>
-			<option value="1" #if($!filterName == 1) selected="selected"  #end>视频分类</option>
-		</select>
-		<select name="filterTime" id="filterTime" disabled="disabled" hidden>
-			<option value="-1" #if($!filterTime == -1) selected="selected" #end>全部</option>
-			<option value="1" #if($!filterTime == 1) selected="selected" #end  class="filterTime" disabled="disabled" hidden>一天内</option>
-			<option value="2" #if($!filterTime == 2) selected="selected" #end  class="filterTime" disabled="disabled" hidden>二天内</option>
-			<option value="3" #if($!filterTime == 3) selected="selected" #end  class="filterTime" disabled="disabled" hidden>三天内</option>
-			<option value="7" #if($!filterTime == 7) selected="selected" #end  class="filterTime" disabled="disabled" hidden>一周内</option>
-		</select>
-		<select name="sourceId" id="sourceId_" disabled="disabled" hidden>
-			<option value="" #if($!sourceId == '') selected="selected"  #end>全部来源</option>
-		</select>
-	  #end
 	</div>
 	<div class="buttonActive">
 	   <div class="buttonContent">

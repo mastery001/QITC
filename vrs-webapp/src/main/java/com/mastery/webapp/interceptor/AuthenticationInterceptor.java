@@ -8,7 +8,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.mastery.model.Session;
+import com.mastery.model.User;
 import com.mastery.webapp.SessionUtils;
 
 /**
@@ -24,8 +24,8 @@ public class AuthenticationInterceptor implements HandlerInterceptor {
 	@Override
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
 			throws Exception {
-		Session session = SessionUtils.getSession(request);
-		if(session == null && !request.getRequestURI().contains("login")) {
+		User user = SessionUtils.getUser(request);
+		if(user == null && !request.getRequestURI().contains("login")) {
 			logger.info("current url is {}" , request.getRequestURI());
 			response.sendRedirect("/login/login.action");
 			return false;

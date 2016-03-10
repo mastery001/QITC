@@ -2,14 +2,17 @@ package com.mastery.webapp;
 
 import javax.servlet.http.HttpServletRequest;
 
-import com.mastery.common.Constant;
-import com.mastery.model.Session;
+import com.mastery.model.User;
 
 public class SessionUtils {
 	
-	public static Session getSession(HttpServletRequest request) {
-		return (Session) request.getSession().getAttribute(Constant.SESSION_KEY);
+	public static final String USER_KEY = "user";
+	
+	public static User getUser(HttpServletRequest request) {
+		return (User) request.getSession().getAttribute(USER_KEY);
 	}
 	
-	
+	public static void setUser(HttpServletRequest request , User user) {
+		request.getSession().setAttribute(USER_KEY , user);
+	}
 }
