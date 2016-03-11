@@ -2,8 +2,6 @@ package com.mastery.data.base;
 
 import java.io.Serializable;
 
-import com.mastery.dao.ISoftDelete;
-
 public class BaseModel implements ISoftDelete,Serializable{
 
 	/**

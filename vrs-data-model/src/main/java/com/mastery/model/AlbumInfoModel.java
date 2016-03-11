@@ -1,23 +1,17 @@
-package com.mastery.webapp.vo;
+package com.mastery.model;
 
 import java.util.Date;
 
-import com.mastery.data.base.BaseVo;
+import com.mastery.data.base.BaseModel;
 
-/**
- * 专辑信息vo
- * @author zouziwen
- *
- * 2016年3月10日 下午5:20:39
- */
-public class AlbumInfoVo extends BaseVo{
-	
+public class AlbumInfoModel extends BaseModel{
+
 	/**
-	 * 2016年3月10日 下午5:20:26
+	 * 2016年3月11日 下午3:17:56
 	 */
-	private static final long serialVersionUID = 4908588636579941704L;
+	private static final long serialVersionUID = -3525645239173283597L;
+
 	private Long cid;		//频道id
-	private String cname;	// 频道名称
 	private String name;	//专辑名称
 	private String subTitle;	//副标题
 	private String tag;			//标签
@@ -38,13 +32,6 @@ public class AlbumInfoVo extends BaseVo{
 	}
 	public void setName(String name) {
 		this.name = name;
-	}
-	
-	public String getCname() {
-		return cname;
-	}
-	public void setCname(String cname) {
-		this.cname = cname;
 	}
 	public String getSubTitle() {
 		return subTitle;
@@ -76,7 +63,6 @@ public class AlbumInfoVo extends BaseVo{
 	public void setIsEnd(Integer isEnd) {
 		this.isEnd = isEnd;
 	}
-	
 	public String getImg() {
 		return img;
 	}
@@ -97,9 +83,10 @@ public class AlbumInfoVo extends BaseVo{
 	}
 	@Override
 	public String toString() {
-		return "AlbumInfoVo [cid=" + cid + ", cname=" + cname + ", name=" + name + ", subTitle=" + subTitle + ", tag="
-				+ tag + ", description=" + description + ", shortDesc=" + shortDesc + ", isEnd=" + isEnd + ", img="
-				+ img + ", link=" + link + ", releaseDate=" + releaseDate + "]";
+		return "AlbumInfoModel [cid=" + cid + ", name=" + name + ", subTitle=" + subTitle + ", tag=" + tag
+				+ ", description=" + description + ", shortDesc=" + shortDesc + ", isEnd=" + isEnd + ", img=" + img
+				+ ", releaseDate=" + releaseDate + "]";
 	}
-
+	
+	
 }

@@ -35,7 +35,7 @@ public abstract class BaseOperateService<V extends BaseVo, M extends BaseModel> 
 		if(t.getId() == null) {
 			insert(t);
 		}else {
-			getDao().update(convert(t, getModelClass()));
+			getDao().updateBySelective(convert(t, getModelClass()));
 		}
 	}
 

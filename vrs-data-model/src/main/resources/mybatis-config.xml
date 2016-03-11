@@ -6,5 +6,7 @@
     <typeAliases>
 		<typeAlias alias="User" type="com.mastery.model.User" />
 		<typeAlias alias="Channel" type="com.mastery.model.Channel" />
+		<typeAlias alias="AlbumInfo" type="com.mastery.model.AlbumInfoModel" />
+		<typeAlias alias="VideoInfo" type="com.mastery.model.VideoInfoModel" />
     </typeAliases>
 </configuration>

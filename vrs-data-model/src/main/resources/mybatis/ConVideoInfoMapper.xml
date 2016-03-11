@@ -2,11 +2,19 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.mastery.dao.IChannelDao">
+<mapper namespace="com.mastery.dao.IVideoInfoDao">
 	<!-- Result Map -->
-	<resultMap id="BaseResultMap" type="Channel">
+	<resultMap id="BaseResultMap" type="VideoInfo">
 		<result column="id" property="id" />
+		<result column="PID" property="pid" />
 		<result column="NAME" property="name" />
+		<result column="TYPE" property="type" />
+		<result column="ALIAS" property="alias" />
+		<result column="IMG" property="img" />
+		<result column="LINK" property="link" />
+		<result column="DURATION" property="duration" />
+		<result column="DESCRIPTION" property="description" />
+		<result column="IS_HEIGHT" property="isHeight" />
 		<result column="CREATE_TIME" property="createTime" />
 		<result column="UPDATE_TIME" property="updateTime" />
 		<result column="USER_ID" property="userId" />
@@ -14,9 +22,9 @@
 		<result column="DELETED" property="deleted" />
 	</resultMap>
 
-	<!-- con_channel table all fields -->
+	<!-- con_video_info table all fields -->
 	<sql id="Base_Column_List">
-		id,NAME,CREATE_TIME,UPDATE_TIME,USER_ID,UPDATE_UID,DELETED
+		id,PID,NAME,TYPE,ALIAS,DESCRIPTION,DURATION,IMG,LINK,IS_HEIGHT,CREATE_TIME,UPDATE_TIME,USER_ID,UPDATE_UID,DELETED
 	</sql>
 
 	<!-- 查询条件 -->
@@ -26,8 +34,20 @@
 			<if test="id != null  ">
 				and id=#{id}
 			</if>
+			<if test="pid != null  ">
+				and PID=#{pid}
+			</if>
+			<if test="type != null  ">
+				and TYPE=#{type}
+			</if>
 			<if test="name != null  and name != ''">
 				and NAME=#{name}
+			</if>
+			<if test="alias != null  and alias != ''">
+				and ALIAS=#{alias}
+			</if>
+			<if test="isHeight != null">
+				and IS_HEIGHT=#{isHeight}
 			</if>
 			<if test="createTime != null  ">
 				and CREATE_TIME=#{createTime}
@@ -49,9 +69,10 @@
 
 
 	<!-- 插入记录 -->
-	<insert id="insert" parameterType="Channel">
-		insert into con_channel(NAME,CREATE_TIME,USER_ID)
-		values(#{name},NOW(),#{userId})
+	<insert id="insert" parameterType="VideoInfo">
+		insert into
+		con_video_info(PID,NAME,TYPE,ALIAS,DESCRIPTION,DURATION,IMG,LINK,IS_HEIGHT,CREATE_TIME,UPDATE_TIME,USER_ID,UPDATE_UID,DELETED)
+		values(#{pid},#{name},#{type},#{alias},#{description},#{duration},#{img},#{link},#{isHeight},NOW(),#{userId})
 		<selectKey keyProperty="id" resultType="long" order="AFTER">
 			select
 			LAST_INSERT_ID()
@@ -59,42 +80,87 @@
 	</insert>
 
 	<!-- 根据id，修改记录 -->
-	<update id="update" parameterType="Channel">
-		update con_channel set
-		NAME=#{name},UPDATE_UID=#{updateUid},UPDATE_TIME = NOW() where
+	<update id="update" parameterType="VideoInfo">
+		update con_video_info set
+		PID=#{pid},NAME=#{name},ALIAS=#{alias},TYPE=#{type},IMG=#{img},LINK=#{link},DURATION=#{duration},DESCRIPTION=#{description},IS_HEIGHT=#{isHeight},DELETED=#{deleted},UPDATE_UID=#{updateUid},UPDATE_TIME
+		= NOW() where
 		id=#{id}
+	</update>
+
+	<update id="updateBySelective" parameterType="VideoInfo">
+		update con_video_info set
+		<trim suffixOverrides=",">
+			<if test="pid != null  ">
+				PID=#{pid},
+			</if>
+			<if test="name != null  and name != '' ">
+				NAME=#{name},
+			</if>
+			<if test="alias != null  and alias != '' ">
+				ALIAS=#{alias},
+			</if>
+			<if test="type != null  and type != '' ">
+				TYPE=#{type},
+			</if>
+			<if test="img != null  and img != '' ">
+				IMG=#{img},
+			</if>
+			<if test="link != null  and link != '' ">
+				LINK=#{link},
+			</if>
+			<if test="description != null  and description != '' ">
+				DESCRIPTION=#{description},
+			</if>
+			<if test="duration != null ">
+				DURATION=#{duration},
+			</if>
+			<if test="isHeight != null  ">
+				IS_HEIGHT=#{isHeight}
+			</if>
+			<if test="deleted != null  ">
+				DELETED=#{deleted},
+			</if>
+			<if test="userId != null  ">
+				USER_ID=#{userId},
+			</if>
+			<if test="updateUid != null  ">
+				UPDATE_UID=#{updateUid},
+			</if>
+			UPDATE_TIME = NOW()
+		</trim>
+		where ID=#{id}
 	</update>
 
 
 
 	<!-- 逻辑删除，将deleted 改成 1 -->
-	<update id="delete" parameterType="Channel">
-		update con_channel set
+	<update id="delete" parameterType="VideoInfo">
+		update con_video_info set
 		DELETED=1 , UPDATE_TIME = NOW(), UPDATE_UID=#{updateUid} where
-		id =
-		#{id}
+		id
+		=#{id}
 	</update>
 
 	<!-- 列表 -->
 	<select id="selectById" resultMap="BaseResultMap" parameterType="java.lang.Long">
 		select
 		<include refid="Base_Column_List" />
-		from con_channel where ID = #{id}
+		from con_video_info where ID = #{id}
 	</select>
 
 	<!-- 列表总数 -->
 	<select id="selectByModelCount" resultType="java.lang.Integer"
-		parameterType="Channel">
-		select count(1) from con_channel
+		parameterType="VideoInfo">
+		select count(1) from con_video_info
 		<include refid="Example_Where_Clause" />
 	</select>
 
 	<!-- 根据id查询 -->
 	<select id="selectByModel" resultMap="BaseResultMap"
-		parameterType="Channel">
+		parameterType="VideoInfo">
 		select
 		<include refid="Base_Column_List" />
-		from con_channel
+		from con_video_info
 		<include refid="Example_Where_Clause" />
 
 	</select>
@@ -103,7 +169,7 @@
 	<!-- 列表总数 -->
 	<select id="selectByMapCount" resultType="java.lang.Integer"
 		parameterType="java.util.Map">
-		select count(1) from con_channel
+		select count(1) from con_video_info
 		<include refid="Example_Where_Clause" />
 	</select>
 
@@ -112,7 +178,7 @@
 		parameterType="java.util.Map">
 		select
 		<include refid="Base_Column_List" />
-		from con_channel
+		from con_video_info
 		<include refid="Example_Where_Clause" />
 
 	</select>
@@ -121,7 +187,7 @@
 	<select id="selectByBuilder" resultMap="BaseResultMap"
 		parameterType="com.mastery.common.sql.object.SelectSql">
 		SELECT ${selectCondition}
-		FROM con_channel
+		FROM con_video_info
 		<if test="whereCondition != null and whereCondition != '' ">
 			WHERE ${whereCondition}
 		</if>
@@ -137,7 +203,7 @@
 	<select id="selectCountByBuilder" resultType="java.lang.Integer"
 		parameterType="com.mastery.common.sql.object.SelectSql">
 		SELECT count(*)
-		FROM con_channel
+		FROM con_video_info
 		<if test="whereCondition != null and whereCondition != '' ">
 			WHERE ${whereCondition}
 		</if>
