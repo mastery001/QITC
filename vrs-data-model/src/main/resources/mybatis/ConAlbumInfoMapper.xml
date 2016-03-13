@@ -6,7 +6,7 @@
 	<!-- Result Map -->
 	<resultMap id="BaseResultMap" type="AlbumInfo">
 		<result column="id" property="id" />
-		<result column="CID" property="cid" />
+		<result column="cid" property="cid" />
 		<result column="NAME" property="name" />
 		<result column="SUB_TITLE" property="subTitle" />
 		<result column="TAG" property="tag" />
@@ -25,7 +25,7 @@
 
 	<!-- CON_ALBUM_INFO table all fields -->
 	<sql id="Base_Column_List">
-		id,CID,NAME,SUB_TITLE,TAG,IMG,LINK,DESCRIPTION,SHORT_DESC,IS_END,RELEASE_DATE,CREATE_TIME,UPDATE_TIME,USER_ID,UPDATE_UID,DELETED
+		id,cid,NAME,SUB_TITLE,TAG,IMG,LINK,DESCRIPTION,SHORT_DESC,IS_END,RELEASE_DATE,CREATE_TIME,UPDATE_TIME,USER_ID,UPDATE_UID,DELETED
 	</sql>
 
 	<!-- 查询条件 -->
@@ -35,8 +35,8 @@
 			<if test="id != null  ">
 				and id=#{id}
 			</if>
-			<if test="CID != null  ">
-				and CID=#{cid}
+			<if test="cid != null  ">
+				and cid=#{cid}
 			</if>
 			<if test="name != null  and name != ''">
 				and NAME=#{name}
@@ -75,7 +75,7 @@
 	<!-- 插入记录 -->
 	<insert id="insert" parameterType="AlbumInfo">
 		insert into
-		con_album_info(CID,NAME,SUB_TITLE,TAG,IMG,LINK,DESCRIPTION,SHORT_DESC,IS_END,RELEASE_DATE,CREATE_TIME,USER_ID)
+		con_album_info(cid,NAME,SUB_TITLE,TAG,IMG,LINK,DESCRIPTION,SHORT_DESC,IS_END,RELEASE_DATE,CREATE_TIME,USER_ID)
 		values(#{cid},#{name},#{subTitle},#{tag},#{img},#{link},#{description},#{shortDesc},#{isEnd},#{releaseDate},NOW(),#{userId})
 		<selectKey keyProperty="id" resultType="long" order="AFTER">
 			select
@@ -86,7 +86,7 @@
 	<!-- 根据id，修改记录 -->
 	<update id="update" parameterType="AlbumInfo">
 		update con_album_info set
-		CID=#{cid},NAME=#{name},SUB_TITLE=#{subTitle},IMG=#{img},LINK=#{link},,TAG=#{tag},SHORT_DESC=#{shortDesc},DESCRIPTION=#{description},IS_END=#{isEnd},RELEASE_DATE=#{releaseDate},DELETED=#{deleted},UPDATE_UID=#{updateUid},UPDATE_TIME
+		cid=#{cid},NAME=#{name},SUB_TITLE=#{subTitle},IMG=#{img},LINK=#{link},,TAG=#{tag},SHORT_DESC=#{shortDesc},DESCRIPTION=#{description},IS_END=#{isEnd},RELEASE_DATE=#{releaseDate},DELETED=#{deleted},UPDATE_UID=#{updateUid},UPDATE_TIME
 		= NOW() where
 		id=#{id}
 	</update>
@@ -95,7 +95,7 @@
 		update CON_ALBUM_INFO set
 		<trim suffixOverrides=",">
 			<if test="cid != null  ">
-				CID=#{cid},
+				cid=#{cid},
 			</if>
 			<if test="name != null  and name != '' ">
 				NAME=#{name},

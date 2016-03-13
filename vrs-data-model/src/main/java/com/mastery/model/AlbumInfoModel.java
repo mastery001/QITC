@@ -1,7 +1,5 @@
 package com.mastery.model;
 
-import java.util.Date;
-
 import com.mastery.data.base.BaseModel;
 
 public class AlbumInfoModel extends BaseModel{
@@ -20,7 +18,7 @@ public class AlbumInfoModel extends BaseModel{
 	private Integer isEnd;		//是否完结（1 是完结 0 不是）
 	private String img;			//专辑封面图片
 	private String link;		//专辑链接
-	private Date releaseDate;	//上映时间
+	private String releaseDate;	//上映时间
 	public Long getCid() {
 		return cid;
 	}
@@ -75,10 +73,10 @@ public class AlbumInfoModel extends BaseModel{
 	public void setLink(String link) {
 		this.link = link;
 	}
-	public Date getReleaseDate() {
+	public String getReleaseDate() {
 		return releaseDate;
 	}
-	public void setReleaseDate(Date releaseDate) {
+	public void setReleaseDate(String releaseDate) {
 		this.releaseDate = releaseDate;
 	}
 	@Override

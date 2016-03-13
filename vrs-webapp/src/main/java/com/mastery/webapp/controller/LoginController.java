@@ -16,7 +16,7 @@ import com.mastery.service.IUserService;
 import com.mastery.webapp.SessionUtils;
 
 @Controller
-public class LoginController extends BaseContorller{
+public class LoginController extends BaseController{
 
 	private final Logger logger = LoggerFactory.getLogger(getClass());
 	

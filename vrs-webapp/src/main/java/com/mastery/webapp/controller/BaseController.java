@@ -22,7 +22,7 @@ import com.mastery.model.Channel;
  * 
  * @author zouziwen 
  */
-public abstract class BaseContorller {
+public abstract class BaseController {
     
     private final Logger logger  = LoggerFactory.getLogger(this.getClass());
     

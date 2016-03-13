@@ -25,6 +25,7 @@ import org.apache.commons.collections.CollectionUtils;
 import org.springframework.util.StringUtils;
 
 import com.alibaba.fastjson.JSONArray;
+import com.mastery.data.base.BaseVo;
 
 /**
  * <p>
@@ -34,7 +35,20 @@ import com.alibaba.fastjson.JSONArray;
  */
 public class WebappUtil {
 
-	                        /**
+	/**
+	 * 对象为空且id都不为空
+	 * @time 2016年3月12日下午8:34:32
+	 * @param vo
+	 * @return
+	 */
+	public static boolean objectAndIdNotNull(BaseVo vo) {
+		if(vo == null || vo.getId() == null) {
+			return false;
+		}
+		return true;
+	}
+	 
+	/**
      * 去除首位flag
      * 
      * @param str

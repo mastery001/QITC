@@ -5,8 +5,6 @@ import java.util.List;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
@@ -15,9 +13,8 @@ import com.mastery.model.Channel;
 import com.mastery.service.IChannelService;
 
 @Controller
-public class IndexController extends BaseContorller{
+public class IndexController extends BaseController{
 
-	private final Logger logger = LoggerFactory.getLogger(this.getClass());
 	
 	@Resource
 	private IChannelService channelService;

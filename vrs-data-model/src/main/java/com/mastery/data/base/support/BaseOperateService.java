@@ -82,20 +82,41 @@ public abstract class BaseOperateService<V extends BaseVo, M extends BaseModel> 
 	protected <K> K innerConvert(Object convertObject, Class<K> retClass) {
 		K k = super.innerConvert(convertObject, retClass);
 		if (convertObject instanceof BaseModel && k instanceof BaseVo) {
-			BaseModel model = (BaseModel) convertObject;
-			BaseVo vo = (BaseVo) k;
+			M model = (M) convertObject;
+			V vo = (V) k;
 			vo.setCreateTimeStr(CalendarUtil.getDefaultDateString(model.getCreateTime()));
 			vo.setUpdateTimeStr(CalendarUtil.getDefaultDateString(model.getUpdateTime()));
+			convertModelToVo(model ,vo);
 		} else if (convertObject instanceof BaseVo && k instanceof BaseModel) {
-			BaseVo vo = (BaseVo) convertObject;
-			BaseModel model = (BaseModel) k;
+			V vo = (V) convertObject;
+			M model = (M) k;
 			int count = getDao().selectByModelCount((M) model);
 			PagingVO pageVo = PagingUtil.getPagingSupport(vo.getNumPerPage(), count, vo.getPageNum(), 0);
 			vo.setPageVo(pageVo);
 			model.setBaseSize(vo.getNumPerPage());
 			model.setBaseStart(pageVo.getRecordBegin());
+			convertVoToModel(vo ,model);
 		}
 		return k;
 	}
 
+	/**
+	 * 将vo转换成model的实现
+	 * @time 2016年3月12日下午10:13:51
+	 * @param vo
+	 * @param model
+	 */
+	protected void convertVoToModel(V vo , M model) {
+		
+	}
+	
+	/**
+	 * 将model转换成vo的实现
+	 * @time 2016年3月12日下午10:14:09
+	 * @param model
+	 * @param vo
+	 */
+	protected void convertModelToVo(M model , V vo) {
+		
+	}
 }

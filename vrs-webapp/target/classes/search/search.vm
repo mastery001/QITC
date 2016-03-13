@@ -1,8 +1,8 @@
 <div class="pageHeader ovh nore">
 	#if($!pageByAudio)
-		<form method="post" id="pagerForm" action="../search/searchAudioList.action">
+		<form method="post" id="pagerForm" action="">
 	#else
-		<form method="post" id="pagerForm" action="../search/search.action">
+		<form method="post" id="pagerForm" action="">
 	#end
 			<input type="hidden" name="pageNum" value="#if($!pageNum) $!pageNum #else 1 #end" />
 			<input type="hidden" name="numPerPage" value="#if($!numPerPage) $!numPerPage #else 10 #end" />
@@ -12,7 +12,7 @@
 			<input type="hidden" name="tabFlag" value="$!tabFlag"/><!--批量修改翻页使用-->
 			<input type="hidden" name="filterTimeSlave" value="$!filterTime"/>
 		</form>
-	<form method="post" rel="pagerForm" class="pageForm required-validate" action="../search/search.action" onsubmit="return navTabSearch(this);">
+	<form method="post" rel="pagerForm" class="pageForm required-validate" action="" onsubmit="return navTabSearch(this);">
 	<div class="fl">
 	  库内搜索：
 	  <!--<input type="text" name="searchName" value="$!searchName"  title="请输入专辑、视频的id或者标题"  >-->
@@ -55,14 +55,6 @@
 </div>
  
 <script type="text/javascript">
-<!--
-displaySearchWindow = function(){
-if($("#sear_div").is(":visible")==false){
-$("#sear_div").show();}else{
-$("#sear_div").hide();}
-
-}
--->
 var hiddenFilterName = function(val) {
 	var $box = navTab.getCurrentPanel();
 	if (val == 1) {
@@ -144,7 +136,7 @@ var showRelateSel = function(val) {
 		}
 		$.ajax({
 			type: 'POST',
-			url: '../search/styleList.action',
+			url: '',
 			data: 'cid=' + cid,
 			dataType: 'json',
 			cache: false,
@@ -171,7 +163,7 @@ var showRelateSel = function(val) {
 		}
 		$.ajax({
 			type: 'POST',
-			url: '../search/styleList.action',
+			url: '',
 			data: 'cid=' + cid,
 			dataType: 'json',
 			cache: false,
@@ -199,7 +191,7 @@ var showRelateSel = function(val) {
 		var cid = $("select[name='cid']", $box).val();
 		$.ajax({
 			type: 'POST',
-			url: '../search/styleList.action',
+			url: '',
 			data: 'cid=' + cid,
 			dataType: 'json',
 			cache: false,

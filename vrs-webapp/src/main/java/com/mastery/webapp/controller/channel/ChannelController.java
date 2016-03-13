@@ -16,14 +16,15 @@ import org.springframework.web.servlet.ModelAndView;
 import com.mastery.common.Constant;
 import com.mastery.webapp.CallbackType;
 import com.mastery.webapp.SessionUtils;
-import com.mastery.webapp.controller.BaseContorller;
+import com.mastery.webapp.controller.BaseController;
 import com.mastery.webapp.controller.result.DwzResultObject;
 import com.mastery.webapp.service.IChannelVoService;
+import com.mastery.webapp.util.WebappUtil;
 import com.mastery.webapp.vo.ChannelVo;
 
 @Controller
 @RequestMapping("/channel/*")
-public class ChannelController extends BaseContorller {
+public class ChannelController extends BaseController {
 
 	private final Logger logger = LoggerFactory.getLogger(getClass());
 
@@ -41,7 +42,7 @@ public class ChannelController extends BaseContorller {
 
 	@RequestMapping("/toEdit")
 	public ModelAndView toEdit(ChannelVo channelVo, ModelMap map) {
-		if (channelVo != null && channelVo.getId() != null) {
+		if (WebappUtil.objectAndIdNotNull(channelVo)) {
 			ChannelVo vo = channelVoService.selectById(channelVo.getId());
 			map.put("vo", vo);
 		}

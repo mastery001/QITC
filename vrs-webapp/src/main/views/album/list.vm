@@ -14,7 +14,7 @@ td.v_bfpt label{padding-right:6px;}
 	  #foreach($!info in $!list)
 		 <div class="tabli clearf" style="margin:0;border-top:1px dashed #c1c1c1;">
 		  <div class="imgbox">
-		    <a title="专辑 - $!info.nameCn" href="../album/view.action?id=$!info.id" target="navTab" rel="editAlbum$!info.id"><img src="$!{info.img}" width="96" height="128" ></a>
+		    <a title="专辑 - $!info.name" href="../album/view.action?id=$!info.id" target="navTab" rel="editAlbum$!info.id"><img src="$!{info.img}" width="96" height="128" ></a>
 		  </div>
 		  <div class="infobox">
 		    <table class="tabbox" cellpadding="0" cellspacing="0">
@@ -52,11 +52,14 @@ td.v_bfpt label{padding-right:6px;}
 			   <tr>
 				 <td colspan="2" style="width:auto; width:300px" >
 				  <div class="clearf">
-					<a class="buttonActive extend"  href="../search/searchList.action?pid=$!info.id&cid=$!info.category&orderBy=0&type=2&albumName=$!info.nameCn"  target="navTab" title="$!info.nameCn - 专辑视频管理" rel="albumVideoList$!info.id">
+					<a class="buttonActive extend"  href=""  target="navTab" title="$!info.name - 专辑视频管理" rel="albumVideoList$!info.id">
 							<span>专辑视频管理</span>
 					</a>
-					<a class="buttonActive extend" href="../album/view.action?id=$!info.id" target="navTab" rel="editAlbum$!info.id" title="专辑 - $!info.nameCn">
+					<a class="buttonActive extend" href="../album/toEdit.action?id=$!info.id" target="navTab" rel="editAlbum$!info.id" title="专辑 - $!info.name">
 						<span>维护</span>
+					</a>
+					<a class="buttonActive extend"  href="$!{info.link}" target="_blank">
+						<span>专辑播放地址</span>
 					</a>
 
 				  </div>
