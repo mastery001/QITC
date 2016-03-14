@@ -2,6 +2,8 @@ package com.mastery.common;
 
 public class Constant {
 
+	public static final String WEBAPP = "webapp/";
+	
 	public static final String SESSION_KEY = "vrs.session";
 
 	public static final String SINGLE_QUOTES = "'";

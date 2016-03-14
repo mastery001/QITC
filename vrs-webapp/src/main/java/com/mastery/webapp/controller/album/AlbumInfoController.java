@@ -33,6 +33,7 @@ public class AlbumInfoController extends BaseController{
 	public String view(AlbumInfoVo vo , ModelMap map, HttpServletRequest request ) {
 		List<AlbumInfoVo> list = service.selectByModel(vo);
 		map.put("list", list);
+		setPage(vo, map);
 		return "/album/list";
 	}
 
@@ -52,10 +53,11 @@ public class AlbumInfoController extends BaseController{
 		vo.setUpdateUid(SessionUtils.getUser(request).getUsername());
 		vo.setImg(upload.upload(request));
 		service.update(vo);
+		String cname = getChannel(request, vo.getCid()).getName();
 		DwzResultObject dwz = new DwzResultObject();
 		dwz.setForwardUrl("../album/view.action");
 		dwz.setCallbackType(CallbackType.REDIRECT.getValue());
-		dwz.setForwardTitle(getChannel(request, vo.getCid()).getName() + "专辑列表");
+		dwz.setForwardTitle(cname + "专辑列表");
 		return dwz;
 	}
 }

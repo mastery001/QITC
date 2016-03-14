@@ -28,6 +28,8 @@ public class UploadComponent {
 
 	private final Logger logger = LoggerFactory.getLogger(getClass());
 
+	private static String localPath;
+	
 	@Resource
 	private ConfigHolder configHolder;
 
@@ -49,19 +51,23 @@ public class UploadComponent {
 		if (multipartFile.getOriginalFilename().trim().equals("")) {
 			return null;
 		}
+		if(localPath == null) {
+			localPath = request.getSession().getServletContext().getRealPath("/")  + Constant.SEPARATE_XIE;
+		}
 		// 构建上传目录名，即上传目录+/+当前日期，当前为localUpload/当前日期
 		String upload = configHolder.getUploadDir() + Constant.SEPARATE_XIE
 				+ CalendarUtil.getDateString(Calendar.getInstance(), CalendarUtil.SHORT_DATE_FORMAT_NO_DASH);// 上传目录
 		// 获取上传文件的后缀名
 		String suffix = multipartFile.getOriginalFilename()
 				.substring(multipartFile.getOriginalFilename().lastIndexOf(Constant.DOT_STRING));
+//		logger.info("upload is {}" , upload);
 		File sourcePicDir = new File(upload);
 		if (!sourcePicDir.exists()) {
 			sourcePicDir.mkdirs();
 		}
 		String sourcePicName = UUID.randomUUID().toString() + suffix;
 		String sourceFileName = upload + Constant.SEPARATE_XIE + sourcePicName;
-		File file = new File(sourceFileName);
+		File file = new File(localPath + sourceFileName);
 		try {
 			multipartFile.transferTo(file);
 		} catch (Exception e) {

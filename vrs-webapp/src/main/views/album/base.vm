@@ -1,7 +1,7 @@
 <div class="pageFormContent nowrap" layoutH="127">
     <dl>
         <dt>所属频道：</dt>
-        <dd>$!vo.cname  <input type="hidden" name="cid" value="$!vo.cid"/></dd>
+        <dd>$!vo.cname</dd>
     </dl>
     <dl>
         <dt>专辑id：</dt>
@@ -57,7 +57,7 @@
     <dt>专辑封面图片：</dt>
     <dd>
     	#if($!vo.img)
-    	<img src="$!{vo.img}" width="96" height="128" >
+    	<img src="../$!{vo.img}" width="96" height="128" >
     	#end
         <input type="file" name="myFile" />
     </dd>
