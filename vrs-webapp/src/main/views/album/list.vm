@@ -58,6 +58,9 @@ td.v_bfpt label{padding-right:6px;}
 					<a class="buttonActive extend" href="../album/toEdit.action?id=$!info.id" target="navTab" rel="editAlbum$!info.id" title="专辑 - $!info.name">
 						<span>维护</span>
 					</a>
+					<a class="buttonActive extend" href="../album/delete.action?id=$!info.id&cid=$!info.cid" target="ajaxTodo" rel="rightcontent" mask="true" title="确定要删除吗?" title="专辑 - $!info.name">
+						<span>删除</span>
+					</a>
 					<a class="buttonActive extend"  href="$!{info.link}" target="_blank">
 						<span>专辑播放地址</span>
 					</a>

@@ -60,21 +60,21 @@ public class UploadComponent {
 		// 获取上传文件的后缀名
 		String suffix = multipartFile.getOriginalFilename()
 				.substring(multipartFile.getOriginalFilename().lastIndexOf(Constant.DOT_STRING));
-//		logger.info("upload is {}" , upload);
-		File sourcePicDir = new File(upload);
-		if (!sourcePicDir.exists()) {
+		File sourcePicDir = new File(localPath + upload);
+		if (!sourcePicDir.exists()) {	
 			sourcePicDir.mkdirs();
 		}
 		String sourcePicName = UUID.randomUUID().toString() + suffix;
 		String sourceFileName = upload + Constant.SEPARATE_XIE + sourcePicName;
 		File file = new File(localPath + sourceFileName);
+		logger.info("upload is {}" , file.getAbsolutePath());
 		try {
 			multipartFile.transferTo(file);
 		} catch (Exception e) {
 			logger.error(e.getMessage(), e);
 			throw new CommonException("图片生成错误！");
 		}
-		logger.info("upload file is {}" , sourceFileName);
+//		logger.info("upload file is {}" , sourceFileName);
 		return sourceFileName;
 	}
 }
