@@ -11,7 +11,7 @@
 					<ul>
 					    <input type="hidden" id="pid" name="pid" value="$!pid" />
 						#foreach($!info in $!{videoCount.keySet()})
-							<li><a href="../search/searchList.action?pid=$!pid&cid=$!cid&videoType=$!info&orderBy=0&type=2&index=$math.sub($velocityCount,1)&albumName=$!albumName" target="navTab" title="$!albumName - 视频管理" rel="albumVideoList$!pid" class="j-ajax" ><span>$!{videoCount.get($!info)}</span></a></li>
+							<li><a href="../video/list.action?pid=$!pid&pName=$!pName&type=$info" target="navTab" title="$!albumName - 视频管理" rel="albumVideoList$!pid" class="j-ajax" ><span>$!{videoCount.get($!info)}</span></a></li>
 						#end
 					</ul>
 				</div>
@@ -33,7 +33,7 @@
 							<tr #if($velocityCount%2 ==1) class="even_bg" #end>
 								<td>$velocityCount</td>
 								<td width="140" align="center">
-									<a title="视频 - $!info.nameCn" href="../video/view.action?id=$!info.id&cid=$!info.category&returnTabFlag=3" target="navTab" rel="editVideo$!{info.id}">
+									<a title="视频 - $!info.name" href="" target="navTab" rel="editVideo$!{info.id}">
 											<img src="$!{info.img}" style="width:120px;height:90px;" />
 									</a>
 								</td>

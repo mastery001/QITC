@@ -1,5 +1,8 @@
 package com.mastery.common;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class Constant {
 
 	public static final String WEBAPP = "webapp/";
@@ -58,4 +61,24 @@ public class Constant {
 
 	public static final String SUCCESS = "操作成功！";
 	public static final String FAIL = "操作失败！";
+	
+	
+	public static final Map<Integer , String> VIDEO_TYPE = new HashMap<Integer , String>(){
+
+		/**
+		 * 2016年3月17日 下午2:41:45
+		 */
+		private static final long serialVersionUID = -3306746874312066566L;
+		
+		{
+			put(1, "全部视频");
+			put(2, "正片");
+			put(3, "预告片");
+			put(4, "其他");
+			put(5, "花絮");
+			put(6, "资讯");
+			put(7, "特辑");
+			put(8, "片段");
+		}
+	};
 }

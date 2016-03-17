@@ -52,7 +52,7 @@ td.v_bfpt label{padding-right:6px;}
 			   <tr>
 				 <td colspan="2" style="width:auto; width:300px" >
 				  <div class="clearf">
-					<a class="buttonActive extend"  href=""  target="navTab" title="$!info.name - 专辑视频管理" rel="albumVideoList$!info.id">
+					<a class="buttonActive extend"  href="../video/list.action?pid=$!info.id&pName=$!info.name"  target="navTab" title="$!info.name - 专辑视频管理" rel="albumVideoList$!info.id">
 							<span>专辑视频管理</span>
 					</a>
 					<a class="buttonActive extend" href="../album/toEdit.action?id=$!info.id" target="navTab" rel="editAlbum$!info.id" title="专辑 - $!info.name">
