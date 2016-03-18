@@ -1,7 +1,7 @@
 package com.mastery.common;
 
-import java.util.HashMap;
 import java.util.Map;
+import java.util.TreeMap;
 
 public class Constant {
 
@@ -63,7 +63,7 @@ public class Constant {
 	public static final String FAIL = "操作失败！";
 	
 	
-	public static final Map<Integer , String> VIDEO_TYPE = new HashMap<Integer , String>(){
+	public static final Map<Integer , String> VIDEO_TYPE = new TreeMap<Integer , String>(){
 
 		/**
 		 * 2016年3月17日 下午2:41:45

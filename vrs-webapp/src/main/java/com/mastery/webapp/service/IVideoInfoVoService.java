@@ -1,5 +1,7 @@
 package com.mastery.webapp.service;
 
+import java.util.Map;
+
 import com.mastery.data.base.IOperateService;
 import com.mastery.webapp.vo.VideoInfoVo;
 
@@ -10,4 +12,11 @@ import com.mastery.webapp.vo.VideoInfoVo;
  */
 public interface IVideoInfoVoService extends IOperateService<VideoInfoVo>{
 
+	/**
+	 * 获得对应视频类型的个数
+	 * @return
+	 * 2016年3月18日 下午4:18:23
+	 */
+	public Map<Integer , String> getVideoCount();
+	
 }

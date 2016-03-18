@@ -13,10 +13,11 @@
 					<ul>
 					   <li><a href="" target="navTab" title="$!albumName - 视频管理" rel="albumVideoList$!pid" class="j-ajax"><span>视频管理</span></a></li>		
 					   <li><a href="" target="navTab" title="$!albumName - 视频编辑" rel="albumVideoList$!pid" class="j-ajax"><span>视频编辑</span></a></li>	
-					   <a href="" class="button" width="865" height="370" lookupgroup="video" title="批量设置视频属性"><span>批量修改</span></a>			  
-					   <a href="" lookupgroup="addVideoGroup" class="button">
+					   <a href="../video/toEdit.action?pName=$!pName" target="navTab" rel="addVideo$!pid" title="新增$!pName视频" class="button">
 					   		<span>添加视频</span>
 					   </a>
+					   <a href="" class="button" width="865" height="370" lookupgroup="video" title="批量设置视频属性"><span>批量修改</span></a>			  
+					  
 					   <input type="hidden" id="pageNumberIdentifier" value="$!pageNumber">
 					</ul>
 				</div>

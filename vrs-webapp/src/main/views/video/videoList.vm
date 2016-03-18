@@ -11,7 +11,12 @@
 					<ul>
 					    <input type="hidden" id="pid" name="pid" value="$!pid" />
 						#foreach($!info in $!{videoCount.keySet()})
-							<li><a href="../video/list.action?pid=$!pid&pName=$!pName&type=$info" target="navTab" title="$!albumName - 视频管理" rel="albumVideoList$!pid" class="j-ajax" ><span>$!{videoCount.get($!info)}</span></a></li>
+							#if($!info == 1)
+								<li><a href="../video/list.action?pid=$!pid&pName=$!pName" target="navTab" title="$!albumName - 视频管理" rel="albumVideoList$!pid" class="j-ajax" ><span>$!{videoCount.get($!info)}</span></a></li>
+							#else
+								<li><a href="../video/list.action?pid=$!pid&pName=$!pName&type=$info" target="navTab" title="$!albumName - 视频管理" rel="albumVideoList$!pid" class="j-ajax" ><span>$!{videoCount.get($!info)}</span></a></li>
+							#end
+							
 						#end
 					</ul>
 				</div>
@@ -43,8 +48,22 @@
 									&nbsp;&nbsp;
 									</p>
 									<p>视频名称：$!info.name</p>
+									<div >
+										<div class="clearf">
+        									<a class="buttonActive extend" href="../video/toEdit.action?id=$!info.id&pName=$!pName" target="navTab" rel="editVideo$!info.id" title="专辑 - $!info.name">
+                        						<span>维护</span>
+                        					</a>
+                        					<a class="buttonActive extend" href="../video/delete.action?id=$!info.id&pid=$!info.pid&pName=$!pName" target="ajaxTodo" rel="rightcontent" mask="true" title="确定要删除吗?" title="专辑 - $!info.name">
+                        						<span>删除</span>
+                        					</a>
+                        					<a class="buttonActive extend"  href="$!{info.link}" target="_blank">
+                        						<span>播放页</span>
+                        					</a>
+                                        </div>
+                                </div>
 								</td>
-								<td>$!info.pName</td>
+								<td>$!pName</td>
+								
 							</tr>
 							#end
 							#else

@@ -1,0 +1,24 @@
+
+#parse("search/search.vm")
+<div class="pageContent">
+	<form method="post" action="../video/edit.action?pid=$!vo.pid" class="pageForm required-validate" enctype="multipart/form-data" onsubmit="return iframeCallback(this, navTabAjaxDone);">
+	<div class="tabs">
+		<div class="tabsHeader">
+			<div class="tabsHeaderContent">
+				<ul>
+					<li><a href="javascript:;"><span>视频信息</span></a></li>
+				</ul>
+			</div>
+		</div>
+
+		<div class="tabsContent" style="padding-top:0;">
+			#parse("video/base.vm")
+		</div>
+		<div class="tabsFooter">
+		
+			<div class="tabsFooterContent"></div>
+		</div>
+	</div>
+		#parse("button/footButtonBar.vm")
+	</form>
+</div>
