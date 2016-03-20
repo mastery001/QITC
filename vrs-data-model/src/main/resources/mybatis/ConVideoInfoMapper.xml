@@ -6,7 +6,7 @@
 	<!-- Result Map -->
 	<resultMap id="BaseResultMap" type="VideoInfo">
 		<result column="id" property="id" />
-		<result column="PID" property="pid" />
+		<result column="pid" property="pid" />
 		<result column="NAME" property="name" />
 		<result column="TYPE" property="type" />
 		<result column="ALIAS" property="alias" />
@@ -24,7 +24,7 @@
 
 	<!-- con_video_info table all fields -->
 	<sql id="Base_Column_List">
-		id,PID,NAME,TYPE,ALIAS,DESCRIPTION,DURATION,IMG,LINK,IS_HEIGHT,CREATE_TIME,UPDATE_TIME,USER_ID,UPDATE_UID,DELETED
+		id,pid,NAME,TYPE,ALIAS,DESCRIPTION,DURATION,IMG,LINK,IS_HEIGHT,CREATE_TIME,UPDATE_TIME,USER_ID,UPDATE_UID,DELETED
 	</sql>
 
 	<!-- 查询条件 -->
@@ -35,7 +35,7 @@
 				and id=#{id}
 			</if>
 			<if test="pid != null  ">
-				and PID=#{pid}
+				and pid=#{pid}
 			</if>
 			<if test="type != null  ">
 				and TYPE=#{type}
@@ -71,7 +71,7 @@
 	<!-- 插入记录 -->
 	<insert id="insert" parameterType="VideoInfo">
 		insert into
-		con_video_info(PID,NAME,TYPE,ALIAS,DESCRIPTION,DURATION,IMG,LINK,IS_HEIGHT,CREATE_TIME,UPDATE_TIME,USER_ID,UPDATE_UID,DELETED)
+		con_video_info(pid,NAME,TYPE,ALIAS,DESCRIPTION,DURATION,IMG,LINK,IS_HEIGHT,CREATE_TIME,USER_ID)
 		values(#{pid},#{name},#{type},#{alias},#{description},#{duration},#{img},#{link},#{isHeight},NOW(),#{userId})
 		<selectKey keyProperty="id" resultType="long" order="AFTER">
 			select
@@ -82,7 +82,7 @@
 	<!-- 根据id，修改记录 -->
 	<update id="update" parameterType="VideoInfo">
 		update con_video_info set
-		PID=#{pid},NAME=#{name},ALIAS=#{alias},TYPE=#{type},IMG=#{img},LINK=#{link},DURATION=#{duration},DESCRIPTION=#{description},IS_HEIGHT=#{isHeight},DELETED=#{deleted},UPDATE_UID=#{updateUid},UPDATE_TIME
+		pid=#{pid},NAME=#{name},ALIAS=#{alias},TYPE=#{type},IMG=#{img},LINK=#{link},DURATION=#{duration},DESCRIPTION=#{description},IS_HEIGHT=#{isHeight},DELETED=#{deleted},UPDATE_UID=#{updateUid},UPDATE_TIME
 		= NOW() where
 		id=#{id}
 	</update>
@@ -91,7 +91,7 @@
 		update con_video_info set
 		<trim suffixOverrides=",">
 			<if test="pid != null  ">
-				PID=#{pid},
+				pid=#{pid},
 			</if>
 			<if test="name != null  and name != '' ">
 				NAME=#{name},
@@ -115,7 +115,7 @@
 				DURATION=#{duration},
 			</if>
 			<if test="isHeight != null  ">
-				IS_HEIGHT=#{isHeight}
+				IS_HEIGHT=#{isHeight},
 			</if>
 			<if test="deleted != null  ">
 				DELETED=#{deleted},
@@ -146,6 +146,21 @@
 		select
 		<include refid="Base_Column_List" />
 		from con_video_info where ID = #{id}
+	</select>
+	
+	<!-- 模糊搜索列表 -->
+	<select id="selectVagueByModel" resultMap="BaseResultMap" parameterType="VideoInfo">
+		select
+		<include refid="Base_Column_List" />
+		from con_video_info where 1=1 and DELETED != 1
+		<trim suffixOverrides=",">
+			<if test="id != null  ">
+				and id=#{id}
+			</if>
+			<if test="name != null  and name != '' ">
+				and NAME like CONCAT('%',#{name},'%') 
+			</if>
+		</trim>
 	</select>
 
 	<!-- 列表总数 -->

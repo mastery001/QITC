@@ -17,14 +17,16 @@
     <dl>
         <dt>别名：</dt>
         <dd>
-            <input type="text" name="subTitle" #if($!vo.alias)value="$!vo.alias"#end />
+            <input type="text" name="alias" #if($!vo.alias)value="$!vo.alias"#end />
         </dd>
     </dl>
 	 <dl>
         <dt>视频类型：</dt>
         <dd>
-			#foreach($!info in $!{videoCount.keySet()})
-				<input type="radio" name="type" #if($!info == $!vo.type) checked="checked" #end />
+			#foreach($!info in $!{videoType.keySet()})
+				#if($!info != 1) 
+					<label><input type="radio" name="type" value=$!info #if($!info == $!vo.type) checked="checked" #end >$!{videoType.get($!info)}</label>
+				#end
 			#end
           
         </dd>
@@ -45,12 +47,12 @@
     <dl>
         <dt>是否高清：</dt>
         <dd>
-            <input type="radio" name="isHeight"  value="1" #if($!vo.isHeight == 1) checked="checked" #end>是
-                    <input type="radio" name="isHeight"  value="0" #if($!vo.isHeight != 1) checked="checked"#end>否
+            <label><input type="radio" name="isHeight"  value="1" #if($!vo.isHeight == 1) checked="checked" #end>是</label>
+            <label><input type="radio" name="isHeight"  value="0" #if($!vo.isHeight != 1) checked="checked"#end>否</label>
 </dd>
 </dl>
 <dl>
-    <dt>专辑封面图片：</dt>
+    <dt>视频封面图片：</dt>
     <dd>
     	#if($!vo.img)
     	<img src="../$!{vo.img}" width="96" height="128" >

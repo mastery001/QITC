@@ -49,8 +49,8 @@
     <dl>
         <dt>是否完结：</dt>
         <dd>
-            <input type="radio" name="isEnd"  value="1" #if($!vo.isEnd == 1) checked="checked" #end>是
-                    <input type="radio" name="isEnd"  value="0" #if($!vo.isEnd != 1) checked="checked"#end>否
+            <label><input type="radio" name="isEnd"  value="1" #if($!vo.isEnd == 1) checked="checked" #end>是</label>
+            <label><input type="radio" name="isEnd"  value="0" #if($!vo.isEnd != 1) checked="checked"#end>否</label>
 </dd>
 </dl>
 <dl>

@@ -1,6 +1,7 @@
 package com.mastery.dao;
 
 import com.mastery.data.base.IBaseDao;
+import com.mastery.data.base.IBaseVagueSelector;
 import com.mastery.model.VideoInfoModel;
 
 /**
@@ -9,6 +10,6 @@ import com.mastery.model.VideoInfoModel;
  *
  * 2016年3月11日 下午3:22:20
  */
-public interface IVideoInfoDao extends IBaseDao<VideoInfoModel>{
+public interface IVideoInfoDao extends IBaseDao<VideoInfoModel>, IBaseVagueSelector<VideoInfoModel>{
 
 }

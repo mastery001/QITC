@@ -8,6 +8,7 @@ import com.mastery.common.PagingUtil.PagingVO;
 import com.mastery.data.base.BaseModel;
 import com.mastery.data.base.BaseVo;
 import com.mastery.data.base.IBaseDao;
+import com.mastery.data.base.IBaseVagueSelector;
 import com.mastery.data.base.IOperateService;
 
 /**
@@ -20,7 +21,7 @@ import com.mastery.data.base.IOperateService;
  *            2016年3月9日 上午10:00:22
  */
 public abstract class BaseOperateService<V extends BaseVo, M extends BaseModel> extends AbstractConvert
-		implements IOperateService<V> {
+		implements IOperateService<V> , IBaseVagueSelector<V> {
 
 	public BaseOperateService() {
 	}
@@ -33,6 +34,7 @@ public abstract class BaseOperateService<V extends BaseVo, M extends BaseModel> 
 	@Override
 	public void update(V t) {
 		if(t.getId() == null) {
+			t.setUserId(t.getUpdateUid());
 			insert(t);
 		}else {
 			getDao().updateBySelective(convert(t, getModelClass()));
@@ -49,6 +51,16 @@ public abstract class BaseOperateService<V extends BaseVo, M extends BaseModel> 
 	@Override
 	public List<V> selectByModel(V t) {
 		return convert(getDao().selectByModel(convert(t, getModelClass())), getVoClass());
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<V> selectVagueByModel(V t) {
+		if(getDao() instanceof IBaseVagueSelector) {
+			IBaseVagueSelector<M> selector = (IBaseVagueSelector<M>)getDao();
+			return convert(selector.selectVagueByModel(convert(t, getModelClass())), getVoClass());
+		}
+		return null;
 	}
 
 	@Override
@@ -76,7 +88,6 @@ public abstract class BaseOperateService<V extends BaseVo, M extends BaseModel> 
 	 */
 	public abstract Class<V> getVoClass();
 	
-
 	@SuppressWarnings("unchecked")
 	@Override
 	protected <K> K innerConvert(Object convertObject, Class<K> retClass) {

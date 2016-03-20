@@ -1,7 +1,7 @@
 
 #parse("search/search.vm")
 <div class="pageContent">
-	<form method="post" action="../video/edit.action?pid=$!vo.pid" class="pageForm required-validate" enctype="multipart/form-data" onsubmit="return iframeCallback(this, navTabAjaxDone);">
+	<form method="post" action="../video/edit.action?pid=$!vo.pid&pname=$!vo.pname" class="pageForm required-validate" enctype="multipart/form-data" onsubmit="return iframeCallback(this, navTabAjaxDone);">
 	<div class="tabs">
 		<div class="tabsHeader">
 			<div class="tabsHeaderContent">

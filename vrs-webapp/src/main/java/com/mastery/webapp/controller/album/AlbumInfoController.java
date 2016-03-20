@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.mastery.common.Constant;
+import com.mastery.common.exception.BusinessException;
 import com.mastery.webapp.CallbackType;
 import com.mastery.webapp.SessionUtils;
 import com.mastery.webapp.UploadComponent;
@@ -38,6 +39,26 @@ public class AlbumInfoController extends BaseController {
 	public String view(AlbumInfoVo vo, ModelMap map, HttpServletRequest request) {
 		List<AlbumInfoVo> list = service.selectByModel(vo);
 		map.put("list", list);
+		map.put("cid", vo.getCid());
+		setPage(vo, map);
+		return "/album/list";
+	}
+	
+	@RequestMapping("/search")
+	public String search(String searchName , Integer nameType , AlbumInfoVo vo, ModelMap map, HttpServletRequest request) {
+		if(nameType == 0) {
+			vo.setName(searchName);
+		}else {
+			try {
+				Long id = Long.parseLong(searchName);
+				vo.setId(id);
+			} catch (NumberFormatException e) {
+				throw new BusinessException("按id搜索时，只能输入数字");
+			}
+		}
+		List<AlbumInfoVo> list = service.selectVagueByModel(vo);
+		map.put("list", list);
+		map.put("cid", vo.getCid());
 		setPage(vo, map);
 		return "/album/list";
 	}

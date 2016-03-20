@@ -1,6 +1,7 @@
 package com.mastery.dao;
 
 import com.mastery.data.base.IBaseDao;
+import com.mastery.data.base.IBaseVagueSelector;
 import com.mastery.model.AlbumInfoModel;
 
 /**
@@ -9,6 +10,6 @@ import com.mastery.model.AlbumInfoModel;
  *
  * 2016年3月11日 下午3:21:34
  */
-public interface IAlbumInfoDao extends IBaseDao<AlbumInfoModel>{
+public interface IAlbumInfoDao extends IBaseDao<AlbumInfoModel> , IBaseVagueSelector<AlbumInfoModel>{
 
 }

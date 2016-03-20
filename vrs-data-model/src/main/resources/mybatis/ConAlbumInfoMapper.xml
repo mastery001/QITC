@@ -170,6 +170,24 @@
 		<include refid="Example_Where_Clause" />
 
 	</select>
+	
+	<!-- 模糊搜索列表 -->
+	<select id="selectVagueByModel" resultMap="BaseResultMap" parameterType="AlbumInfo">
+		select
+		<include refid="Base_Column_List" />
+		from CON_ALBUM_INFO where 1=1 and DELETED != 1
+		<trim suffixOverrides=",">
+			<if test="id != null  ">
+				and id=#{id}
+			</if>
+			<if test="cid != null  ">
+				and cid=#{cid}
+			</if>
+			<if test="name != null  and name != '' ">
+				and NAME like CONCAT('%',#{name},'%') 
+			</if>
+		</trim>
+	</select>
 
 
 	<!-- 列表总数 -->

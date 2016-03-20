@@ -8,24 +8,15 @@
 			<input type="hidden" name="numPerPage" value="#if($!numPerPage) $!numPerPage #else 10 #end" />
 			<input type="hidden" name="pid" value="$!pid"/>
 			<input type="hidden" name="videoType" value="$!videoType"/>
-			<input type="hidden" name="subCategory" value="$!subCategory"/>
-			<input type="hidden" name="tabFlag" value="$!tabFlag"/><!--批量修改翻页使用-->
-			<input type="hidden" name="filterTimeSlave" value="$!filterTime"/>
 		</form>
 	<form method="post" rel="pagerForm" class="pageForm required-validate" action="" onsubmit="return navTabSearch(this);">
 	<div class="fl">
-	  库内搜索：
+	  搜索：
 	  <!--<input type="text" name="searchName" value="$!searchName"  title="请输入专辑、视频的id或者标题"  >-->
-	  <input type="text"   name="searchName" value="$!searchName" suggestfields="key" suggesturl="../search/getSuggest.action" lookupgroup="indexSuggest" callback="indexSuggest.key" value class="inp textInput valid" autocomplete="off"> 
-	 <select name="cid" onchange="showStyleByCid(this.value);">
-		#foreach($!info in $!channelList)
-		 <option #if($!info.id == $!cid) selected="selected" #end value="$!info.id">$!info.name</option>
-		#end
-	</select>	
+	  <input type="text"   name="searchName" value="$!searchName" suggestfields="key" suggesturl="" lookupgroup="indexSuggest" callback="indexSuggest.key" value class="inp textInput valid" autocomplete="off"> 
 	  <select name="nameType" >
-	    <option value="0" #if($!nameType == 0)selected="selected" #end>标题</option>
+	    <option value="0" #if($!nameType == 0)selected="selected" #end>名称</option>
 		<option value="1" #if($!nameType == 1)selected="selected" #end>ID</option>
-        <option value="2" #if($!nameType == 2)selected="selected" #end>上传者ID</option>
 	  </select>
 	</div>
 	<div class="buttonActive">
@@ -33,81 +24,11 @@
 		 <button type="submit">搜索</button>
 	   </div>
 	</div>
-	 <!--  <div class="buttonActive" id="more_search">
-	    <div class="buttonContent">
-		<button type="button" name="0" onclick="displaySearchWindow();">高级检索</button>
-		</div>
-		
-	</div>-->
-	<div class="fr tar paixu">
-	   排序方式： 
-	   <select name="orderBy" >
-	    <option value="0">录入时间</option>
-		<option value="1"  #if($!orderBy ==1) selected="selected" #end>修改时间</option>
-	   </select>
-	   <select name="flag">
-		<option value="0">降序</option>
-	    <option value="1"   #if($!flag ==1) selected="selected" #end>升序</option>
-	   </select>
-	</div>
 	<div class="newclear"></div>
 	</form>
 </div>
  
 <script type="text/javascript">
-var hiddenFilterName = function(val) {
-	var $box = navTab.getCurrentPanel();
-	if (val == 1) {
-		$("#filterName",$box).hide();
-		$("#filterTime",$box).hide();
-		$("#filterName",$box).attr('disabled','disabled');
-		$("#filterTime",$box).attr('disabled','disabled');
-		
-		$("#sourceId_",$box).html("");
-		var option = '<option value="" #if($!sourceId == '') selected="selected"  #end>全部来源</option>';
-		$("#sourceId_",$box).html(option);
-		$("#sourceId_",$box).hide();
-		$("#sourceId_",$box).attr('disabled','disabled');
-	}
-	
-	if (val == 2) {
-		$("#filterName",$box).removeAttr('disabled');
-		$("#filterTime",$box).removeAttr('disabled');
-		$("#filterName",$box).removeAttr('hidden');
-		$("#filterTime",$box).removeAttr('hidden');
-		$("#filterName",$box).show();
-		$("#filterTime",$box).show();
-		
-		var option = '<option value="" #if($!sourceId == '') selected="selected" #end>视频来源</option>';
-		option += '<option value="200001" #if($!sourceId == 200001) selected="selected" #end>网站</option>';
-		option += '<option value="200002" #if($!sourceId == 200002) selected="selected" #end>大咔</option>';
-		option += '<option value="200003" #if($!sourceId == 200003) selected="selected" #end>PTV</option>';
-		option += '<option value="200017" #if($!sourceId == 200017) selected="selected" #end>乐拍</option>';
-		option += '<option value="200018" #if($!sourceId == 200018) selected="selected" #end>UGC网页上传</option>';
-		option += '<option value="200022" #if($!sourceId == 200022) selected="selected" #end>UGC批量上传</option>';
-		$("#sourceId_",$box).html("");
-		$("#sourceId_",$box).html(option);
-		$("#sourceId_",$box).removeAttr('disabled');
-		$("#sourceId_",$box).removeAttr('hidden');
-		$("#sourceId_",$box).show();
-	}
-	
-	if (val == 3 || val == 4) {
-		$("#filterName",$box).hide();
-		$("#filterTime",$box).hide();
-		$("#filterName",$box).attr('disabled','disabled');
-		$("#filterTime",$box).attr('disabled','disabled');
-		
-		var option = '<option value="" #if($!sourceId == '') selected="selected"  #end>全部来源</option>';
-		option += '<option value="200001" #if($!sourceId == 200001) selected="selected"  #end>无损音乐</option>';
-		option += '<option value="200024" #if($!sourceId == 200024) selected="selected"  #end>虾米音乐</option>';
-		$("#sourceId_",$box).html("");
-		$("#sourceId_",$box).html(option);
-		$("#sourceId_",$box).removeAttr('disabled');
-		$("#sourceId_",$box).removeAttr('hidden');
-		$("#sourceId_",$box).show();
-	}
-}
 
 var showRelateSel = function(val) {
 	$box = navTab.getCurrentPanel();

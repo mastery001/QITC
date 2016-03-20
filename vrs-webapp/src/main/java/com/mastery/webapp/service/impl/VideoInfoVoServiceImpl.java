@@ -48,17 +48,25 @@ public class VideoInfoVoServiceImpl extends BaseOperateService<VideoInfoVo, Vide
 	public void insert(VideoInfoVo t) {
 		super.insert(t);
 		videoCount.put(t.getType(), videoCount.get(t.getType()).countIncrement());
+		videoCount.put(Constant.ONE, videoCount.get(Constant.ONE).countIncrement());
+		build();
 	}
 
 	
-	
 	@Override
 	public void update(VideoInfoVo t) {
-		VideoInfoModel oldModel = getDao().selectById(t.getId());
+		VideoInfoModel oldModel = null;
+		if(t.getId() != null) {
+			oldModel = getDao().selectById(t.getId());
+		}
 		super.update(t);
-		if(t.getType() != null) {
-			videoCount.put(t.getType(), videoCount.get(t.getType()).countIncrement());
-			videoCount.put(oldModel.getType(), videoCount.get(oldModel.getType()).countDecrement());
+		
+		if(oldModel != null && t.getType() != null) {
+			if(!t.getType().equals(oldModel.getType())) {
+				videoCount.put(t.getType(), videoCount.get(t.getType()).countIncrement());
+				videoCount.put(oldModel.getType(), videoCount.get(oldModel.getType()).countDecrement());
+				build();
+			}
 		}
 	}
 
@@ -66,28 +74,53 @@ public class VideoInfoVoServiceImpl extends BaseOperateService<VideoInfoVo, Vide
 	public void delete(VideoInfoVo t) {
 		super.delete(t);
 		videoCount.put(t.getType(), videoCount.get(t.getType()).countDecrement());
+		videoCount.put(Constant.ONE, videoCount.get(Constant.ONE).countDecrement());
+		build();
 	}
 
 	@Override
 	public List<VideoInfoVo> selectByModel(VideoInfoVo t) {
 		List<VideoInfoVo> list = super.selectByModel(t);
+		int all = list == null ? 0 : list.size();
+		// 初始化
 		if(videoCount.isEmpty()) {
+			for(Iterator<Integer> it = Constant.VIDEO_TYPE.keySet().iterator() ; it.hasNext();) {
+				Integer type = it.next();
+				videoCount.put(type, new VideoCount(Constant.VIDEO_TYPE.get(type), 0));
+			}
+		}
+		if(!isBuild && all !=0) {
 			
 			for(Iterator<Integer> it = Constant.VIDEO_TYPE.keySet().iterator() ; it.hasNext();) {
 				Integer type = it.next();
-				String video_type = Constant.VIDEO_TYPE.get(type);
-				VideoCount v = null;
 				if(type == 1) {
-					v = new VideoCount(video_type, list.size());
+					videoCount.get(type).setCount(all);
 				}else {
 					VideoInfoModel model = new VideoInfoModel();
 					model.setType(type);
-					v = new VideoCount(video_type , getDao().selectByModelCount(model));
+					videoCount.get(type).setCount(getDao().selectByModelCount(model));
 				}
-				videoCount.put(type,v);
 			}
-			build();
 		}
+		build();
+		return list;
+	}
+
+	@Override
+	public List<VideoInfoVo> selectVagueByModel(VideoInfoVo t) {
+		List<VideoInfoVo> list = super.selectVagueByModel(t);
+		int all = list == null ? 0 : list.size();
+		for(Iterator<Integer> it = videoCount.keySet().iterator() ; it.hasNext();) {
+			videoCount.get(it.next()).setCount(0);
+		}
+		if(all !=0 ) {
+			for(VideoInfoVo vo : list) {
+				videoCount.get(vo.getType()).countIncrement();
+			}
+			videoCount.get(Constant.ONE).setCount(all);
+		}
+		build();
+		isBuild = false;
 		return list;
 	}
 
@@ -113,13 +146,16 @@ public class VideoInfoVoServiceImpl extends BaseOperateService<VideoInfoVo, Vide
 		
 		public VideoCount countIncrement() {
 			this.count ++;
-			build();
 			return this;
 		}
 		
 		public VideoCount countDecrement() {
 			this.count--;
-			build();
+			return this;
+		}
+		
+		public VideoCount setCount(int count ) {
+			this.count = count;
 			return this;
 		}
 	}
@@ -131,7 +167,10 @@ public class VideoInfoVoServiceImpl extends BaseOperateService<VideoInfoVo, Vide
 			VideoCount obj = videoCount.get(type);
 			videoCountStr.put(type, obj.video_tye + obj.count);
 		}
+		isBuild = true;
 	}
+	
+	private boolean isBuild = false;
 	
 	private final Map<Integer, String> videoCountStr = new TreeMap<Integer, String>();
 }

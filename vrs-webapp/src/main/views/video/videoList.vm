@@ -12,9 +12,9 @@
 					    <input type="hidden" id="pid" name="pid" value="$!pid" />
 						#foreach($!info in $!{videoCount.keySet()})
 							#if($!info == 1)
-								<li><a href="../video/list.action?pid=$!pid&pName=$!pName" target="navTab" title="$!albumName - 视频管理" rel="albumVideoList$!pid" class="j-ajax" ><span>$!{videoCount.get($!info)}</span></a></li>
+								<li><a href="../video/list.action?pid=$!pid&pname=$!pName" target="navTab" title="$!pName - 视频管理" rel="albumVideoList$!pid" class="j-ajax" ><span>$!{videoCount.get($!info)}</span></a></li>
 							#else
-								<li><a href="../video/list.action?pid=$!pid&pName=$!pName&type=$info" target="navTab" title="$!albumName - 视频管理" rel="albumVideoList$!pid" class="j-ajax" ><span>$!{videoCount.get($!info)}</span></a></li>
+								<li><a href="../video/list.action?pid=$!pid&pname=$!pName&type=$info" target="navTab" title="$!pName - 视频管理" rel="albumVideoList$!pid" class="j-ajax" ><span>$!{videoCount.get($!info)}</span></a></li>
 							#end
 							
 						#end
@@ -38,8 +38,8 @@
 							<tr #if($velocityCount%2 ==1) class="even_bg" #end>
 								<td>$velocityCount</td>
 								<td width="140" align="center">
-									<a title="视频 - $!info.name" href="" target="navTab" rel="editVideo$!{info.id}">
-											<img src="$!{info.img}" style="width:120px;height:90px;" />
+									<a title="视频 - $!info.name" href="../video/toEdit.action?id=$!info.id&pName=$!pName" target="navTab" rel="editVideo$!{info.id}">
+											<img src="../$!{info.img}" style="width:120px;height:90px;" />
 									</a>
 								</td>
 								<td>
@@ -48,12 +48,14 @@
 									&nbsp;&nbsp;
 									</p>
 									<p>视频名称：$!info.name</p>
+									<p>别名：$!info.alias</p>
+									<p>视频类型：$!{videoType.get($!info.type)}</p>
 									<div >
 										<div class="clearf">
-        									<a class="buttonActive extend" href="../video/toEdit.action?id=$!info.id&pName=$!pName" target="navTab" rel="editVideo$!info.id" title="专辑 - $!info.name">
+        									<a class="buttonActive extend" href="../video/toEdit.action?id=$!info.id&pname=$!pName" target="navTab" rel="editVideo$!info.id" title="专辑 - $!info.name">
                         						<span>维护</span>
                         					</a>
-                        					<a class="buttonActive extend" href="../video/delete.action?id=$!info.id&pid=$!info.pid&pName=$!pName" target="ajaxTodo" rel="rightcontent" mask="true" title="确定要删除吗?" title="专辑 - $!info.name">
+                        					<a class="buttonActive extend" href="../video/delete.action?id=$!info.id&pid=$!info.pid&pname=$!pName&type=$!info.type" target="ajaxTodo" rel="rightcontent" mask="true" title="确定要删除吗?" title="专辑 - $!info.name">
                         						<span>删除</span>
                         					</a>
                         					<a class="buttonActive extend"  href="$!{info.link}" target="_blank">

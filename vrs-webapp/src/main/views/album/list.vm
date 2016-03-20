@@ -5,7 +5,29 @@ td.v_bfpt label{padding-right:6px;}
 .extend{margin-right: 25px;}
 </style>
 <!--引用搜索-->
-#parse("search/search.vm")
+<div class="pageHeader">
+    <form  class="pageForm required-validate"  onsubmit="return navTabSearch(this);"  id="pagerForm" action="../album/search.action?cid=$!cid" method="post">
+    <div class="searchBar">
+        <table class="searchContent">
+            <tbody><tr>
+				<td><label>搜索：</label>
+					<input maxlength="30" type="text" size="30" name="searchName" #if($!name)value=$!name #end >
+				</td>
+                <td> <select name="nameType" >
+				    <option value="0" #if($!nameType == 0)selected="selected" #end>名称</option>
+					<option value="1" #if($!nameType == 1)selected="selected" #end>ID</option>
+				  </select>
+				 </td>
+                
+				<td>
+					<div class="buttonActive"><div class="buttonContent"><button type="submit">检  索</button></div></div>
+                </td>
+            </tr>
+			</tbody>
+		</table>
+    </div>
+    </form>
+</div>
 <div class="pageContent">
   <!-- search list -->
 	<div class="tabList">
@@ -52,7 +74,7 @@ td.v_bfpt label{padding-right:6px;}
 			   <tr>
 				 <td colspan="2" style="width:auto; width:300px" >
 				  <div class="clearf">
-					<a class="buttonActive extend"  href="../video/list.action?pid=$!info.id&pName=$!info.name"  target="navTab" title="$!info.name - 专辑视频管理" rel="albumVideoList$!info.id">
+					<a class="buttonActive extend"  href="../video/list.action?pid=$!info.id&pname=$!info.name"  target="navTab" title="$!info.name - 专辑视频管理" rel="albumVideoList$!info.id">
 							<span>专辑视频管理</span>
 					</a>
 					<a class="buttonActive extend" href="../album/toEdit.action?id=$!info.id" target="navTab" rel="editAlbum$!info.id" title="专辑 - $!info.name">

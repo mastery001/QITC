@@ -14,7 +14,6 @@ import com.mastery.webapp.vo.AlbumInfoVo;
 @Service("albumInfoVoServivce")
 public class AlbumInfoVoServiceImpl extends BaseOperateService<AlbumInfoVo, AlbumInfoModel> implements IAlbumInfoVoService{
 
-	
 	@Resource
 	private IAlbumInfoDao albumInfoDao;
 	

@@ -2,6 +2,7 @@ package com.mastery.webapp.service;
 
 import java.util.Map;
 
+import com.mastery.data.base.IBaseVagueSelector;
 import com.mastery.data.base.IOperateService;
 import com.mastery.webapp.vo.VideoInfoVo;
 
@@ -10,7 +11,7 @@ import com.mastery.webapp.vo.VideoInfoVo;
  * @author mastery
  * @time 2016年3月12日下午8:02:18
  */
-public interface IVideoInfoVoService extends IOperateService<VideoInfoVo>{
+public interface IVideoInfoVoService extends IOperateService<VideoInfoVo>, IBaseVagueSelector<VideoInfoVo>{
 
 	/**
 	 * 获得对应视频类型的个数
