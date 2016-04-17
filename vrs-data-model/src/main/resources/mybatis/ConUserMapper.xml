@@ -29,6 +29,9 @@ where 1=1
 	<if test="fullname != null  and fullname != ''   ">
 		and fullname=#{fullname}
 	</if>
+	<if test="password != null  and password != ''   ">
+		and password=#{password}
+	</if>
 	<if test="baseStart != null and baseSize != null "> 
 	 limit #{baseStart}, #{baseSize} 
 	</if>

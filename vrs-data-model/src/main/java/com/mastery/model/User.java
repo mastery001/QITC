@@ -13,7 +13,7 @@ public class User extends BaseModel{
 
 	private String fullname = null;
 
-	private String password;
+	private String password = null;
 	
 	public User() {
 		setTableName("con_user");

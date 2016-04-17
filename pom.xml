@@ -12,6 +12,7 @@
 		<module>vrs-webapp</module>
 		<module>vrs-common</module>
 		<module>vrs-data-model</module>
+		<module>vrs-api</module>
 	</modules>
 
 	<build>

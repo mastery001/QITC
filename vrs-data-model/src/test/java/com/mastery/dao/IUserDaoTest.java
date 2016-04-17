@@ -14,8 +14,7 @@ public class IUserDaoTest {
 	public void test() {
 		User user = new User();
 		user.setUsername("zouziwen");
-		user.setFullname("邹紫雯");
 		user.setPassword("123546");
-		userDao.insert(user);
+		System.out.println(userDao.selectByModel(user));
 	}
 }
