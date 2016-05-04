@@ -231,15 +231,43 @@
                                 <li>新vrs系统只支持chrome浏览器</li>
                             </div>
                             <div>
-                                <H4>vrs使用帮助文档：</H4>
-                                <li>
-                                    <a href="../file/VRS.docx">点击下载</a>
-                                </li>
-                            </div>
+								<h4>上传客户端下载地址：</h4>
+								<li> <a href="http://123.126.32.30/uploader/index.html" target="_blank">点击下载</a></li>
+							</div>
                             <div>
                                 <h4>系统更新日志：</h4>
                                 <li>
-                                </li>
+							<p align="left">2016-2-27</p>
+							<p align="left" style="text-indent:2em" >1,专辑视频查询去掉来源，所有来源平级化处理。</p>
+							<p align="left" style="text-indent:2em" >2,专辑视频管理 批量修改播放平台处理 。</p>
+							<p align="left" style="text-indent:2em" >3,添加海外屏蔽 屏蔽类型描述修改。</p>
+							<p align="left" style="text-indent:2em" >4,播放平台去掉pc。</p>
+							</li>
+							<li>
+							<p align="left">2016-2-26</p>
+							<p align="left" style="text-indent:2em" >1,专辑视频管理、批量修改视频勾选播放平台增加分发验证。</p>
+							<p align="left" style="text-indent:2em" >2,修复明星图片保存丢失。</p>
+							<p align="left" style="text-indent:2em" >3,修复海外屏蔽查询视频或专辑中频道显示不正确。</p>
+							<p align="left" style="text-indent:2em" >4,修复添加海外屏蔽 列表显示不出屏蔽类型。</p>
+							</li>
+							<li>
+							<p align="left">2016-2-25</p>
+							<p align="left" style="text-indent:2em" >1,视频的图片管理中，点开视频截图的浮层后，无法隐藏该浮层的问题修改</p>
+							<p align="left" style="text-indent:2em" >2,修正获取转码信息显示问题</p>
+							<p align="left" style="text-indent:2em" >3,视频维护界面，专辑位置双击获取所在专辑porder最大值+1</p>
+							<p align="left" style="text-indent:2em" >4,过滤查询界面内容过滤空格</p>
+							</li>
+							<li>
+							<p align="left">2016-2-24</p>
+							<p align="left" style="text-indent:2em" >1,视频维护界面增加转码消息和时间。</p>
+							<p align="left" style="text-indent:2em" >2,含有MP4码率不能预览。增加媒资码率删除功能。</p>
+							</li>
+							<li>
+							<p align="left">2016-2-20</p>
+							<p align="left" style="text-indent:2em" >1,修改码率状态显示不正确。</p>
+							<p align="left" style="text-indent:2em" >2,专辑视频管理多tab页联动分页功能。</p>
+							<p align="left" style="text-indent:2em" >3,视频维护是否能勾选播放平台，以判断flv_350和MP4码率分发完成为前提条件</p>
+							</li>	
                             </div>
                         </div>
                         <!-- 最新结束-->
